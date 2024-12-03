@@ -3,7 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { Components } from 'react-markdown';
+import type { CodeComponent } from 'react-markdown/lib/ast-to-react';
 
 interface BlogPostProps {
   title: string;
@@ -25,24 +25,24 @@ const BlogPost = ({
   isExpanded = false,
   onClick,
 }: BlogPostProps) => {
-  const components: Components = {
-    code({ node, inline, className, children, ...props }) {
-      const match = /language-(\w+)/.exec(className || '');
-      return !inline && match ? (
-        <SyntaxHighlighter
-          style={vscDarkPlus}
-          language={match[1]}
-          PreTag="div"
-          {...props}
-        >
-          {String(children).replace(/\n$/, '')}
-        </SyntaxHighlighter>
-      ) : (
-        <code className={className} {...props}>
-          {children}
-        </code>
-      );
-    },
+  const CodeBlock: CodeComponent = ({ className, children, ...props }) => {
+    const match = /language-(\w+)/.exec(className || '');
+    const language = match ? match[1] : '';
+    
+    return match ? (
+      <SyntaxHighlighter
+        {...props}
+        style={vscDarkPlus}
+        language={language}
+        PreTag="div"
+      >
+        {String(children).replace(/\n$/, '')}
+      </SyntaxHighlighter>
+    ) : (
+      <code className={className} {...props}>
+        {children}
+      </code>
+    );
   };
 
   return (
@@ -70,7 +70,9 @@ const BlogPost = ({
           >
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
-              components={components}
+              components={{
+                code: CodeBlock
+              }}
             >
               {content}
             </ReactMarkdown>
