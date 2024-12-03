@@ -3,7 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import type { CodeComponent } from 'react-markdown/lib/ast-to-react';
+import type { Components } from 'react-markdown';
 
 interface BlogPostProps {
   title: string;
@@ -25,24 +25,24 @@ const BlogPost = ({
   isExpanded = false,
   onClick,
 }: BlogPostProps) => {
-  const CodeBlock: CodeComponent = ({ className, children, ...props }) => {
-    const match = /language-(\w+)/.exec(className || '');
-    const language = match ? match[1] : '';
-    
-    return match ? (
-      <SyntaxHighlighter
-        {...props}
-        style={vscDarkPlus}
-        language={language}
-        PreTag="div"
-      >
-        {String(children).replace(/\n$/, '')}
-      </SyntaxHighlighter>
-    ) : (
-      <code className={className} {...props}>
-        {children}
-      </code>
-    );
+  const components: Components = {
+    code({ className, children, ...props }) {
+      const match = /language-(\w+)/.exec(className || '');
+      return match ? (
+        <SyntaxHighlighter
+          {...props}
+          style={vscDarkPlus}
+          language={match[1]}
+          PreTag="div"
+        >
+          {String(children).replace(/\n$/, '')}
+        </SyntaxHighlighter>
+      ) : (
+        <code className={className} {...props}>
+          {children}
+        </code>
+      );
+    },
   };
 
   return (
@@ -70,9 +70,7 @@ const BlogPost = ({
           >
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
-              components={{
-                code: CodeBlock
-              }}
+              components={components}
             >
               {content}
             </ReactMarkdown>
@@ -81,11 +79,11 @@ const BlogPost = ({
           <p className="text-gray-600 dark:text-gray-300">{excerpt}</p>
         )}
 
-        <div className="flex flex-wrap gap-2 mt-4">
+        <div className="flex flex-wrap gap-2">
           {tags.map((tag) => (
             <span
               key={tag}
-              className="px-3 py-1 bg-light-200 dark:bg-dark-200 rounded-full text-sm"
+              className="px-2 py-1 text-sm bg-primary/10 text-primary rounded"
             >
               {tag}
             </span>
