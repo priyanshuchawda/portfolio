@@ -3,7 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import type { CodeProps } from 'react-markdown/dist/esm/ast-to-react';
+import { Components } from 'react-markdown';
 
 interface BlogPostProps {
   title: string;
@@ -25,6 +25,26 @@ const BlogPost = ({
   isExpanded = false,
   onClick,
 }: BlogPostProps) => {
+  const components: Components = {
+    code({ node, inline, className, children, ...props }) {
+      const match = /language-(\w+)/.exec(className || '');
+      return !inline && match ? (
+        <SyntaxHighlighter
+          style={vscDarkPlus}
+          language={match[1]}
+          PreTag="div"
+          {...props}
+        >
+          {String(children).replace(/\n$/, '')}
+        </SyntaxHighlighter>
+      ) : (
+        <code className={className} {...props}>
+          {children}
+        </code>
+      );
+    },
+  };
+
   return (
     <motion.article
       layout
@@ -50,25 +70,7 @@ const BlogPost = ({
           >
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
-              components={{
-                code({ className, children, ...props }: CodeProps) {
-                  const match = /language-(\w+)/.exec(className || '');
-                  return match ? (
-                    <SyntaxHighlighter
-                      style={vscDarkPlus}
-                      language={match[1]}
-                      PreTag="div"
-                      {...props}
-                    >
-                      {String(children).replace(/\n$/, '')}
-                    </SyntaxHighlighter>
-                  ) : (
-                    <code className={className} {...props}>
-                      {children}
-                    </code>
-                  );
-                },
-              }}
+              components={components}
             >
               {content}
             </ReactMarkdown>
