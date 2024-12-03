@@ -3,7 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import type { CodeProps } from 'react-markdown/lib/ast-to-react';
+import type { CodeProps } from 'react-markdown/dist/esm/ast-to-react';
 
 interface BlogPostProps {
   title: string;

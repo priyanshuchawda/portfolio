@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 interface ProjectCardProps {
   title: string;
   description: string;
-  image: string;
+  image?: string;
   technologies: string[];
   liveUrl?: string;
   githubUrl?: string;
