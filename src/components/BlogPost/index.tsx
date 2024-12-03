@@ -4,7 +4,6 @@ import remarkGfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import type { Components } from 'react-markdown';
-import type { ReactNode } from 'react';
 
 interface BlogPostProps {
   title: string;
@@ -17,12 +16,6 @@ interface BlogPostProps {
   onClick?: () => void;
 }
 
-interface CodeBlockProps {
-  inline?: boolean;
-  className?: string;
-  children: ReactNode;
-}
-
 const BlogPost = ({
   title,
   date,
@@ -33,9 +26,9 @@ const BlogPost = ({
   onClick,
 }: BlogPostProps) => {
   const components: Components = {
-    code({ inline, className, children }) {
+    code({ className, children }) {
       const match = /language-(\w+)/.exec(className || '');
-      return !inline && match ? (
+      return match ? (
         <SyntaxHighlighter
           style={vscDarkPlus}
           language={match[1]}
