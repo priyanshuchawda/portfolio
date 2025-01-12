@@ -1,9 +1,9 @@
-import { ReactNode } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Link, useLocation } from 'react-router-dom';
-import { RootState } from '../../store';
-import { toggleTheme } from '../../store/slices/themeSlice';
-import { SunIcon, MoonIcon } from '@heroicons/react/24/outline';
+import { ReactNode } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Link, useLocation } from "react-router-dom";
+import { RootState } from "../../store";
+import { toggleTheme } from "../../store/slices/themeSlice";
+import { SunIcon, MoonIcon } from "@heroicons/react/24/outline";
 
 interface LayoutProps {
   children: ReactNode;
@@ -15,11 +15,11 @@ const Layout = ({ children }: LayoutProps) => {
   const location = useLocation();
 
   const navigation = [
-    { name: 'Home', href: '/' },
-    { name: 'Skills', href: '/skills' },
-    { name: 'Projects', href: '/projects' },
-    { name: 'Blog', href: '/blog' },
-    { name: 'Contact', href: '/contact' },
+    { name: "Home", href: "/" },
+    { name: "Skills", href: "/skills" },
+    { name: "Projects", href: "/projects" },
+    { name: "Blog", href: "/blog" },
+    { name: "Contact", href: "/contact" },
   ];
 
   return (
@@ -40,8 +40,8 @@ const Layout = ({ children }: LayoutProps) => {
                   to={item.href}
                   className={`${
                     location.pathname === item.href
-                      ? 'text-primary'
-                      : 'text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary'
+                      ? "text-primary"
+                      : "text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary"
                   } transition-colors duration-200`}
                 >
                   {item.name}

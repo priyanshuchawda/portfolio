@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { sendContactForm } from '../../services/contact';
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { sendContactForm } from "../../services/contact";
 
 interface FormData {
   name: string;
@@ -11,45 +11,45 @@ interface FormData {
 
 const Contact = () => {
   const [formData, setFormData] = useState<FormData>({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
 
   const [status, setStatus] = useState<{
-    type: 'success' | 'error' | null;
+    type: "success" | "error" | null;
     message: string;
   }>({
     type: null,
-    message: '',
+    message: "",
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus({ type: null, message: '' });
+    setStatus({ type: null, message: "" });
     setIsSubmitting(true);
 
     try {
       await sendContactForm(formData);
 
       setStatus({
-        type: 'success',
-        message: 'Thank you for your message! I will get back to you soon.',
+        type: "success",
+        message: "Thank you for your message! I will get back to you soon.",
       });
 
       setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: '',
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
       });
     } catch (error) {
       setStatus({
-        type: 'error',
-        message: 'Something went wrong. Please try again later.',
+        type: "error",
+        message: "Something went wrong. Please try again later.",
       });
     } finally {
       setIsSubmitting(false);
@@ -57,7 +57,7 @@ const Contact = () => {
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -190,9 +190,9 @@ const Contact = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               className={`p-4 rounded-lg ${
-                status.type === 'success'
-                  ? 'bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-100'
-                  : 'bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-100'
+                status.type === "success"
+                  ? "bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-100"
+                  : "bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-100"
               }`}
             >
               {status.message}
@@ -200,10 +200,7 @@ const Contact = () => {
           )}
 
           <div>
-            <label
-              htmlFor="name"
-              className="block text-sm font-medium mb-2"
-            >
+            <label htmlFor="name" className="block text-sm font-medium mb-2">
               Name
             </label>
             <input
@@ -218,10 +215,7 @@ const Contact = () => {
           </div>
 
           <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium mb-2"
-            >
+            <label htmlFor="email" className="block text-sm font-medium mb-2">
               Email
             </label>
             <input
@@ -236,10 +230,7 @@ const Contact = () => {
           </div>
 
           <div>
-            <label
-              htmlFor="subject"
-              className="block text-sm font-medium mb-2"
-            >
+            <label htmlFor="subject" className="block text-sm font-medium mb-2">
               Subject
             </label>
             <input
@@ -254,10 +245,7 @@ const Contact = () => {
           </div>
 
           <div>
-            <label
-              htmlFor="message"
-              className="block text-sm font-medium mb-2"
-            >
+            <label htmlFor="message" className="block text-sm font-medium mb-2">
               Message
             </label>
             <textarea
@@ -278,8 +266,8 @@ const Contact = () => {
             whileTap={{ scale: 0.98 }}
             className={`w-full py-3 px-6 rounded-lg font-medium transition-colors ${
               isSubmitting
-                ? 'bg-gray-400 cursor-not-allowed'
-                : 'bg-primary text-white hover:bg-primary-dark'
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-primary text-white hover:bg-primary-dark"
             }`}
           >
             {isSubmitting ? (
@@ -307,7 +295,7 @@ const Contact = () => {
                 Sending...
               </div>
             ) : (
-              'Send Message'
+              "Send Message"
             )}
           </motion.button>
         </motion.form>

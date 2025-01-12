@@ -1,11 +1,11 @@
-import { useEffect } from 'react';
-import { motion, useScroll, useSpring } from 'framer-motion';
-import Header from './components/Header';
-import ScrollToTop from './components/ScrollToTop';
-import Home from './pages/Home';
-import Skills from './pages/Skills';
-import Blog from './pages/Blog';
-import Contact from './pages/Contact';
+import { useEffect } from "react";
+import { motion, useScroll, useSpring } from "framer-motion";
+import Header from "./components/Header";
+import ScrollToTop from "./components/ScrollToTop";
+import Home from "./pages/Home";
+import Skills from "./pages/Skills";
+import Blog from "./pages/Blog";
+import Contact from "./pages/Contact";
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -14,9 +14,9 @@ const sectionVariants = {
     y: 0,
     transition: {
       duration: 0.6,
-      ease: "easeOut"
-    }
-  }
+      ease: "easeOut",
+    },
+  },
 };
 
 function App() {
@@ -24,7 +24,7 @@ function App() {
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
-    restDelta: 0.001
+    restDelta: 0.001,
   });
 
   useEffect(() => {
@@ -33,15 +33,15 @@ function App() {
       if (hash) {
         const element = document.querySelector(hash);
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
+          element.scrollIntoView({ behavior: "smooth" });
         }
       }
     };
 
-    window.addEventListener('hashchange', handleHashChange);
+    window.addEventListener("hashchange", handleHashChange);
     handleHashChange();
 
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
 
   return (
@@ -51,7 +51,7 @@ function App() {
         style={{ scaleX }}
       />
       <Header />
-      
+
       <main className="container mx-auto px-4 py-8 space-y-32">
         <motion.section
           id="home"
