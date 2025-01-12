@@ -6,11 +6,11 @@
   html {
     @apply h-full;
   }
-  
+
   body {
     @apply h-full bg-light dark:bg-dark text-gray-900 dark:text-white;
   }
-  
+
   #root {
     @apply h-full;
   }
@@ -20,19 +20,19 @@
   .container {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
-  
+
   .section {
     @apply py-16 sm:py-24;
   }
-  
+
   .btn {
     @apply px-4 py-2 rounded-lg transition-all duration-200 font-medium;
   }
-  
+
   .btn-primary {
     @apply bg-primary text-white hover:bg-opacity-90;
   }
-  
+
   .card {
     @apply bg-white dark:bg-dark rounded-xl shadow-lg p-6;
   }

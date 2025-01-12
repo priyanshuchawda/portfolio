@@ -1,14 +1,15 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import BlogPost from '../../components/BlogPost';
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import BlogPost from "../../components/BlogPost";
 
 // Sample blog posts - replace with actual content
 const blogPosts = [
   {
     id: 1,
-    title: 'Building Scalable Microservices with Node.js',
-    date: '2024-02-15',
-    excerpt: 'Learn how to design and implement scalable microservices architecture using Node.js and Docker.',
+    title: "Building Scalable Microservices with Node.js",
+    date: "2024-02-15",
+    excerpt:
+      "Learn how to design and implement scalable microservices architecture using Node.js and Docker.",
     content: `
 # Building Scalable Microservices with Node.js
 
@@ -63,14 +64,15 @@ app.listen(3000, () => {
 
 Stay tuned for more in-depth tutorials on modern web development!
     `,
-    tags: ['Node.js', 'Microservices', 'Docker', 'DevOps'],
-    slug: 'building-scalable-microservices',
+    tags: ["Node.js", "Microservices", "Docker", "DevOps"],
+    slug: "building-scalable-microservices",
   },
   {
     id: 2,
-    title: 'Advanced React Patterns and Best Practices',
-    date: '2024-02-10',
-    excerpt: 'Discover advanced React patterns and best practices for building maintainable applications.',
+    title: "Advanced React Patterns and Best Practices",
+    date: "2024-02-10",
+    excerpt:
+      "Discover advanced React patterns and best practices for building maintainable applications.",
     content: `
 # Advanced React Patterns and Best Practices
 
@@ -136,19 +138,21 @@ const Tab = ({ children, value }: { children: React.ReactNode; value: string }) 
 3. Follow React best practices
 4. Write maintainable and reusable code
     `,
-    tags: ['React', 'TypeScript', 'Frontend', 'Best Practices'],
-    slug: 'advanced-react-patterns',
+    tags: ["React", "TypeScript", "Frontend", "Best Practices"],
+    slug: "advanced-react-patterns",
   },
 ];
 
 const Blog = () => {
   const [expandedPost, setExpandedPost] = useState<number | null>(null);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
 
   const filteredPosts = blogPosts.filter(
     (post) =>
       post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()))
+      post.tags.some((tag) =>
+        tag.toLowerCase().includes(searchQuery.toLowerCase()),
+      ),
   );
 
   return (
@@ -172,10 +176,7 @@ const Blog = () => {
       </div>
 
       <AnimatePresence mode="wait">
-        <motion.div
-          layout
-          className="grid grid-cols-1 md:grid-cols-2 gap-6"
-        >
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {filteredPosts.map((post) => (
             <BlogPost
               key={post.id}

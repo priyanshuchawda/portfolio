@@ -1,50 +1,50 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import ProjectCard from '../../components/ProjectCard';
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import ProjectCard from "../../components/ProjectCard";
 
 // Sample project data - replace with your actual projects
 const projects = [
   {
     id: 1,
-    title: 'E-Commerce Platform',
-    description: 'A full-stack e-commerce platform with React, Node.js, and MongoDB',
-    image: '/project-1.jpg',
-    technologies: ['React', 'Node.js', 'MongoDB', 'Express'],
-    liveUrl: 'https://example.com',
-    githubUrl: 'https://github.com/example',
+    title: "E-Commerce Platform",
+    description:
+      "A full-stack e-commerce platform with React, Node.js, and MongoDB",
+    image: "/project-1.jpg",
+    technologies: ["React", "Node.js", "MongoDB", "Express"],
+    liveUrl: "https://example.com",
+    githubUrl: "https://github.com/example",
   },
   {
     id: 2,
-    title: 'Task Management App',
-    description: 'A collaborative task management application with real-time updates',
-    image: '/project-2.jpg',
-    technologies: ['React', 'Firebase', 'Tailwind CSS', 'TypeScript'],
-    liveUrl: 'https://example.com',
-    githubUrl: 'https://github.com/example',
+    title: "Task Management App",
+    description:
+      "A collaborative task management application with real-time updates",
+    image: "/project-2.jpg",
+    technologies: ["React", "Firebase", "Tailwind CSS", "TypeScript"],
+    liveUrl: "https://example.com",
+    githubUrl: "https://github.com/example",
   },
   {
     id: 3,
-    title: 'AI Image Generator',
-    description: 'An AI-powered image generation tool using DALL-E API',
-    image: '/project-3.jpg',
-    technologies: ['Next.js', 'OpenAI', 'Prisma', 'PostgreSQL'],
-    liveUrl: 'https://example.com',
-    githubUrl: 'https://github.com/example',
+    title: "AI Image Generator",
+    description: "An AI-powered image generation tool using DALL-E API",
+    image: "/project-3.jpg",
+    technologies: ["Next.js", "OpenAI", "Prisma", "PostgreSQL"],
+    liveUrl: "https://example.com",
+    githubUrl: "https://github.com/example",
   },
 ];
 
 // Get unique technologies from all projects
 const allTechnologies = Array.from(
-  new Set(projects.flatMap((project) => project.technologies))
+  new Set(projects.flatMap((project) => project.technologies)),
 ).sort();
 
 const Projects = () => {
   const [selectedTech, setSelectedTech] = useState<string | null>(null);
 
   const filteredProjects = selectedTech
-    ? projects.filter((project) =>
-        project.technologies.includes(selectedTech)
-      )
+    ? projects.filter((project) => project.technologies.includes(selectedTech))
     : projects;
 
   return (
@@ -52,9 +52,9 @@ const Projects = () => {
       <div className="text-center">
         <h1 className="text-4xl font-bold mb-4">Projects</h1>
         <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-          A collection of my recent work and side projects. Each project is a unique
-          piece of development that showcases my skills and passion for building
-          exceptional digital experiences.
+          A collection of my recent work and side projects. Each project is a
+          unique piece of development that showcases my skills and passion for
+          building exceptional digital experiences.
         </p>
       </div>
 
@@ -65,8 +65,8 @@ const Projects = () => {
           onClick={() => setSelectedTech(null)}
           className={`px-4 py-2 rounded-full ${
             !selectedTech
-              ? 'bg-primary text-white'
-              : 'bg-light-200 dark:bg-dark-200 text-gray-600 dark:text-gray-300'
+              ? "bg-primary text-white"
+              : "bg-light-200 dark:bg-dark-200 text-gray-600 dark:text-gray-300"
           }`}
         >
           All
@@ -79,8 +79,8 @@ const Projects = () => {
             onClick={() => setSelectedTech(tech)}
             className={`px-4 py-2 rounded-full ${
               selectedTech === tech
-                ? 'bg-primary text-white'
-                : 'bg-light-200 dark:bg-dark-200 text-gray-600 dark:text-gray-300'
+                ? "bg-primary text-white"
+                : "bg-light-200 dark:bg-dark-200 text-gray-600 dark:text-gray-300"
             }`}
           >
             {tech}
