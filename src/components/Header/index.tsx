@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { useTheme } from '../../hooks/useTheme';
-import { FiMenu, FiX, FiMoon, FiSun } from 'react-icons/fi';
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { useTheme } from "../../hooks/useTheme";
+import { FiMenu, FiX, FiMoon, FiSun } from "react-icons/fi";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,14 +13,14 @@ const Header = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
       setIsMenuOpen(false);
     } else {
       console.warn(`Element with id ${sectionId} not found.`);
@@ -30,7 +30,9 @@ const Header = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        isScrolled ? 'bg-light/80 dark:bg-dark/80 backdrop-blur-md shadow-lg' : ''
+        isScrolled
+          ? "bg-light/80 dark:bg-dark/80 backdrop-blur-md shadow-lg"
+          : ""
       }`}
     >
       <nav className="container mx-auto px-4 py-4">
@@ -46,16 +48,16 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <NavLink href="#home" onClick={() => scrollToSection('home')}>
+            <NavLink href="#home" onClick={() => scrollToSection("home")}>
               Home
             </NavLink>
-            <NavLink href="#skills" onClick={() => scrollToSection('skills')}>
+            <NavLink href="#skills" onClick={() => scrollToSection("skills")}>
               Skills
             </NavLink>
-            <NavLink href="#blog" onClick={() => scrollToSection('blog')}>
+            <NavLink href="#blog" onClick={() => scrollToSection("blog")}>
               Blog
             </NavLink>
-            <NavLink href="#contact" onClick={() => scrollToSection('contact')}>
+            <NavLink href="#contact" onClick={() => scrollToSection("contact")}>
               Contact
             </NavLink>
             <motion.button
@@ -87,16 +89,28 @@ const Header = () => {
             className="md:hidden absolute top-full left-0 right-0 bg-light dark:bg-dark shadow-lg"
           >
             <div className="flex flex-col p-4 space-y-4">
-              <MobileNavLink href="#home" onClick={() => scrollToSection('home')}>
+              <MobileNavLink
+                href="#home"
+                onClick={() => scrollToSection("home")}
+              >
                 Home
               </MobileNavLink>
-              <MobileNavLink href="#skills" onClick={() => scrollToSection('skills')}>
+              <MobileNavLink
+                href="#skills"
+                onClick={() => scrollToSection("skills")}
+              >
                 Skills
               </MobileNavLink>
-              <MobileNavLink href="#blog" onClick={() => scrollToSection('blog')}>
+              <MobileNavLink
+                href="#blog"
+                onClick={() => scrollToSection("blog")}
+              >
                 Blog
               </MobileNavLink>
-              <MobileNavLink href="#contact" onClick={() => scrollToSection('contact')}>
+              <MobileNavLink
+                href="#contact"
+                onClick={() => scrollToSection("contact")}
+              >
                 Contact
               </MobileNavLink>
               <motion.button
@@ -114,7 +128,15 @@ const Header = () => {
   );
 };
 
-const NavLink = ({ href, onClick, children }: { href: string; onClick: () => void; children: React.ReactNode }) => (
+const NavLink = ({
+  href,
+  onClick,
+  children,
+}: {
+  href: string;
+  onClick: () => void;
+  children: React.ReactNode;
+}) => (
   <motion.a
     href={href}
     onClick={onClick}
@@ -126,7 +148,15 @@ const NavLink = ({ href, onClick, children }: { href: string; onClick: () => voi
   </motion.a>
 );
 
-const MobileNavLink = ({ href, onClick, children }: { href: string; onClick: () => void; children: React.ReactNode }) => (
+const MobileNavLink = ({
+  href,
+  onClick,
+  children,
+}: {
+  href: string;
+  onClick: () => void;
+  children: React.ReactNode;
+}) => (
   <motion.a
     href={href}
     onClick={onClick}
