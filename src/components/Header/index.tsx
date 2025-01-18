@@ -22,6 +22,8 @@ const Header = () => {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
       setIsMenuOpen(false);
+    } else {
+      console.warn(`Element with id ${sectionId} not found.`);
     }
   };
 
