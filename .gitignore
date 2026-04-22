@@ -42,3 +42,5 @@ next-env.d.ts
 
 # gemini cli tooling
 gemini-cli/
+
+.vercel
