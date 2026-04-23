@@ -24,11 +24,12 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL('https://priyanshuworks.tech'),
   title: {
-    default: 'Priyanshu Chawda | AI Engineer — Agentic Systems & Developer Tools',
+    default:
+      'Priyanshu Chawda | AI Engineer — Agentic Systems & Developer Tools',
     template: '%s | Priyanshu Chawda',
   },
   description:
-    'Priyanshu Chawda is an AI Engineer who ships AI-powered tools, automation systems, and scalable software. Specializing in agentic systems, MCP servers, LLM orchestration, and full-stack development.',
+    'Priyanshu Chawda is an AI Engineer shipping AI-powered tools and scalable software. Specializing in agentic systems, LLM orchestration & full-stack.',
   keywords: [
     'AI Engineer',
     'Priyanshu Chawda',
