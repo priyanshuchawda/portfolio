@@ -94,7 +94,9 @@ const jsonLd = {
   '@type': 'Person',
   name: 'Priyanshu Chawda',
   url: 'https://priyanshuworks.tech',
+  image: 'https://priyanshuworks.tech/og-image.png',
   jobTitle: 'AI Engineer',
+  email: 'priyanshuchawda20@gmail.com',
   description:
     'AI Engineer building agentic systems & developer tools. Specializing in MCP servers, LLM orchestration, and full-stack development.',
   sameAs: [

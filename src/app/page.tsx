@@ -145,9 +145,9 @@ export default function Home() {
             <h1 className="mb-4 text-5xl font-bold tracking-tighter md:text-7xl">
               Priyanshu Chawda
             </h1>
-            <h2 className="text-muted-foreground mb-6 max-w-2xl text-xl md:text-3xl">
+            <p className="text-muted-foreground mb-6 max-w-2xl text-xl font-semibold md:text-3xl">
               AI Engineer building agentic systems &amp; developer tools.
-            </h2>
+            </p>
             <p className="text-muted-foreground mb-10 max-w-xl text-lg leading-relaxed">
               I ship AI-powered tools, automation systems, and scalable software
               fast. Turning complex problems into elegant solutions.
@@ -180,7 +180,10 @@ export default function Home() {
         </section>
 
         {/* NOW BUILDING */}
-        <section className="border-border/50 border-y py-10" aria-label="Current work">
+        <section
+          className="border-border/50 border-y py-10"
+          aria-label="Current work"
+        >
           <div className="flex flex-col items-start gap-8 md:flex-row md:items-center">
             <div className="text-accent flex items-center gap-3 font-mono text-sm whitespace-nowrap">
               <span className="relative flex h-3 w-3" aria-hidden="true">
@@ -207,7 +210,11 @@ export default function Home() {
         </section>
 
         {/* FEATURED PROJECTS */}
-        <section id="projects" className="space-y-12" aria-label="Featured Projects">
+        <section
+          id="projects"
+          className="space-y-12"
+          aria-label="Featured Projects"
+        >
           <div className="space-y-4">
             <h2 className="text-3xl font-bold tracking-tight">
               Featured Projects
@@ -255,7 +262,11 @@ export default function Home() {
         </section>
 
         {/* TIMELINE / JOURNEY */}
-        <section id="journey" className="space-y-12" aria-label="Career Journey">
+        <section
+          id="journey"
+          className="space-y-12"
+          aria-label="Career Journey"
+        >
           <div className="space-y-4">
             <h2 className="text-3xl font-bold tracking-tight">The Journey</h2>
             <p className="text-muted-foreground">
@@ -289,7 +300,11 @@ export default function Home() {
         </section>
 
         {/* CAPABILITIES / SKILLS */}
-        <section id="skills" className="space-y-12" aria-label="Skills and Capabilities">
+        <section
+          id="skills"
+          className="space-y-12"
+          aria-label="Skills and Capabilities"
+        >
           <div className="space-y-4">
             <h2 className="text-3xl font-bold tracking-tight">Capabilities</h2>
             <p className="text-muted-foreground">
@@ -316,7 +331,9 @@ export default function Home() {
             </div>
             <div className="border-border bg-muted/20 space-y-4 rounded-2xl border p-6">
               <Activity className="text-accent h-8 w-8" aria-hidden="true" />
-              <h3 className="text-xl font-bold">Systems &amp; Problem Solving</h3>
+              <h3 className="text-xl font-bold">
+                Systems &amp; Problem Solving
+              </h3>
               <p className="text-muted-foreground leading-relaxed">
                 DSA, Competitive Programming, Optimization, Architecture Design.
               </p>
@@ -325,7 +342,10 @@ export default function Home() {
         </section>
 
         {/* PROOF OF WORK / GITHUB */}
-        <section className="bg-muted/10 border-border/50 -mx-6 space-y-12 rounded-3xl border px-6 py-20" aria-label="Statistics">
+        <section
+          className="bg-muted/10 border-border/50 -mx-6 space-y-12 rounded-3xl border px-6 py-20"
+          aria-label="Statistics"
+        >
           <div className="mx-auto max-w-2xl space-y-4 text-center">
             <h2 className="text-3xl font-bold tracking-tight">
               Analytics-driven Proof
@@ -364,7 +384,11 @@ export default function Home() {
         </section>
 
         {/* CTA */}
-        <section id="contact" className="space-y-8 py-20 text-center" aria-label="Contact">
+        <section
+          id="contact"
+          className="space-y-8 py-20 text-center"
+          aria-label="Contact"
+        >
           <h2 className="text-4xl font-bold tracking-tighter md:text-5xl">
             Let&apos;s build something together.
           </h2>
@@ -395,8 +419,8 @@ export default function Home() {
 
       <footer className="border-border text-muted-foreground border-t py-8 text-center text-sm">
         <p>
-          © {new Date().getFullYear()} Priyanshu Chawda. Built with Next.js &amp;
-          Tailwind CSS.
+          © {new Date().getFullYear()} Priyanshu Chawda. Built with Next.js
+          &amp; Tailwind CSS.
         </p>
       </footer>
     </main>
@@ -483,9 +507,7 @@ function TimelineItem({
         className={`border-background absolute top-1 -left-[31px] h-4 w-4 rounded-full border-4 ${active ? 'bg-accent' : 'bg-muted-foreground'}`}
         aria-hidden="true"
       ></div>
-      <div className="text-muted-foreground mb-1 font-mono text-sm">
-        {year}
-      </div>
+      <div className="text-muted-foreground mb-1 font-mono text-sm">{year}</div>
       <h3 className="mb-2 text-xl font-bold">{title}</h3>
       <p className="text-muted-foreground leading-relaxed">{description}</p>
     </div>
