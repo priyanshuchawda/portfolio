@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
+import { siteConfig } from '@/lib/site';
+import { serializeJsonLd, structuredData } from '@/lib/structured-data';
 import './globals.css';
 
 const geistSans = Geist({
@@ -21,59 +23,46 @@ export const viewport: Viewport = {
   maximumScale: 5,
 };
 
+const googleSiteVerification = process.env['GOOGLE_SITE_VERIFICATION'];
+
 export const metadata: Metadata = {
-  metadataBase: new URL('https://priyanshuworks.tech'),
+  metadataBase: new URL(siteConfig.url),
+  applicationName: `${siteConfig.name} Portfolio`,
   title: {
-    default:
-      'Priyanshu Chawda | AI Engineer — Agentic Systems & Developer Tools',
-    template: '%s | Priyanshu Chawda',
+    default: siteConfig.title,
+    template: `%s | ${siteConfig.name}`,
   },
-  description:
-    'Priyanshu Chawda is an AI Engineer shipping AI-powered tools and scalable software. Specializing in agentic systems, LLM orchestration & full-stack.',
-  keywords: [
-    'AI Engineer',
-    'Priyanshu Chawda',
-    'Next.js',
-    'Agentic Systems',
-    'Developer Tools',
-    'Machine Learning',
-    'Software Engineer',
-    'MCP Servers',
-    'LLM Orchestration',
-    'Full Stack Developer',
-    'Portfolio',
-  ],
-  authors: [{ name: 'Priyanshu Chawda', url: 'https://priyanshuworks.tech' }],
-  creator: 'Priyanshu Chawda',
-  publisher: 'Priyanshu Chawda',
+  description: siteConfig.description,
+  keywords: [...siteConfig.keywords],
+  authors: [{ name: siteConfig.name, url: siteConfig.url }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+  referrer: 'strict-origin-when-cross-origin',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   alternates: {
-    canonical: 'https://priyanshuworks.tech',
+    canonical: '/',
+    languages: {
+      'en-US': '/',
+    },
   },
   openGraph: {
     type: 'website',
-    locale: 'en_US',
-    url: 'https://priyanshuworks.tech',
-    title: 'Priyanshu Chawda | AI Engineer',
-    description:
-      'AI Engineer building agentic systems & developer tools. I ship AI-powered tools, automation systems, and scalable software fast.',
-    siteName: 'Priyanshu Chawda Portfolio',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'Priyanshu Chawda — AI Engineer Portfolio',
-        type: 'image/png',
-      },
-    ],
+    locale: siteConfig.locale,
+    url: '/',
+    title: siteConfig.title,
+    description: siteConfig.description,
+    siteName: `${siteConfig.name} Portfolio`,
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Priyanshu Chawda | AI Engineer',
-    description:
-      'AI Engineer building agentic systems & developer tools. I ship AI-powered tools, automation systems, and scalable software fast.',
-    creator: '@priyanshuchawda',
-    images: ['/og-image.png'],
+    title: siteConfig.title,
+    description: siteConfig.description,
+    creator: siteConfig.twitterHandle,
+    site: siteConfig.twitterHandle,
   },
   robots: {
     index: true,
@@ -87,32 +76,9 @@ export const metadata: Metadata = {
     },
   },
   category: 'technology',
-};
-
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: 'Priyanshu Chawda',
-  url: 'https://priyanshuworks.tech',
-  image: 'https://priyanshuworks.tech/og-image.png',
-  jobTitle: 'AI Engineer',
-  email: 'priyanshuchawda20@gmail.com',
-  description:
-    'AI Engineer building agentic systems & developer tools. Specializing in MCP servers, LLM orchestration, and full-stack development.',
-  sameAs: [
-    'https://github.com/priyanshuchawda',
-    'https://www.linkedin.com/in/priyanshuchawda',
-  ],
-  knowsAbout: [
-    'Artificial Intelligence',
-    'Machine Learning',
-    'Large Language Models',
-    'Agentic Systems',
-    'Full Stack Development',
-    'Next.js',
-    'TypeScript',
-    'Python',
-  ],
+  ...(googleSiteVerification
+    ? { verification: { google: googleSiteVerification } }
+    : {}),
 };
 
 export default function RootLayout({
@@ -125,7 +91,9 @@ export default function RootLayout({
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{
+            __html: serializeJsonLd(structuredData),
+          }}
         />
       </head>
       <body
