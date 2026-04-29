@@ -3,14 +3,18 @@ import { siteConfig } from '@/lib/site';
 
 const searchAndCitationBots = [
   'Googlebot',
+  'Google-Extended',
   'Bingbot',
   'Applebot',
   'OAI-SearchBot',
+  'GPTBot',
   'ChatGPT-User',
   'PerplexityBot',
   'Perplexity-User',
   'Claude-SearchBot',
+  'ClaudeBot',
   'Claude-User',
+  'anthropic-ai',
   'DuckAssistBot',
   'MistralAI-User',
   'Meta-ExternalFetcher',
@@ -18,8 +22,6 @@ const searchAndCitationBots = [
 ] as const;
 
 const bulkTrainingBots = [
-  'GPTBot',
-  'ClaudeBot',
   'CCBot',
   'Google-CloudVertexBot',
   'Bytespider',

@@ -1,6 +1,12 @@
 {
   "version": 1,
   "skills": {
+    "ai-seo": {
+      "source": "coreyhaines31/marketingskills",
+      "sourceType": "github",
+      "skillPath": "skills/ai-seo/SKILL.md",
+      "computedHash": "ede5108491794bd39caf5f673ecfd2349e5a398e7034d1beedc615ef59c74958"
+    },
     "alert-manager": {
       "source": "aaron-he-zhu/seo-geo-claude-skills",
       "sourceType": "github",
@@ -9,7 +15,14 @@
     "backlink-analyzer": {
       "source": "aaron-he-zhu/seo-geo-claude-skills",
       "sourceType": "github",
-      "computedHash": "89ee3cffefbb2e8fe8f026530be93a4523da0bfb062346db4eb7d814089dfa88"
+      "skillPath": "monitor/backlink-analyzer/SKILL.md",
+      "computedHash": "2d53de39039c2b97de4f7075fd9d73aabad394ce472cbdbca5f8663194d170ad"
+    },
+    "build-links": {
+      "source": "calm-north/seojuice-skills",
+      "sourceType": "github",
+      "skillPath": "skills/build-links/SKILL.md",
+      "computedHash": "0407ec28ece5b89f5c91ec4bd3470d3f4e71c0095a9bb17a4137a5daedf3f625"
     },
     "competitor-analysis": {
       "source": "aaron-he-zhu/seo-geo-claude-skills",
@@ -19,7 +32,8 @@
     "content-gap-analysis": {
       "source": "aaron-he-zhu/seo-geo-claude-skills",
       "sourceType": "github",
-      "computedHash": "de54938abf8577f9af5dfb5c83fa2ab93f778043e41387ba87d34fc6d5fb6d0e"
+      "skillPath": "research/content-gap-analysis/SKILL.md",
+      "computedHash": "c31634f891562395d1bc5900267f408216e71d51f06892566f8bbe4d65a9cf93"
     },
     "content-quality-auditor": {
       "source": "aaron-he-zhu/seo-geo-claude-skills",
@@ -41,10 +55,17 @@
       "sourceType": "github",
       "computedHash": "c243ff47a8e163bc17b14fadb98e3fcc2e1df3dbb470ad8b07fac964e38e7da5"
     },
+    "find-keywords": {
+      "source": "calm-north/seojuice-skills",
+      "sourceType": "github",
+      "skillPath": "skills/find-keywords/SKILL.md",
+      "computedHash": "ec75ec0ddd56ec0e3ec8ca9fc608d1999dfa73d00dc47ad0d3c0e6754df2996c"
+    },
     "geo-content-optimizer": {
       "source": "aaron-he-zhu/seo-geo-claude-skills",
       "sourceType": "github",
-      "computedHash": "249b2eac34d7d7afa7e9923c3ab2e282ffcf2707c6586c72762cc7ad0c32dfb8"
+      "skillPath": "build/geo-content-optimizer/SKILL.md",
+      "computedHash": "bddf5caced154efdc7230d316af719b3b1e611f77a4528684523ea7917e16dba"
     },
     "internal-linking-optimizer": {
       "source": "aaron-he-zhu/seo-geo-claude-skills",
@@ -54,7 +75,8 @@
     "keyword-research": {
       "source": "aaron-he-zhu/seo-geo-claude-skills",
       "sourceType": "github",
-      "computedHash": "1c9d9c4e8ae76aa40a4b9df1fe9a3ca030f2e5e06d53059aa42d8bece71b4f31"
+      "skillPath": "research/keyword-research/SKILL.md",
+      "computedHash": "3366877f1c3dee8e5aac975dfd14aa32b0ab9361758517d503f190d8475762c2"
     },
     "memory-management": {
       "source": "aaron-he-zhu/seo-geo-claude-skills",
@@ -66,15 +88,40 @@
       "sourceType": "github",
       "computedHash": "5206c8456afa4500f6d8be1d907c8cc7e1506bb723c3b0e6c1382de779f8caf0"
     },
+    "next-best-practices": {
+      "source": "vercel-labs/next-skills",
+      "sourceType": "github",
+      "skillPath": "skills/next-best-practices/SKILL.md",
+      "computedHash": "db85045827ebeb83ac8dbc992b69188755eeb74dcf01cbf5e694d58aa494a106"
+    },
+    "nextjs": {
+      "source": "vercel-labs/vercel-plugin",
+      "sourceType": "github",
+      "skillPath": "skills/nextjs/SKILL.md",
+      "computedHash": "d3a48eada4dbae95856d643a0c9c54a38974ee7896a4d34f93aead13d26c343a"
+    },
     "on-page-seo-auditor": {
       "source": "aaron-he-zhu/seo-geo-claude-skills",
       "sourceType": "github",
-      "computedHash": "07b68ffa791c822c3a65cb678cc43e470d95faf2b56dd6a4289b4dd10f7bc699"
+      "skillPath": "optimize/on-page-seo-auditor/SKILL.md",
+      "computedHash": "ce895205a7a17ecd076a970ad37c571e2625549cd41cd954ec2116640b135dd7"
+    },
+    "optimize-for-ai": {
+      "source": "calm-north/seojuice-skills",
+      "sourceType": "github",
+      "skillPath": "skills/optimize-for-ai/SKILL.md",
+      "computedHash": "df3c9173a6469d99fcf07b29dd28aa9073d17340246b032dd16715c61c02741e"
     },
     "performance-reporter": {
       "source": "aaron-he-zhu/seo-geo-claude-skills",
       "sourceType": "github",
       "computedHash": "b5787ef2b06dc94933dc49f719f73139988132c63c12450d3ae65b4bdffe6042"
+    },
+    "programmatic-seo": {
+      "source": "coreyhaines31/marketingskills",
+      "sourceType": "github",
+      "skillPath": "skills/programmatic-seo/SKILL.md",
+      "computedHash": "c6384f24bb0203f8aa98b23b55d35b9e6721b94532a0e7965215c340ae96f1e0"
     },
     "rank-tracker": {
       "source": "aaron-he-zhu/seo-geo-claude-skills",
@@ -86,20 +133,75 @@
       "sourceType": "github",
       "computedHash": "09494896b563dfd2e45c8eedadc2a8ea1ad403e33b223f13241e97f44dc3b663"
     },
+    "seo": {
+      "source": "addyosmani/web-quality-skills",
+      "sourceType": "github",
+      "skillPath": "skills/seo/SKILL.md",
+      "computedHash": "680cc12a17e9308b4592a2751db51615c618993f75362cb8e64207f6355a8c63"
+    },
+    "seo-aeo-best-practices": {
+      "source": "sanity-io/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/seo-aeo-best-practices/SKILL.md",
+      "computedHash": "b6b2dd3af3c92f82f04b830dab2cc323f299d7c2e57f7d3619a5886caa7eeb08"
+    },
+    "seo-audit": {
+      "source": "anthropics/knowledge-work-plugins",
+      "sourceType": "github",
+      "skillPath": "marketing/skills/seo-audit/SKILL.md",
+      "computedHash": "fc681c9ebb5a6e4bdaca74a1746c04eac7cd82e4b8a67298a3b1faf77a394e2e"
+    },
     "seo-content-writer": {
       "source": "aaron-he-zhu/seo-geo-claude-skills",
       "sourceType": "github",
       "computedHash": "1125d01afecf9aaae5d58cfe1b481e6d3af6efaec0077a5fef6fdbafc7dd44c2"
+    },
+    "seo-geo": {
+      "source": "resciencelab/opc-skills",
+      "sourceType": "github",
+      "skillPath": "skills/seo-geo/SKILL.md",
+      "computedHash": "1d38520f453282af8712874c360e3e34a379827f737fb536bd45055e2d60d964"
     },
     "serp-analysis": {
       "source": "aaron-he-zhu/seo-geo-claude-skills",
       "sourceType": "github",
       "computedHash": "50a571b352219133d2dbf5f7252e71b629816cd1e0bcbd1a0b91a1165c92ee9a"
     },
+    "tailwind-best-practices": {
+      "source": "mastra-ai/mastra",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/tailwind-best-practices/SKILL.md",
+      "computedHash": "b5720fe165b13c35122f15fa78cea523e9dda48e666fcc71daf1ba71827f0386"
+    },
+    "tailwind-css-patterns": {
+      "source": "giuseppe-trisciuoglio/developer-kit",
+      "sourceType": "github",
+      "skillPath": "plugins/developer-kit-typescript/skills/tailwind-css-patterns/SKILL.md",
+      "computedHash": "2fa1b2d4e0bc020dcbaa1e65af6f7ba75715116686e0fd663a4b268c8ace22d4"
+    },
+    "tailwind-design-system": {
+      "source": "wshobson/agents",
+      "sourceType": "github",
+      "skillPath": "plugins/frontend-mobile-development/skills/tailwind-design-system/SKILL.md",
+      "computedHash": "f54f39ce967af3a4bba1f662c3600f0253467508d5fbbc7c545c67e102da2253"
+    },
     "technical-seo-checker": {
       "source": "aaron-he-zhu/seo-geo-claude-skills",
       "sourceType": "github",
-      "computedHash": "de5937249ef86d723375c41ceba238548e0ede4ad1dfe616afb5f1f275fd63f5"
+      "skillPath": "optimize/technical-seo-checker/SKILL.md",
+      "computedHash": "aca8f44f48a1d96e8018f1553b845d428938356eb82c94fd26cd84261c9754b3"
+    },
+    "ui-ux-pro-max": {
+      "source": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/ui-ux-pro-max/SKILL.md",
+      "computedHash": "6337038fe1fe6bbe1b9f252ab678ee575859190bab6f0f246f4061824eb40875"
+    },
+    "vercel-react-best-practices": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/react-best-practices/SKILL.md",
+      "computedHash": "ca7b0c0c6e5f2750043f7f0cd72d16ac4e2abc48f9b5500d047a4b77a2506212"
     }
   }
 }

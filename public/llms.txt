@@ -1,0 +1,40 @@
+# Priyanshu Chawda
+
+## Overview
+Priyanshu Chawda is an AI-focused software engineer from Pune, India. He builds agentic systems, MCP servers, developer tools, and full-stack AI applications with TypeScript, Python, Gemini, and Next.js.
+
+## Key pages
+- https://priyanshuworks.tech/
+- https://priyanshuworks.tech/about
+- https://priyanshuworks.tech/projects
+- https://priyanshuworks.tech/services
+- https://priyanshuworks.tech/writing
+- https://priyanshuworks.tech/achievements
+- https://priyanshuworks.tech/contact
+- https://priyanshuworks.tech/ai-profile.json
+
+## Projects
+- https://priyanshuworks.tech/projects/youtube-flashcards
+- https://priyanshuworks.tech/projects/ghfind
+- https://priyanshuworks.tech/projects/browser4all
+- https://priyanshuworks.tech/projects/smart-crowd-navigator
+
+## Topics
+- AI engineering
+- MCP server development
+- LLM workflow engineering
+- MCP servers
+- LLM workflows
+- Developer tools
+- Full-stack development
+- Gemini AI
+
+## Services
+- MCP Server Development: Model Context Protocol servers for AI agent tool access.
+- LLM Workflow Engineering: RAG, prompt, evaluation, and orchestration workflows.
+- Full-Stack AI Applications: Next.js, TypeScript, and Python AI product builds.
+
+## Contact
+- Email: priyanshuchawda20@gmail.com
+- LinkedIn: https://www.linkedin.com/in/priyanshuchawda
+- GitHub: https://github.com/priyanshuchawda

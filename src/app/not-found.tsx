@@ -5,10 +5,10 @@ export default function NotFound() {
     <main className="bg-background text-foreground flex min-h-screen flex-col items-center justify-center px-6 text-center">
       <div className="space-y-8">
         <div className="space-y-4">
-          <h1 className="text-accent font-mono text-8xl font-black tracking-tighter md:text-9xl">
+          <h1 className="text-accent font-mono text-8xl font-black md:text-9xl">
             404
           </h1>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-2xl font-bold text-balance md:text-3xl">
             Page not found
           </h2>
           <p className="text-muted-foreground mx-auto max-w-md text-lg leading-relaxed">
@@ -20,13 +20,13 @@ export default function NotFound() {
         <div className="flex flex-wrap justify-center gap-4">
           <Link
             href="/"
-            className="bg-foreground text-background hover:bg-foreground/90 rounded-full px-8 py-4 font-bold transition-all"
+            className="bg-foreground text-background hover:bg-foreground/90 focus-visible:ring-accent rounded-full px-8 py-4 font-bold transition-colors focus-visible:ring-2 focus-visible:outline-none"
           >
             Go Home
           </Link>
           <Link
-            href="/#projects"
-            className="border-border bg-muted/50 hover:bg-muted rounded-full border px-8 py-4 font-bold transition-all"
+            href="/projects"
+            className="border-border bg-muted/50 hover:bg-muted focus-visible:ring-accent rounded-full border px-8 py-4 font-bold transition-colors focus-visible:ring-2 focus-visible:outline-none"
           >
             View Projects
           </Link>

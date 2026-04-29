@@ -30,7 +30,7 @@ export default function Image() {
           letterSpacing: 0,
         }}
       >
-        AI Engineer / Agentic Systems / Developer Tools
+        AI-focused software engineer / Agentic systems / Developer tools
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
         <div
@@ -51,8 +51,8 @@ export default function Image() {
             maxWidth: 900,
           }}
         >
-          Building LLM orchestration, MCP servers, automation systems, and
-          scalable full-stack software.
+          Building MCP servers, LLM workflows, automation systems, and
+          full-stack AI applications.
         </div>
       </div>
       <div

@@ -1,0 +1,40 @@
+{
+  "name": "Priyanshu Chawda",
+  "url": "https://priyanshuworks.tech",
+  "description": "AI-focused software engineer from Pune, India building agentic systems, MCP servers, developer tools, and full-stack AI applications.",
+  "location": "Pune, India",
+  "role": "AI-focused Software Engineer",
+  "topics": [
+    "AI engineering",
+    "MCP server development",
+    "LLM workflow engineering",
+    "Gemini AI",
+    "Next.js",
+    "TypeScript",
+    "Python",
+    "Developer tools"
+  ],
+  "services": [
+    "MCP Server Development",
+    "LLM Workflow Engineering",
+    "Full-Stack AI Applications"
+  ],
+  "keyPages": [
+    "https://priyanshuworks.tech/",
+    "https://priyanshuworks.tech/about",
+    "https://priyanshuworks.tech/projects",
+    "https://priyanshuworks.tech/services",
+    "https://priyanshuworks.tech/contact"
+  ],
+  "sameAs": [
+    "https://github.com/priyanshuchawda",
+    "https://www.linkedin.com/in/priyanshuchawda",
+    "https://x.com/priyanshuchawda"
+  ],
+  "contact": {
+    "email": "priyanshuchawda20@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/priyanshuchawda",
+    "github": "https://github.com/priyanshuchawda"
+  },
+  "lastUpdated": "2026-04-29"
+}

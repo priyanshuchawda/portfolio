@@ -1,7 +1,11 @@
 import type { Metadata, Viewport } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
+import { CommandPalette } from '@/components/CommandPalette';
+import { SiteFooter } from '@/components/SiteFooter';
+import { SiteHeader } from '@/components/SiteHeader';
+import { StructuredData } from '@/components/StructuredData';
 import { siteConfig } from '@/lib/site';
-import { serializeJsonLd, structuredData } from '@/lib/structured-data';
+import { baseStructuredData } from '@/lib/structured-data';
 import './globals.css';
 
 const geistSans = Geist({
@@ -47,6 +51,7 @@ export const metadata: Metadata = {
     canonical: '/',
     languages: {
       'en-US': '/',
+      'x-default': '/',
     },
   },
   openGraph: {
@@ -89,17 +94,23 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark scroll-smooth">
       <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: serializeJsonLd(structuredData),
-          }}
-        />
+        <StructuredData data={baseStructuredData} />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} bg-background text-foreground flex min-h-screen flex-col antialiased`}
       >
-        {children}
+        <a
+          href="#main-content"
+          className="bg-accent text-background fixed top-0 left-1/2 z-[100] -translate-x-1/2 -translate-y-full rounded-b-md px-4 py-2 font-medium transition-transform focus:translate-y-0"
+        >
+          Skip to main content
+        </a>
+        <CommandPalette />
+        <SiteHeader />
+        <div className="flex min-h-screen flex-col pt-16">
+          {children}
+          <SiteFooter />
+        </div>
       </body>
     </html>
   );

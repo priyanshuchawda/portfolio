@@ -7,7 +7,7 @@ export default function Loading() {
     >
       <div className="space-y-4 text-center">
         <div className="border-accent mx-auto h-8 w-8 animate-spin rounded-full border-2 border-t-transparent" />
-        <p className="text-muted-foreground font-mono text-sm">Loading...</p>
+        <p className="text-muted-foreground font-mono text-sm">Loading…</p>
       </div>
     </div>
   );
