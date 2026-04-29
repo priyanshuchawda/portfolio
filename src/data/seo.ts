@@ -9,19 +9,19 @@ export const pageMetadata = {
   about: {
     title: 'About Priyanshu Chawda',
     description:
-      'Learn about Priyanshu Chawda, an AI-focused software engineer from Pune, India building agentic systems, MCP servers, and full-stack AI products.',
+      'Learn about Priyanshu Chawda, an AI-focused software engineer from Pune building agentic systems and developer tools.',
     path: '/about',
   },
   projects: {
     title: 'Projects by Priyanshu Chawda',
     description:
-      'Explore AI agents, developer tools, and full-stack applications built by Priyanshu Chawda using Next.js, TypeScript, Python, and Gemini AI.',
+      'Explore AI projects by Priyanshu Chawda, including developer tools, Gemini apps, MCP workflows, and full-stack systems.',
     path: '/projects',
   },
   services: {
     title: 'AI Engineering Services',
     description:
-      'AI engineering services from Priyanshu Chawda for MCP server development, LLM workflows, Gemini integrations, and full-stack Next.js AI applications.',
+      'AI engineering, MCP server development, LLM workflows, and full-stack AI application work by Priyanshu Chawda.',
     path: '/services',
   },
   writing: {
@@ -33,13 +33,13 @@ export const pageMetadata = {
   achievements: {
     title: 'Achievements | Priyanshu Chawda',
     description:
-      'Project milestones, problem-solving metrics, and engineering achievements from Priyanshu Chawda.',
+      'Achievements by Priyanshu Chawda across projects, LeetCode, hackathons, open source, and AI engineering practice.',
     path: '/achievements',
   },
   contact: {
     title: 'Contact Priyanshu Chawda',
     description:
-      'Get in touch with Priyanshu Chawda for AI engineering, MCP tools, and full-stack developer opportunities.',
+      'Contact Priyanshu Chawda for AI engineering, MCP tooling, developer automation, and full-stack AI collaboration.',
     path: '/contact',
   },
 } as const;

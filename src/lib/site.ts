@@ -6,7 +6,7 @@ export const siteConfig = {
   language: 'en-US',
   title: 'Priyanshu Chawda | AI Software Engineer',
   description:
-    'Priyanshu Chawda is an AI-focused software engineer from Pune, India building agentic systems, MCP servers, developer tools, and full-stack AI applications using TypeScript, Python, Gemini, and Next.js.',
+    'Priyanshu Chawda is an AI-focused software engineer building agentic systems, MCP servers, developer tools, and AI apps.',
   shortDescription:
     'AI-focused software engineer building agentic systems and developer tools.',
   jobTitle: 'AI-focused Software Engineer',

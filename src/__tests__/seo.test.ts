@@ -17,6 +17,21 @@ import { homeFaqs } from '@/data/faqs';
 import { projects } from '@/data/projects';
 import { services } from '@/data/services';
 
+const MIN_META_DESCRIPTION_LENGTH = 25;
+const MAX_META_DESCRIPTION_LENGTH = 160;
+
+function expectValidMetaDescription(label: string, description: string) {
+  expect(description, `${label} should not be empty`).toBeTruthy();
+  expect(
+    description.length,
+    `${label} should be at least ${MIN_META_DESCRIPTION_LENGTH} characters`,
+  ).toBeGreaterThanOrEqual(MIN_META_DESCRIPTION_LENGTH);
+  expect(
+    description.length,
+    `${label} should be at most ${MAX_META_DESCRIPTION_LENGTH} characters`,
+  ).toBeLessThanOrEqual(MAX_META_DESCRIPTION_LENGTH);
+}
+
 describe('SEO indexing contract', () => {
   test('keeps page and project titles short and unique for Bing', () => {
     const pageTitles = Object.values(pageMetadata).map((meta) => meta.title);
@@ -27,6 +42,41 @@ describe('SEO indexing contract', () => {
       expect(title.length).toBeLessThanOrEqual(70);
     });
     expect(new Set(titles).size).toBe(titles.length);
+  });
+
+  test('keeps rendered meta descriptions useful, unique, and in Bing range', () => {
+    expectValidMetaDescription(
+      'siteConfig.description',
+      siteConfig.description,
+    );
+    expect(pageMetadata.home.description).toBe(siteConfig.description);
+
+    const routeDescriptions = [
+      ...Object.entries(pageMetadata).map(([key, meta]) => ({
+        label: `pageMetadata.${key}.description`,
+        description: meta.description,
+      })),
+      ...projects.map((project) => ({
+        label: `projects.${project.slug}.metaDescription`,
+        description: project.metaDescription,
+      })),
+    ];
+
+    routeDescriptions.forEach(({ label, description }) => {
+      expectValidMetaDescription(label, description);
+    });
+
+    const descriptions = routeDescriptions.map((item) => item.description);
+    expect(new Set(descriptions).size).toBe(descriptions.length);
+  });
+
+  test('keeps project descriptions used by schema in Bing range', () => {
+    projects.forEach((project) => {
+      expectValidMetaDescription(
+        `projects.${project.slug}.summary`,
+        project.summary,
+      );
+    });
   });
 
   test('uses absolute page metadata titles instead of the root title template', () => {
