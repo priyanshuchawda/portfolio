@@ -4,7 +4,7 @@ export const siteConfig = {
   url: 'https://priyanshuworks.tech',
   locale: 'en_US',
   language: 'en-US',
-  title: 'Priyanshu Chawda | AI-Focused Software Engineer',
+  title: 'Priyanshu Chawda | AI Software Engineer',
   description:
     'Priyanshu Chawda is an AI-focused software engineer from Pune, India building agentic systems, MCP servers, developer tools, and full-stack AI applications using TypeScript, Python, Gemini, and Next.js.',
   shortDescription:

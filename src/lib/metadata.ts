@@ -25,7 +25,7 @@ export function buildMetadata({
   };
 
   return {
-    title,
+    title: { absolute: title },
     description,
     alternates: {
       canonical: path,

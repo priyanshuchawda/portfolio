@@ -53,7 +53,7 @@ export const projects: Project[] = [
       demo: 'https://youtube-flashcards-alpha.vercel.app',
       github: 'https://github.com/priyanshuchawda/youtube-flashcards',
     },
-    metaTitle: 'YouTube Flashcards by Priyanshu Chawda | Gemini AI Study Tool',
+    metaTitle: 'YouTube Flashcards | Priyanshu Chawda',
     metaDescription:
       'YouTube Flashcards is a Gemini AI study tool that turns long lectures into interactive flashcards for faster review and retention.',
     caseStudy: {
@@ -100,8 +100,7 @@ export const projects: Project[] = [
     links: {
       github: 'https://github.com/priyanshuchawda/ghfind',
     },
-    metaTitle:
-      'ghfind by Priyanshu Chawda | AI GitHub Issue and PR Search Tool',
+    metaTitle: 'ghfind | AI GitHub Search Tool',
     metaDescription:
       'ghfind is an AI GitHub issue and PR search tool powered by Gemini that helps developers find relevant discussions faster.',
     caseStudy: {
@@ -147,8 +146,7 @@ export const projects: Project[] = [
     links: {
       github: 'https://github.com/priyanshuchawda/browser4all',
     },
-    metaTitle:
-      'Browser4All by Priyanshu Chawda | AI Secure Browser with Gemini',
+    metaTitle: 'Browser4All | AI Secure Browser',
     metaDescription:
       'Browser4All is an AI secure browser concept using Gemini for phishing and malware analysis to improve browsing safety.',
     caseStudy: {
@@ -195,8 +193,7 @@ export const projects: Project[] = [
     links: {
       github: 'https://github.com/priyanshuchawda/smart-crowd-navigator',
     },
-    metaTitle:
-      'Smart Crowd Navigator by Priyanshu Chawda | AI Crowd Navigation System',
+    metaTitle: 'Smart Crowd Navigator | AI Crowd Tool',
     metaDescription:
       'Smart Crowd Navigator is an AI crowd navigation system that models safer exits and timing decisions for large events.',
     caseStudy: {

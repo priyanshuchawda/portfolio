@@ -2,6 +2,8 @@ import { describe, expect, test } from 'vitest';
 import manifest from '@/app/manifest';
 import robots from '@/app/robots';
 import sitemap from '@/app/sitemap';
+import { pageMetadata } from '@/data/seo';
+import { buildMetadata } from '@/lib/metadata';
 import { sameAsLinks, siteConfig } from '@/lib/site';
 import {
   baseStructuredData,
@@ -16,6 +18,25 @@ import { projects } from '@/data/projects';
 import { services } from '@/data/services';
 
 describe('SEO indexing contract', () => {
+  test('keeps page and project titles short and unique for Bing', () => {
+    const pageTitles = Object.values(pageMetadata).map((meta) => meta.title);
+    const projectTitles = projects.map((project) => project.metaTitle);
+    const titles = [...pageTitles, ...projectTitles];
+
+    titles.forEach((title) => {
+      expect(title.length).toBeLessThanOrEqual(70);
+    });
+    expect(new Set(titles).size).toBe(titles.length);
+  });
+
+  test('uses absolute page metadata titles instead of the root title template', () => {
+    const metadata = buildMetadata(pageMetadata.contact);
+
+    expect(metadata.title).toEqual({
+      absolute: pageMetadata.contact.title,
+    });
+  });
+
   test('uses one canonical origin in sitemap and robots', () => {
     const entries = sitemap();
     const robotsTxt = robots();
@@ -24,12 +45,21 @@ describe('SEO indexing contract', () => {
     expect(entries[0]?.url).toContain(siteConfig.url);
     expect(robotsTxt.sitemap).toBe(`${siteConfig.url}/sitemap.xml`);
     expect(robotsTxt.host).toBe(siteConfig.url);
+    entries.forEach((entry) => {
+      const url = new URL(entry.url);
+      expect(url.origin).toBe(siteConfig.url);
+      expect(entry.url).not.toContain('localhost');
+      expect(entry.url).not.toContain('example.com');
+    });
   });
 
   test('keeps search and AI citation bots crawlable while blocking bulk scrapers', () => {
     const rules = robots().rules;
     const googleRule = Array.isArray(rules)
       ? rules.find((rule) => rule.userAgent.includes('Googlebot'))
+      : undefined;
+    const bingRule = Array.isArray(rules)
+      ? rules.find((rule) => rule.userAgent.includes('Bingbot'))
       : undefined;
     const aiRule = Array.isArray(rules)
       ? rules.find((rule) => rule.userAgent.includes('GPTBot'))
@@ -39,6 +69,7 @@ describe('SEO indexing contract', () => {
       : undefined;
 
     expect(googleRule?.allow).toBe('/');
+    expect(bingRule?.allow).toBe('/');
     expect(aiRule?.allow).toBe('/');
     expect(bulkRule?.disallow).toBe('/');
   });
@@ -85,6 +116,7 @@ describe('SEO indexing contract', () => {
     requiredRoutes.forEach((route) => {
       expect(urls).toContain(route);
     });
+    expect(urls).toContain(`${siteConfig.url}/contact`);
   });
 
   test('generates FAQ, project list, and service catalog schema', () => {
