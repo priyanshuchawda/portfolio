@@ -16,6 +16,7 @@ import {
 import { homeFaqs } from '@/data/faqs';
 import { projects } from '@/data/projects';
 import { services } from '@/data/services';
+import { writingPosts } from '@/data/writing';
 
 const MIN_META_DESCRIPTION_LENGTH = 25;
 const MAX_META_DESCRIPTION_LENGTH = 160;
@@ -36,7 +37,8 @@ describe('SEO indexing contract', () => {
   test('keeps page and project titles short and unique for Bing', () => {
     const pageTitles = Object.values(pageMetadata).map((meta) => meta.title);
     const projectTitles = projects.map((project) => project.metaTitle);
-    const titles = [...pageTitles, ...projectTitles];
+    const writingTitles = writingPosts.map((post) => post.metaTitle);
+    const titles = [...pageTitles, ...projectTitles, ...writingTitles];
 
     titles.forEach((title) => {
       expect(title.length).toBeLessThanOrEqual(70);
@@ -59,6 +61,10 @@ describe('SEO indexing contract', () => {
       ...projects.map((project) => ({
         label: `projects.${project.slug}.metaDescription`,
         description: project.metaDescription,
+      })),
+      ...writingPosts.map((post) => ({
+        label: `writingPosts.${post.slug}.metaDescription`,
+        description: post.metaDescription,
       })),
     ];
 
@@ -117,10 +123,16 @@ describe('SEO indexing contract', () => {
     const bulkRule = Array.isArray(rules)
       ? rules.find((rule) => rule.userAgent.includes('CCBot'))
       : undefined;
+    const wildcardRule = Array.isArray(rules)
+      ? rules.find((rule) => rule.userAgent === '*')
+      : undefined;
 
     expect(googleRule?.allow).toBe('/');
     expect(bingRule?.allow).toBe('/');
     expect(aiRule?.allow).toBe('/');
+    expect(googleRule?.disallow).toContain('/cdn-cgi/');
+    expect(bingRule?.disallow).toContain('/cdn-cgi/');
+    expect(wildcardRule?.disallow).toContain('/cdn-cgi/');
     expect(bulkRule?.disallow).toBe('/');
   });
 
@@ -141,6 +153,12 @@ describe('SEO indexing contract', () => {
     expect(personStructuredData.url).toBe(siteConfig.url);
     expect(personStructuredData.jobTitle).toBe(siteConfig.jobTitle);
     expect(personStructuredData.knowsAbout.length).toBeGreaterThan(0);
+    expect(personStructuredData.alumniOf.name).toBe(
+      'PES Modern College of Engineering',
+    );
+    expect(personStructuredData.hasCredential.name).toBe(
+      'B.Tech Computer Science and Engineering',
+    );
   });
 
   test('generates a browser manifest for Search Console-friendly inspection', () => {
@@ -167,6 +185,27 @@ describe('SEO indexing contract', () => {
       expect(urls).toContain(route);
     });
     expect(urls).toContain(`${siteConfig.url}/contact`);
+    writingPosts.forEach((post) => {
+      expect(urls).toContain(`${siteConfig.url}/writing/${post.slug}`);
+    });
+  });
+
+  test('sitemap uses stable content dates for freshness signals', () => {
+    const entries = sitemap();
+    const homeEntry = entries.find((entry) => entry.url === siteConfig.url);
+    const projectEntry = entries.find(
+      (entry) => entry.url === `${siteConfig.url}/projects/${projects[0].slug}`,
+    );
+    const writingEntry = entries.find(
+      (entry) =>
+        entry.url === `${siteConfig.url}/writing/${writingPosts[0].slug}`,
+    );
+
+    expect(homeEntry?.lastModified).toEqual(new Date(siteConfig.lastUpdated));
+    expect(projectEntry?.lastModified).toEqual(new Date(projects[0].updatedAt));
+    expect(writingEntry?.lastModified).toEqual(
+      new Date(writingPosts[0].updatedAt),
+    );
   });
 
   test('generates FAQ, project list, and service catalog schema', () => {

@@ -16,8 +16,8 @@ validation.
 
 ## Findings
 
-- B (Should fix): Publish real long-form writing with citations to build topical
-  authority and improve AI citations.
+- C (Nice to have): Add external citations and screenshots to long-form writing
+  once source material is stable.
 - C (Nice to have): Add per-project OG image variants and FAQ sections once
   content is stable.
 
@@ -34,8 +34,15 @@ validation.
   [src/lib/metadata.ts](src/lib/metadata.ts#L11-L45)
 - Added llms.txt for AI assistant context and citations.
   [public/llms.txt](public/llms.txt)
-- Updated sitemap lastModified to reflect build-time freshness.
+- Updated sitemap lastModified values to use stable content update dates.
   [src/app/sitemap.ts](src/app/sitemap.ts#L5)
+- Added real writing pages for MCP servers, LLM orchestration, and Gemini vs
+  OpenAI developer tooling.
+- Blocked `/cdn-cgi/` in robots while keeping normal pages crawlable for search
+  and citation bots.
+- Corrected Person structured data education fields.
+- Removed `unsafe-eval` from the production CSP script policy.
+- Added IndexNow key verification and submission support.
 
 ## Verification
 

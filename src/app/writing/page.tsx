@@ -4,9 +4,9 @@ import { PageHeader } from '@/components/PageHeader';
 import { SectionHeading } from '@/components/SectionHeading';
 import { StructuredData } from '@/components/StructuredData';
 import { pageMetadata } from '@/data/seo';
+import { getWritingPath, writingPosts } from '@/data/writing';
 import { buildMetadata } from '@/lib/metadata';
 import { getWebPageStructuredData } from '@/lib/structured-data';
-import { siteConfig } from '@/lib/site';
 
 export const metadata: Metadata = buildMetadata(pageMetadata.writing);
 
@@ -30,31 +30,50 @@ export default function WritingPage() {
 
         <section className="space-y-6">
           <SectionHeading
-            title="Upcoming articles"
-            description="Long-form writing is in progress. Stay tuned for deep dives and practical playbooks."
+            title="Technical explainers"
+            description="Practical notes on MCP, LLM orchestration, model choices, and AI developer tooling."
           />
-          <div className="border-border bg-muted/10 space-y-4 rounded-lg border px-6 py-8">
-            <p className="text-muted-foreground">
-              No published posts yet. For now, explore my work on
+          <div className="grid gap-5">
+            {writingPosts.map((post) => (
               <Link
-                href="/projects"
-                className="text-foreground hover:text-accent"
+                key={post.slug}
+                href={getWritingPath(post.slug)}
+                className="border-border bg-muted/10 hover:border-accent/60 group rounded-lg border p-6 transition-colors"
               >
-                {' '}
-                projects
+                <article className="space-y-4">
+                  <div className="flex flex-wrap items-center gap-3 text-sm">
+                    <time
+                      dateTime={post.updatedAt}
+                      className="text-muted-foreground"
+                    >
+                      Updated {post.updatedAt}
+                    </time>
+                    <span className="text-muted-foreground">/</span>
+                    <span className="text-muted-foreground">
+                      {post.readingTime}
+                    </span>
+                  </div>
+                  <div className="space-y-2">
+                    <h2 className="group-hover:text-accent text-2xl font-semibold transition-colors">
+                      {post.title}
+                    </h2>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {post.summary}
+                    </p>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {post.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="border-border text-muted-foreground rounded-full border px-3 py-1 text-xs"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </article>
               </Link>
-              or connect on
-              <a
-                href={siteConfig.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-foreground hover:text-accent"
-              >
-                {' '}
-                LinkedIn
-              </a>
-              .
-            </p>
+            ))}
           </div>
         </section>
       </div>

@@ -39,6 +39,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: [...searchAndCitationBots],
         allow: '/',
+        disallow: ['/cdn-cgi/'],
       },
       {
         userAgent: [...bulkTrainingBots],
@@ -47,6 +48,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
+        disallow: ['/cdn-cgi/'],
       },
     ],
     sitemap: `${siteConfig.url}/sitemap.xml`,

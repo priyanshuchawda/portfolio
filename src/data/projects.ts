@@ -28,6 +28,7 @@ export interface Project {
   tech: string[];
   impact: string;
   featured: boolean;
+  updatedAt: string;
   links: ProjectLinks;
   metaTitle: string;
   metaDescription: string;
@@ -49,6 +50,7 @@ export const projects: Project[] = [
     impact:
       'Designed to reduce manual note-making effort by turning lectures into structured flashcards.',
     featured: true,
+    updatedAt: '2026-04-29',
     links: {
       demo: 'https://youtube-flashcards-alpha.vercel.app',
       github: 'https://github.com/priyanshuchawda/youtube-flashcards',
@@ -97,6 +99,7 @@ export const projects: Project[] = [
     impact:
       'Speeds up developer discovery by narrowing results to the most relevant threads.',
     featured: true,
+    updatedAt: '2026-04-29',
     links: {
       github: 'https://github.com/priyanshuchawda/ghfind',
     },
@@ -143,6 +146,7 @@ export const projects: Project[] = [
     tech: ['TypeScript', 'Gemini AI', 'Threat analysis pipeline'],
     impact: 'Built to prevent suspicious activity before it reaches end users.',
     featured: true,
+    updatedAt: '2026-04-29',
     links: {
       github: 'https://github.com/priyanshuchawda/browser4all',
     },
@@ -190,6 +194,7 @@ export const projects: Project[] = [
     impact:
       'Designed to improve safety and reduce congestion during high-traffic events.',
     featured: true,
+    updatedAt: '2026-04-29',
     links: {
       github: 'https://github.com/priyanshuchawda/smart-crowd-navigator',
     },
