@@ -9,6 +9,7 @@
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
+    "seo:indexnow": "node scripts/submit-indexnow.mjs",
     "test": "vitest run",
     "prepare": "husky"
   },

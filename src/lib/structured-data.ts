@@ -2,6 +2,7 @@ import { sameAsLinks, siteConfig } from './site';
 import type { FAQItem } from '@/data/faqs';
 import type { Project } from '@/data/projects';
 import type { Service } from '@/data/services';
+import type { WritingPost } from '@/data/writing';
 
 const websiteStructuredData = {
   '@type': 'WebSite',
@@ -32,7 +33,11 @@ export const personStructuredData = {
   },
   alumniOf: {
     '@type': 'CollegeOrUniversity',
-    name: 'B.Tech Computer Science',
+    name: 'PES Modern College of Engineering',
+  },
+  hasCredential: {
+    '@type': 'EducationalOccupationalCredential',
+    name: 'B.Tech Computer Science and Engineering',
   },
   knowsLanguage: ['en-US', 'hi-IN'],
   hasOccupation: {
@@ -156,7 +161,31 @@ export function getProjectStructuredData(project: Project) {
     isPartOf: {
       '@id': `${siteConfig.url}/#website`,
     },
-    dateModified: siteConfig.lastUpdated,
+    dateModified: project.updatedAt,
+  } as const;
+}
+
+export function getArticleStructuredData(post: WritingPost) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    '@id': `${siteConfig.url}/writing/${post.slug}#article`,
+    headline: post.title,
+    description: post.summary,
+    url: `${siteConfig.url}/writing/${post.slug}`,
+    inLanguage: siteConfig.language,
+    datePublished: post.publishedAt,
+    dateModified: post.updatedAt,
+    keywords: post.tags.join(', '),
+    author: {
+      '@id': `${siteConfig.url}/#person`,
+    },
+    publisher: {
+      '@id': `${siteConfig.url}/#person`,
+    },
+    isPartOf: {
+      '@id': `${siteConfig.url}/#website`,
+    },
   } as const;
 }
 

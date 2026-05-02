@@ -1,8 +1,15 @@
 import type { NextConfig } from 'next';
 
+const scriptSources = [
+  "'self'",
+  "'unsafe-inline'",
+  ...(process.env.NODE_ENV === 'production' ? [] : ["'unsafe-eval'"]),
+  'https://static.cloudflareinsights.com',
+].join(' ');
+
 const cspHeader = `
     default-src 'self';
-    script-src 'self' 'unsafe-inline' 'unsafe-eval' https://static.cloudflareinsights.com;
+    script-src ${scriptSources};
     style-src 'self' 'unsafe-inline';
     img-src 'self' blob: data: https://avatars.githubusercontent.com;
     font-src 'self';

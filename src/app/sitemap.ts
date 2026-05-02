@@ -1,8 +1,9 @@
 import { MetadataRoute } from 'next';
 import { projects } from '@/data/projects';
+import { writingPosts } from '@/data/writing';
 import { siteConfig } from '@/lib/site';
 
-const lastModified = new Date();
+const siteLastModified = new Date(siteConfig.lastUpdated);
 
 const staticRoutes = [
   '/',
@@ -17,7 +18,7 @@ const staticRoutes = [
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticEntries = staticRoutes.map((route) => ({
     url: `${siteConfig.url}${route === '/' ? '' : route}`,
-    lastModified,
+    lastModified: siteLastModified,
     changeFrequency: 'monthly' as const,
     priority: route === '/' ? 1 : 0.8,
     alternates: {
@@ -30,7 +31,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const projectEntries = projects.map((project) => ({
     url: `${siteConfig.url}/projects/${project.slug}`,
-    lastModified,
+    lastModified: new Date(project.updatedAt),
     changeFrequency: 'monthly' as const,
     priority: 0.7,
     alternates: {
@@ -41,5 +42,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   }));
 
-  return [...staticEntries, ...projectEntries];
+  const writingEntries = writingPosts.map((post) => ({
+    url: `${siteConfig.url}/writing/${post.slug}`,
+    lastModified: new Date(post.updatedAt),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+    alternates: {
+      languages: {
+        'en-US': `${siteConfig.url}/writing/${post.slug}`,
+        'x-default': `${siteConfig.url}/writing/${post.slug}`,
+      },
+    },
+  }));
+
+  return [...staticEntries, ...projectEntries, ...writingEntries];
 }

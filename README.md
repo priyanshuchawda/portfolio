@@ -25,6 +25,9 @@ full-stack AI applications.
 - `/projects/smart-crowd-navigator`
 - `/services`
 - `/writing`
+- `/writing/what-are-mcp-servers`
+- `/writing/how-llm-orchestration-works`
+- `/writing/gemini-vs-openai-for-developer-tools`
 - `/achievements`
 - `/contact`
 
@@ -38,10 +41,21 @@ full-stack AI applications.
 - JSON-LD structured data
 - `llms.txt`
 - `ai-profile.json`
+- IndexNow submission script
 
 ## Development
 
 ```bash
 pnpm install
 pnpm dev
+```
+
+## IndexNow
+
+Set `INDEXNOW_KEY` in production so `/<INDEXNOW_KEY>.txt` returns the key for
+search engine verification, then submit the deployed sitemap URLs after content
+updates:
+
+```bash
+pnpm seo:indexnow
 ```

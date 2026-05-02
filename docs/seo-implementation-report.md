@@ -14,7 +14,15 @@
   and timeline markers render consistently.
 - Added llms.txt for AI assistants and explicit Open Graph/Twitter image
   metadata.
-- Updated sitemap lastModified to reflect build-time updates.
+- Updated sitemap lastModified values to use stable content update dates.
+- Added real writing routes for MCP servers, LLM orchestration, and Gemini vs
+  OpenAI developer tooling.
+- Added `/cdn-cgi/` robots blocking while preserving normal crawl access for
+  search and citation bots.
+- Corrected Person structured data education fields.
+- Removed `unsafe-eval` from production CSP while preserving it for local
+  development.
+- Added IndexNow key verification and sitemap submission support.
 
 ## Pages created
 
@@ -26,6 +34,9 @@
 - /projects/browser4all
 - /projects/smart-crowd-navigator
 - /writing
+- /writing/what-are-mcp-servers
+- /writing/how-llm-orchestration-works
+- /writing/gemini-vs-openai-for-developer-tools
 - /achievements
 - /contact
 
@@ -52,8 +63,9 @@
   and Twitter cards.
 - Explicit Open Graph/Twitter images using the app-level image routes.
 - Expanded sitemap to include all static routes and project case studies.
-- Build-time lastModified dates for sitemap freshness signals.
+- Stable sitemap lastModified dates from content update fields.
 - Robots.txt updated to allow AI search bots and keep training bots blocked.
+- Robots.txt blocks Cloudflare `/cdn-cgi/` helper paths.
 - JSON-LD for WebSite, Person, ProfilePage, BreadcrumbList, and project
   CreativeWork.
 - llms.txt for AI assistant context and citation guidance.
@@ -78,7 +90,7 @@
 
 ## Remaining manual tasks
 
-- Add real writing posts when available.
+- Configure `INDEXNOW_KEY` in production before running `pnpm seo:indexnow`.
 - Verify any impact metrics with source data before public release.
 
 ## Recommended next improvements
