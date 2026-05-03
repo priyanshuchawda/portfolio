@@ -1,4 +1,5 @@
 export type ProjectSlug =
+  | 'reposentinel-mcp'
   | 'youtube-flashcards'
   | 'ghfind'
   | 'browser4all'
@@ -7,6 +8,7 @@ export type ProjectSlug =
 export interface ProjectLinks {
   github?: string;
   demo?: string;
+  npm?: string;
 }
 
 export interface ProjectCaseStudy {
@@ -41,6 +43,96 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  {
+    slug: 'reposentinel-mcp',
+    title: 'RepoSentinel MCP',
+    subtitle: 'Read-only TypeScript MCP server',
+    summary:
+      'Read-only MCP server for repository inspection and agent workflow routing.',
+    problem:
+      'AI coding agents need structured local project context, audit evidence, and workflow guardrails before making repository changes.',
+    solution:
+      'Exposes read-only MCP tools for project detection, skill routing, repository audits, documentation evidence checks, and issue or PR planning.',
+    tech: ['TypeScript', 'MCP', 'Node.js', 'npm', 'Streamable HTTP'],
+    impact:
+      'Packages a production-style MCP server on npm so agents can inspect local repositories, choose the right workflow, and produce evidence-backed plans without write access or remote mutation tools.',
+    featured: true,
+    updatedAt: '2026-05-04',
+    links: {
+      github: 'https://github.com/priyanshuchawda/reposentinel-mcp',
+      npm: 'https://www.npmjs.com/package/reposentinel-mcp',
+    },
+    artifacts: [
+      'npm package',
+      'GitHub repo',
+      'MCP server',
+      'HTTP transport',
+      'Skills pack',
+      'Audit reports',
+      'Safety model',
+    ],
+    engineeringDecisions: [
+      {
+        label: 'Why I chose this stack',
+        detail:
+          'TypeScript, Node.js, and MCP fit a typed tool server that can run locally with npx while still supporting a controlled HTTP deployment path.',
+      },
+      {
+        label: 'What I handled myself',
+        detail:
+          'I built the project detection, skill routing manifest, repository audit tools, documentation evidence checks, HTTP runtime, npm packaging, and safety documentation.',
+      },
+      {
+        label: 'Hardest technical problem',
+        detail:
+          'The hardest part was making the server useful to agents while keeping the tool surface read-only, bounded to the requested project root, and explicit about disallowed actions.',
+      },
+      {
+        label: 'Tradeoff I made',
+        detail:
+          'I prioritized reliable read-only inspection and planning over adding write, push, merge, or remote mutation tools that would need a separate approval model.',
+      },
+      {
+        label: 'How I tested it',
+        detail:
+          'I validated project detection, skill routing, planning outputs, HTTP health and metadata endpoints, documentation-claim audits, installed-skill audits, and build checks.',
+      },
+      {
+        label: 'What I would improve in production',
+        detail:
+          'I would add OAuth-style multi-user identity, hosted deployment templates, richer framework-specific audits, and deeper report exports while keeping mutation controls explicit.',
+      },
+    ],
+    metaTitle: 'RepoSentinel MCP | TypeScript MCP Server',
+    metaDescription:
+      'RepoSentinel MCP is a read-only TypeScript MCP server for repository inspection, skill routing, audits, docs evidence, and issue or PR planning.',
+    caseStudy: {
+      overview:
+        'Run reposentinel-mcp with npx to give AI agents a safe read-only inspection layer before repository changes.',
+      architecture: [
+        'Detect local project signals such as language, framework, tests, deployment, CI, and risk notes',
+        'Route agent workflows with recommended tool sequences, skill activation order, quality gates, and strict instructions',
+        'Expose read-only audits and planning tools over stdio or Streamable HTTP with API-key protection for HTTP deployments',
+      ],
+      keyFeatures: [
+        'Project detection and skill-routing manifest for coding agents',
+        'Repository, code quality, Next.js security, docs-claims, tests, and installed-skill audits',
+        'Issue and PR planning outputs generated from evidence-backed findings',
+      ],
+      challenges: [
+        'Keeping useful repository inspection separate from write-capable automation',
+        'Designing outputs that are actionable for agents without hiding the evidence behind each recommendation',
+      ],
+      learnings: [
+        'Agent tooling benefits from workflow manifests, not only raw inspection results',
+        'Read-only boundaries make MCP tools easier to adopt in local development setups',
+      ],
+      futureImprovements: [
+        'Add authenticated multi-user HTTP deployments',
+        'Expand framework-specific audit coverage and exportable report formats',
+      ],
+    },
+  },
   {
     slug: 'youtube-flashcards',
     title: 'YouTube Flashcards',

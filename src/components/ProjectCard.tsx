@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, Package } from 'lucide-react';
 import type { Project } from '@/data/projects';
 import { getProjectPath } from '@/data/projects';
 import { GithubIcon } from './SocialIcons';
@@ -39,6 +39,17 @@ export function ProjectCard({ project }: { project: Project }) {
               className="text-muted-foreground hover:text-foreground focus-visible:ring-accent transition-colors focus-visible:ring-2 focus-visible:outline-none"
             >
               <ExternalLink className="h-5 w-5" />
+            </a>
+          ) : null}
+          {project.links.npm ? (
+            <a
+              href={project.links.npm}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`View ${project.title} package on npm`}
+              className="text-muted-foreground hover:text-foreground focus-visible:ring-accent transition-colors focus-visible:ring-2 focus-visible:outline-none"
+            >
+              <Package className="h-5 w-5" />
             </a>
           ) : null}
         </div>

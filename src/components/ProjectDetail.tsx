@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, Package } from 'lucide-react';
 import { getProjectFaqs } from '@/data/faqs';
 import type { Project } from '@/data/projects';
 import { FAQSection } from './FAQSection';
@@ -48,6 +48,17 @@ export function ProjectDetail({ project }: { project: Project }) {
             >
               <ExternalLink className="h-4 w-4" />
               Live demo
+            </a>
+          ) : null}
+          {project.links.npm ? (
+            <a
+              href={project.links.npm}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border-border hover:bg-muted focus-visible:ring-accent inline-flex items-center gap-2 rounded-full border px-6 py-3 text-sm font-semibold transition-colors focus-visible:ring-2 focus-visible:outline-none"
+            >
+              <Package className="h-4 w-4" />
+              npm package
             </a>
           ) : null}
         </div>

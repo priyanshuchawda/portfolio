@@ -26,6 +26,18 @@ describe('Content data integrity', () => {
     expect(projects.some((project) => project.featured)).toBe(true);
   });
 
+  test('RepoSentinel MCP project is listed with repository and npm links', () => {
+    const project = projects.find((item) => item.slug === 'reposentinel-mcp');
+
+    expect(project?.title).toBe('RepoSentinel MCP');
+    expect(project?.links.github).toBe(
+      'https://github.com/priyanshuchawda/reposentinel-mcp',
+    );
+    expect(project?.links.npm).toBe(
+      'https://www.npmjs.com/package/reposentinel-mcp',
+    );
+  });
+
   test('service entries are unique and useful', () => {
     const slugs = services.map((service) => service.slug);
     expect(new Set(slugs).size).toBe(slugs.length);
