@@ -26,7 +26,7 @@ export default function AchievementsPage() {
         <PageHeader
           eyebrow="Achievements"
           title="Achievements"
-          description="Proof points from shipping projects, solving problems, and building in public."
+          description="A quick track record from shipping projects, solving problems, and building in public."
         />
 
         <section

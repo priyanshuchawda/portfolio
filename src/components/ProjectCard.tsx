@@ -61,7 +61,7 @@ export function ProjectCard({ project }: { project: Project }) {
           </span>
         </div>
         <div className="flex flex-wrap gap-2">
-          {project.proof.slice(0, 4).map((item) => (
+          {project.artifacts.slice(0, 4).map((item) => (
             <span
               key={item}
               className="border-border text-muted-foreground rounded-full border px-3 py-1 text-xs"

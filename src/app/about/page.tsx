@@ -123,7 +123,7 @@ export default function AboutPage() {
             >
               achievements
             </Link>{' '}
-            that back the work with proof.
+            that show the work behind the profile.
           </p>
         </section>
 

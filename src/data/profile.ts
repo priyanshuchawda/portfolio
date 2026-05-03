@@ -9,7 +9,7 @@ export const profile = {
     'AI-focused software engineer building LLM workflows, MCP tools, and production-grade web apps.',
   intro:
     'I build AI products with Next.js, TypeScript, Python, Gemini, typed APIs, evals, and deployment-focused engineering. My work focuses on turning AI demos into usable tools with clear UX, safety boundaries, and measurable behavior.',
-  proofLine:
+  trackRecordLine:
     '20+ shipped projects · 2k+ GitHub commits · 250+ LeetCode · 5+ hackathons · production Cloud Run / Vercel deployments',
   bio: 'Priyanshu Chawda is a B.Tech Computer Science student in Pune focused on AI engineering, developer tools, and full-stack systems. He is building a portfolio around practical LLM products: tools that use typed APIs, retrieval, evals, safety boundaries, and clean user experience.',
   currentFocus: [
@@ -71,7 +71,7 @@ export const profile = {
         'Built tools for GitHub search, learning workflows, and automation where AI is used as a system component, not just a chatbot wrapper.',
     },
   ],
-  proofOfSkill: [
+  skillEvidence: [
     {
       title: 'AI Engineering',
       description:

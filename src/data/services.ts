@@ -9,7 +9,7 @@ export const services = [
       'Secure API and filesystem boundaries',
       'Documentation that agents and humans can both follow',
     ],
-    relatedProof: [
+    relatedWork: [
       {
         label: 'Writing: What are MCP servers?',
         href: '/writing/what-are-mcp-servers',
@@ -28,7 +28,7 @@ export const services = [
       'RAG and prompt pipelines with measurable behavior',
       'Evaluation loops for quality and reliability',
     ],
-    relatedProof: [
+    relatedWork: [
       {
         label: 'Project: YouTube Flashcards',
         href: '/projects/youtube-flashcards',
@@ -50,7 +50,7 @@ export const services = [
       'Accessible React interfaces with strong Core Web Vitals',
       'API integrations designed for maintainability',
     ],
-    relatedProof: [
+    relatedWork: [
       { label: 'Portfolio case studies', href: '/projects' },
       {
         label: 'Deployed demo: YouTube Flashcards',

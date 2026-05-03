@@ -108,7 +108,9 @@ export default function Home() {
               </Link>
             </div>
             <div className="border-border/70 bg-muted/20 text-muted-foreground max-w-3xl rounded-lg border px-4 py-3 text-sm leading-relaxed">
-              <span className="text-foreground font-semibold">Proof: </span>
+              <span className="text-foreground font-semibold">
+                Highlights:{' '}
+              </span>
               <Link href="/projects" className="hover:text-foreground">
                 20+ shipped projects
               </Link>
@@ -179,24 +181,24 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="space-y-12" aria-label="Proof of skill">
+        <section className="space-y-12" aria-label="Engineering evidence">
           <SectionHeading
-            title="Proof of Skill"
+            title="Engineering Evidence"
             description="Evidence across AI product engineering, full-stack delivery, developer tooling, and reliability."
           />
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            {profile.proofOfSkill.map((proof) => (
+            {profile.skillEvidence.map((item) => (
               <article
-                key={proof.title}
+                key={item.title}
                 className="border-border bg-muted/15 space-y-4 rounded-lg border p-6"
               >
                 <ShieldCheck
                   className="text-accent h-7 w-7"
                   aria-hidden="true"
                 />
-                <h3 className="text-xl font-bold">{proof.title}</h3>
+                <h3 className="text-xl font-bold">{item.title}</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  {proof.description}
+                  {item.description}
                 </p>
               </article>
             ))}
@@ -234,12 +236,10 @@ export default function Home() {
 
         <section
           className="bg-muted/10 border-border/50 -mx-6 space-y-10 rounded-lg border px-6 py-16"
-          aria-label="Proof metrics"
+          aria-label="Track record metrics"
         >
           <div className="mx-auto max-w-2xl space-y-4 text-center">
-            <h2 className="text-3xl font-bold text-balance">
-              Analytics-driven Proof
-            </h2>
+            <h2 className="text-3xl font-bold text-balance">Track Record</h2>
             <p className="text-muted-foreground">
               Consistent output across projects, problem-solving, and shipping.
             </p>

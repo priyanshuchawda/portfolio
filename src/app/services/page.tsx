@@ -77,15 +77,15 @@ export default function ServicesPage() {
                   ))}
                 </div>
                 <div className="border-border/70 border-t pt-4">
-                  <h3 className="text-sm font-semibold">Related proof</h3>
+                  <h3 className="text-sm font-semibold">Related work</h3>
                   <ul className="mt-3 space-y-2 text-sm">
-                    {service.relatedProof.map((proof) => (
-                      <li key={proof.href}>
+                    {service.relatedWork.map((item) => (
+                      <li key={item.href}>
                         <Link
-                          href={proof.href}
+                          href={item.href}
                           className="text-muted-foreground hover:text-foreground"
                         >
-                          {proof.label}
+                          {item.label}
                         </Link>
                       </li>
                     ))}

@@ -30,7 +30,7 @@ export interface Project {
   featured: boolean;
   updatedAt: string;
   links: ProjectLinks;
-  proof: string[];
+  artifacts: string[];
   engineeringDecisions: Array<{
     label: string;
     detail: string;
@@ -60,7 +60,7 @@ export const projects: Project[] = [
       demo: 'https://youtube-flashcards-alpha.vercel.app',
       github: 'https://github.com/priyanshuchawda/youtube-flashcards',
     },
-    proof: [
+    artifacts: [
       'Live demo',
       'GitHub repo',
       'Architecture notes',
@@ -148,7 +148,7 @@ export const projects: Project[] = [
     links: {
       github: 'https://github.com/priyanshuchawda/ghfind',
     },
-    proof: [
+    artifacts: [
       'GitHub repo',
       'Architecture notes',
       'CLI integration',
@@ -236,7 +236,7 @@ export const projects: Project[] = [
     links: {
       github: 'https://github.com/priyanshuchawda/browser4all',
     },
-    proof: [
+    artifacts: [
       'GitHub repo',
       'Architecture notes',
       'Threat-model notes',
@@ -324,7 +324,7 @@ export const projects: Project[] = [
     links: {
       github: 'https://github.com/priyanshuchawda/smart-crowd-navigator',
     },
-    proof: [
+    artifacts: [
       'GitHub repo',
       'Architecture notes',
       'Simulation model',

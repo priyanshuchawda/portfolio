@@ -79,9 +79,9 @@ export function ProjectDetail({ project }: { project: Project }) {
       </section>
 
       <section className="space-y-6">
-        <h2 className="text-2xl font-bold">Proof available</h2>
+        <h2 className="text-2xl font-bold">Available artifacts</h2>
         <ul className="text-muted-foreground flex flex-wrap gap-3 text-sm">
-          {project.proof.map((item) => (
+          {project.artifacts.map((item) => (
             <li
               key={item}
               className="border-border rounded-full border px-4 py-2"
