@@ -6,20 +6,22 @@ export const profile = {
   location: 'Pune, India',
   education: 'B.Tech Computer Science',
   headline:
-    'AI-focused software engineer building agentic systems and developer tools.',
+    'AI-focused software engineer building LLM workflows, MCP tools, and production-grade web apps.',
   intro:
-    'I build agentic systems, MCP servers, and full-stack AI applications with TypeScript, Python, and Gemini AI.',
-  bio: 'Priyanshu Chawda is an AI-focused software engineer from Pune, India. He builds developer tools, automation systems, and LLM workflows that turn complex problems into practical products.',
+    'I build AI products with Next.js, TypeScript, Python, Gemini, typed APIs, evals, and deployment-focused engineering. My work focuses on turning AI demos into usable tools with clear UX, safety boundaries, and measurable behavior.',
+  proofLine:
+    '20+ shipped projects · 2k+ GitHub commits · 250+ LeetCode · 5+ hackathons · production Cloud Run / Vercel deployments',
+  bio: 'Priyanshu Chawda is a B.Tech Computer Science student in Pune focused on AI engineering, developer tools, and full-stack systems. He is building a portfolio around practical LLM products: tools that use typed APIs, retrieval, evals, safety boundaries, and clean user experience.',
   currentFocus: [
     'MCP servers and agentic systems',
     'Developer automation tools',
     'LLM workflows with Gemini AI',
-    'FAANG / ML role preparation',
+    'High-bar software and ML engineering practice',
   ],
   nowBuilding: [
     'Building MCP servers',
     'Building AI tools',
-    'Preparing for FAANG / ML roles',
+    'Shipping public technical breakdowns',
     'Writing blogs on AI workflows',
   ],
   journey: [
@@ -54,19 +56,41 @@ export const profile = {
       key: 'ai',
       title: 'AI Engineering',
       description:
-        'LLMs, RAG, MCP servers, prompt design, Gemini AI, and agentic workflows.',
+        'Built Gemini-powered apps with prompt pipelines, structured outputs, fallback states, and user-review flows.',
     },
     {
       key: 'fullstack',
       title: 'Full-stack Development',
       description:
-        'Next.js, TypeScript, Python, APIs, authentication, and scalable architecture.',
+        'Shipped Next.js + TypeScript apps with SEO metadata, accessible UI, dynamic routes, reusable data models, and clean component architecture.',
     },
     {
       key: 'systems',
-      title: 'Systems and Problem Solving',
+      title: 'Developer Tools',
       description:
-        'DSA, competitive programming, performance optimization, and system design.',
+        'Built tools for GitHub search, learning workflows, and automation where AI is used as a system component, not just a chatbot wrapper.',
+    },
+  ],
+  proofOfSkill: [
+    {
+      title: 'AI Engineering',
+      description:
+        'Built Gemini-powered apps with prompt pipelines, structured outputs, fallback states, and user-review flows.',
+    },
+    {
+      title: 'Full-Stack Engineering',
+      description:
+        'Shipped Next.js + TypeScript apps with SEO metadata, accessible UI, dynamic routes, reusable data models, and clean component architecture.',
+    },
+    {
+      title: 'Developer Tools',
+      description:
+        'Built tools for GitHub search, learning workflows, and automation where AI is used as a system component, not just a chatbot wrapper.',
+    },
+    {
+      title: 'Reliability Mindset',
+      description:
+        'I document architecture, edge cases, limitations, future improvements, and testing strategy so projects are easier to review and maintain.',
     },
   ],
   links: {

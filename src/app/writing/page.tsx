@@ -4,7 +4,7 @@ import { PageHeader } from '@/components/PageHeader';
 import { SectionHeading } from '@/components/SectionHeading';
 import { StructuredData } from '@/components/StructuredData';
 import { pageMetadata } from '@/data/seo';
-import { getWritingPath, writingPosts } from '@/data/writing';
+import { getWritingPath, writingIdeas, writingPosts } from '@/data/writing';
 import { buildMetadata } from '@/lib/metadata';
 import { getWebPageStructuredData } from '@/lib/structured-data';
 
@@ -31,7 +31,7 @@ export default function WritingPage() {
         <section className="space-y-6">
           <SectionHeading
             title="Technical explainers"
-            description="Practical notes on MCP, LLM orchestration, model choices, and AI developer tooling."
+            description="Practical notes with code examples, architecture breakdowns, failure modes, references, and follow-up builds."
           />
           <div className="grid gap-5">
             {writingPosts.map((post) => (
@@ -75,6 +75,23 @@ export default function WritingPage() {
               </Link>
             ))}
           </div>
+        </section>
+
+        <section className="space-y-6">
+          <SectionHeading
+            title="Planned Deep Dives"
+            description="Technical posts I am building toward as the project work gets more production-focused."
+          />
+          <ul className="grid gap-3">
+            {writingIdeas.map((idea) => (
+              <li
+                key={idea}
+                className="border-border bg-muted/10 rounded-lg border px-5 py-4 font-medium"
+              >
+                {idea}
+              </li>
+            ))}
+          </ul>
         </section>
       </div>
     </main>

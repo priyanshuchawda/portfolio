@@ -9,6 +9,13 @@ export const services = [
       'Secure API and filesystem boundaries',
       'Documentation that agents and humans can both follow',
     ],
+    relatedProof: [
+      {
+        label: 'Writing: What are MCP servers?',
+        href: '/writing/what-are-mcp-servers',
+      },
+      { label: 'Project architecture notes', href: '/projects/ghfind' },
+    ],
     keywords: ['MCP server developer', 'agentic systems', 'AI tools'],
   },
   {
@@ -21,6 +28,16 @@ export const services = [
       'RAG and prompt pipelines with measurable behavior',
       'Evaluation loops for quality and reliability',
     ],
+    relatedProof: [
+      {
+        label: 'Project: YouTube Flashcards',
+        href: '/projects/youtube-flashcards',
+      },
+      {
+        label: 'Writing: LLM orchestration',
+        href: '/writing/how-llm-orchestration-works',
+      },
+    ],
     keywords: ['LLM workflows', 'Gemini AI developer', 'RAG systems'],
   },
   {
@@ -32,6 +49,13 @@ export const services = [
       'SEO-ready App Router architecture',
       'Accessible React interfaces with strong Core Web Vitals',
       'API integrations designed for maintainability',
+    ],
+    relatedProof: [
+      { label: 'Portfolio case studies', href: '/projects' },
+      {
+        label: 'Deployed demo: YouTube Flashcards',
+        href: '/projects/youtube-flashcards',
+      },
     ],
     keywords: ['AI app developer', 'Next.js developer', 'TypeScript developer'],
   },

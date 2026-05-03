@@ -6,9 +6,9 @@ export const siteConfig = {
   language: 'en-US',
   title: 'Priyanshu Chawda | AI Software Engineer',
   description:
-    'Priyanshu Chawda is an AI-focused software engineer building agentic systems, MCP servers, developer tools, and AI apps.',
+    'Priyanshu Chawda is an AI-focused software engineer building LLM workflows, MCP tools, typed APIs, evals, and production-grade AI web apps.',
   shortDescription:
-    'AI-focused software engineer building agentic systems and developer tools.',
+    'AI-focused software engineer building LLM workflows, MCP tools, and production-grade web apps.',
   jobTitle: 'AI-focused Software Engineer',
   email: 'priyanshuchawda20@gmail.com',
   twitterHandle: '@priyanshuchawda',

@@ -122,6 +122,11 @@ export default async function WritingPostPage({
                   ))}
                 </ul>
               ) : null}
+              {section.code ? (
+                <pre className="border-border bg-muted/20 overflow-x-auto rounded-lg border p-4 text-sm leading-relaxed">
+                  <code>{section.code}</code>
+                </pre>
+              ) : null}
             </section>
           ))}
         </div>

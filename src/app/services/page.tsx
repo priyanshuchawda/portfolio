@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { FAQSection } from '@/components/FAQSection';
 import { FreshnessNote } from '@/components/FreshnessNote';
 import { PageHeader } from '@/components/PageHeader';
@@ -32,15 +33,15 @@ export default function ServicesPage() {
       <div className="container mx-auto max-w-5xl space-y-16 px-6 pt-20 pb-20">
         <PageHeader
           eyebrow="Services"
-          title="AI Engineering Services"
-          description="Priyanshu Chawda builds MCP servers, LLM workflows, Gemini integrations, and full-stack AI applications for teams that need practical AI products."
+          title="AI Engineering Work I Can Help With"
+          description="Available for internships, collaborations, freelance MVPs, and AI tooling prototypes across MCP servers, LLM workflows, Gemini integrations, and full-stack AI applications."
         />
         <FreshnessNote />
 
         <section className="space-y-8">
           <SectionHeading
-            title="What I Can Build"
-            description="Focused services for AI-first products, automation workflows, and developer tooling."
+            title="Collaboration Areas"
+            description="Focused work areas for AI-first products, automation workflows, and developer tooling."
           />
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {services.map((service) => (
@@ -74,6 +75,21 @@ export default function ServicesPage() {
                       {keyword}
                     </span>
                   ))}
+                </div>
+                <div className="border-border/70 border-t pt-4">
+                  <h3 className="text-sm font-semibold">Related proof</h3>
+                  <ul className="mt-3 space-y-2 text-sm">
+                    {service.relatedProof.map((proof) => (
+                      <li key={proof.href}>
+                        <Link
+                          href={proof.href}
+                          className="text-muted-foreground hover:text-foreground"
+                        >
+                          {proof.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </article>
             ))}

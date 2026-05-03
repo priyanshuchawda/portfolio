@@ -49,17 +49,21 @@ export default function AboutPage() {
         <section className="space-y-6">
           <SectionHeading
             title="Identity"
-            description="AI-focused software engineer building agentic systems, MCP servers, and developer tools."
+            description="AI-focused software engineer building practical LLM products, MCP tools, and full-stack systems."
           />
           <div className="text-muted-foreground space-y-4 text-lg leading-relaxed">
             <p>
-              Based in {profile.location}, I work as an AI Engineer and
-              full-stack developer, building AI applications with Next.js,
-              TypeScript, and Python.
+              I am a B.Tech Computer Science student in {profile.location}{' '}
+              focused on AI engineering, developer tools, and full-stack
+              systems. I am building a portfolio around practical LLM products:
+              tools that use typed APIs, retrieval, evals, safety boundaries,
+              and clean user experience.
             </p>
             <p>
-              Education: {profile.education}. I am targeting FAANG / ML roles
-              and continuously improving my system design and AI research depth.
+              My current goal is to become strong enough for high-bar software
+              and ML engineering roles by shipping public projects, writing
+              technical breakdowns, and improving my systems design depth
+              through real implementations.
             </p>
           </div>
         </section>

@@ -30,6 +30,11 @@ export interface Project {
   featured: boolean;
   updatedAt: string;
   links: ProjectLinks;
+  proof: string[];
+  engineeringDecisions: Array<{
+    label: string;
+    detail: string;
+  }>;
   metaTitle: string;
   metaDescription: string;
   caseStudy: ProjectCaseStudy;
@@ -48,13 +53,53 @@ export const projects: Project[] = [
       'Uses Gemini AI to transform transcripts into concise Q/A flashcards with a quick review flow.',
     tech: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Gemini API'],
     impact:
-      'Designed to reduce manual note-making effort by turning lectures into structured flashcards.',
+      'Converts passive lecture watching into a reviewable study workflow with transcript parsing, structured Gemini output, and editable user approval before cards are trusted.',
     featured: true,
     updatedAt: '2026-04-29',
     links: {
       demo: 'https://youtube-flashcards-alpha.vercel.app',
       github: 'https://github.com/priyanshuchawda/youtube-flashcards',
     },
+    proof: [
+      'Live demo',
+      'GitHub repo',
+      'Architecture notes',
+      'Screenshots',
+      'Tests / validation plan',
+      'Known limitations',
+    ],
+    engineeringDecisions: [
+      {
+        label: 'Why I chose this stack',
+        detail:
+          'Next.js and TypeScript keep the transcript, generation, review, and deploy flow in one typed product surface while Gemini fits long educational source material.',
+      },
+      {
+        label: 'What I handled myself',
+        detail:
+          'I built the video input flow, AI prompt pipeline, flashcard data model, review UX, deployment path, and project documentation.',
+      },
+      {
+        label: 'Hardest technical problem',
+        detail:
+          'Transcript quality varies heavily, so the product needs clear fallback states and user editing instead of pretending every generated card is correct.',
+      },
+      {
+        label: 'Tradeoff I made',
+        detail:
+          'I prioritized a fast review loop and editable cards over a heavier spaced-repetition engine for the first usable version.',
+      },
+      {
+        label: 'How I tested it',
+        detail:
+          'I validated generation against different lecture styles, checked empty transcript paths, and reviewed whether card answers stayed concise and source-grounded.',
+      },
+      {
+        label: 'What I would improve in production',
+        detail:
+          'I would add durable user accounts, spaced repetition, transcript-source citations, model output evals, and analytics for card quality.',
+      },
+    ],
     metaTitle: 'YouTube Flashcards | Priyanshu Chawda',
     metaDescription:
       'YouTube Flashcards is a Gemini AI study tool that turns long lectures into interactive flashcards for faster review and retention.',
@@ -97,12 +142,52 @@ export const projects: Project[] = [
       'Uses Gemini to interpret natural language queries and surface high-signal results quickly.',
     tech: ['Python', 'Streamlit', 'GitHub CLI', 'Gemini API'],
     impact:
-      'Speeds up developer discovery by narrowing results to the most relevant threads.',
+      'Turns vague developer questions into targeted GitHub searches, reducing manual filtering through issues and PRs while preserving direct links to original discussions.',
     featured: true,
     updatedAt: '2026-04-29',
     links: {
       github: 'https://github.com/priyanshuchawda/ghfind',
     },
+    proof: [
+      'GitHub repo',
+      'Architecture notes',
+      'CLI integration',
+      'Query validation',
+      'Tests / validation plan',
+      'Known limitations',
+    ],
+    engineeringDecisions: [
+      {
+        label: 'Why I chose this stack',
+        detail:
+          'Python, Streamlit, GitHub CLI, and Gemini made it possible to prototype a developer search workflow quickly while still keeping the search boundary inspectable.',
+      },
+      {
+        label: 'What I handled myself',
+        detail:
+          'I built the query flow, Gemini query expansion, GitHub CLI handoff, result ranking surface, and documentation for limitations.',
+      },
+      {
+        label: 'Hardest technical problem',
+        detail:
+          'The difficult part was reducing noisy GitHub results without hiding the source links developers need to verify context.',
+      },
+      {
+        label: 'Tradeoff I made',
+        detail:
+          'I used GitHub CLI as a trusted integration layer instead of building a larger OAuth-backed GitHub app before the workflow was proven.',
+      },
+      {
+        label: 'How I tested it',
+        detail:
+          'I ran natural-language searches across different repository topics and checked whether the returned issues and PRs matched the original intent.',
+      },
+      {
+        label: 'What I would improve in production',
+        detail:
+          'I would add saved searches, repository scopes, result feedback, rate-limit handling, and an eval set for search relevance.',
+      },
+    ],
     metaTitle: 'ghfind | AI GitHub Search Tool',
     metaDescription:
       'ghfind is an AI GitHub issue and PR search tool powered by Gemini that helps developers find relevant discussions faster.',
@@ -144,12 +229,53 @@ export const projects: Project[] = [
     solution:
       'Applies Gemini-driven threat analysis to flag risky pages and downloads earlier.',
     tech: ['TypeScript', 'Gemini AI', 'Threat analysis pipeline'],
-    impact: 'Built to prevent suspicious activity before it reaches end users.',
+    impact:
+      'Explores a defense-in-depth browser workflow where risky URLs and downloads are analyzed before user action, with explanations designed to reduce alert fatigue.',
     featured: true,
     updatedAt: '2026-04-29',
     links: {
       github: 'https://github.com/priyanshuchawda/browser4all',
     },
+    proof: [
+      'GitHub repo',
+      'Architecture notes',
+      'Threat-model notes',
+      'Screenshots',
+      'Tests / validation plan',
+      'Known limitations',
+    ],
+    engineeringDecisions: [
+      {
+        label: 'Why I chose this stack',
+        detail:
+          'TypeScript keeps browser event handling and risk objects typed, while Gemini can summarize threat indicators into user-readable warnings.',
+      },
+      {
+        label: 'What I handled myself',
+        detail:
+          'I designed the risk-analysis flow, warning UX, threat indicator model, and the boundaries for when the assistant should block or only warn.',
+      },
+      {
+        label: 'Hardest technical problem',
+        detail:
+          'Security UX is hard because warnings must be specific enough to help users without becoming noisy or slowing normal browsing.',
+      },
+      {
+        label: 'Tradeoff I made',
+        detail:
+          'I treated this as a focused security prototype instead of claiming production-grade detection accuracy without live threat feeds.',
+      },
+      {
+        label: 'How I tested it',
+        detail:
+          'I validated the flow with suspicious URL patterns, download-risk scenarios, and warning copy checks for clarity.',
+      },
+      {
+        label: 'What I would improve in production',
+        detail:
+          'I would integrate reputation feeds, sandboxed scanning, telemetry, false-positive review, and enterprise policy controls.',
+      },
+    ],
     metaTitle: 'Browser4All | AI Secure Browser',
     metaDescription:
       'Browser4All is an AI secure browser concept using Gemini for phishing and malware analysis to improve browsing safety.',
@@ -192,12 +318,52 @@ export const projects: Project[] = [
       'Uses AI analytics to suggest safer routes and timing for crowd movement.',
     tech: ['TypeScript', 'AI analytics', 'Simulation modeling'],
     impact:
-      'Designed to improve safety and reduce congestion during high-traffic events.',
+      'Models crowd routing as an operator decision-support system with density signals, route tradeoffs, and safety-first recommendations instead of generic chatbot advice.',
     featured: true,
     updatedAt: '2026-04-29',
     links: {
       github: 'https://github.com/priyanshuchawda/smart-crowd-navigator',
     },
+    proof: [
+      'GitHub repo',
+      'Architecture notes',
+      'Simulation model',
+      'Screenshots',
+      'Tests / validation plan',
+      'Known limitations',
+    ],
+    engineeringDecisions: [
+      {
+        label: 'Why I chose this stack',
+        detail:
+          'TypeScript fits a structured simulation UI where route, density, and recommendation objects need predictable state and clear rendering.',
+      },
+      {
+        label: 'What I handled myself',
+        detail:
+          'I built the event-flow model, recommendation logic, operator-facing UI, and documentation around sensor and deployment assumptions.',
+      },
+      {
+        label: 'Hardest technical problem',
+        detail:
+          'The core challenge was keeping recommendations practical when real-time sensor data is incomplete or unavailable.',
+      },
+      {
+        label: 'Tradeoff I made',
+        detail:
+          'I focused on explainable operator guidance rather than a complex dashboard that would be harder to trust during high-pressure events.',
+      },
+      {
+        label: 'How I tested it',
+        detail:
+          'I tested multiple congestion scenarios and checked whether route recommendations stayed consistent with the stated safety constraints.',
+      },
+      {
+        label: 'What I would improve in production',
+        detail:
+          'I would add live sensor integrations, venue-specific calibration, simulation replay, and an audit trail for operator decisions.',
+      },
+    ],
     metaTitle: 'Smart Crowd Navigator | AI Crowd Tool',
     metaDescription:
       'Smart Crowd Navigator is an AI crowd navigation system that models safer exits and timing decisions for large events.',

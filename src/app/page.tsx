@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { ArrowRight, Code, Cpu, Activity } from 'lucide-react';
+import { ArrowRight, Code, Cpu, Activity, ShieldCheck } from 'lucide-react';
 import { CapabilityCard } from '@/components/CapabilityCard';
 import { CTASection } from '@/components/CTASection';
 import { FAQSection } from '@/components/FAQSection';
@@ -107,6 +107,33 @@ export default function Home() {
                 Contact
               </Link>
             </div>
+            <div className="border-border/70 bg-muted/20 text-muted-foreground max-w-3xl rounded-lg border px-4 py-3 text-sm leading-relaxed">
+              <span className="text-foreground font-semibold">Proof: </span>
+              <Link href="/projects" className="hover:text-foreground">
+                20+ shipped projects
+              </Link>
+              {' · '}
+              <a
+                href={siteConfig.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-foreground"
+              >
+                2k+ GitHub commits
+              </a>
+              {' · '}
+              <Link href="/achievements" className="hover:text-foreground">
+                250+ LeetCode
+              </Link>
+              {' · '}
+              <Link href="/achievements" className="hover:text-foreground">
+                5+ hackathons
+              </Link>
+              {' · '}
+              <Link href="/projects" className="hover:text-foreground">
+                production Cloud Run / Vercel deployments
+              </Link>
+            </div>
             <div className="text-muted-foreground flex flex-wrap gap-4 text-sm font-medium">
               <Link href="/about" className="hover:text-foreground">
                 About
@@ -149,6 +176,30 @@ export default function Home() {
                 </span>
               ))}
             </div>
+          </div>
+        </section>
+
+        <section className="space-y-12" aria-label="Proof of skill">
+          <SectionHeading
+            title="Proof of Skill"
+            description="Evidence across AI product engineering, full-stack delivery, developer tooling, and reliability."
+          />
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            {profile.proofOfSkill.map((proof) => (
+              <article
+                key={proof.title}
+                className="border-border bg-muted/15 space-y-4 rounded-lg border p-6"
+              >
+                <ShieldCheck
+                  className="text-accent h-7 w-7"
+                  aria-hidden="true"
+                />
+                <h3 className="text-xl font-bold">{proof.title}</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  {proof.description}
+                </p>
+              </article>
+            ))}
           </div>
         </section>
 

@@ -1,8 +1,12 @@
 export const achievementStats = [
-  { value: '20+', label: 'Projects shipped' },
-  { value: '250+', label: 'LeetCode solved' },
-  { value: '2k+', label: 'GitHub commits' },
-  { value: '5+', label: 'Hackathons' },
+  { value: '20+', label: 'Projects shipped', href: '/projects' },
+  {
+    value: '2k+',
+    label: 'GitHub commits',
+    href: 'https://github.com/priyanshuchawda',
+  },
+  { value: '250+', label: 'LeetCode solved', href: '/achievements' },
+  { value: '5+', label: 'Hackathons', href: '/achievements' },
 ] as const;
 
 export const achievements = [

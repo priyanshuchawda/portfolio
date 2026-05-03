@@ -7,6 +7,7 @@ export interface WritingSection {
   heading: string;
   paragraphs: string[];
   bullets?: string[];
+  code?: string;
 }
 
 export interface WritingPost {
@@ -67,6 +68,54 @@ export const writingPosts: WritingPost[] = [
           'The best servers feel like stable internal APIs. They validate inputs, return structured output, keep side effects explicit, and avoid hiding policy decisions in model prompts. That lets the assistant reason over the workflow while the server remains responsible for boundaries.',
         ],
       },
+      {
+        heading: 'Code example',
+        paragraphs: [
+          'A useful MCP tool starts with a narrow name, a typed input shape, and a result that gives the model enough context for the next step.',
+        ],
+        code: `const searchIssuesTool = {
+  name: 'search_github_issues',
+  inputSchema: {
+    type: 'object',
+    properties: {
+      repo: { type: 'string' },
+      query: { type: 'string' },
+      limit: { type: 'number', maximum: 10 },
+    },
+    required: ['repo', 'query'],
+  },
+};`,
+      },
+      {
+        heading: 'Architecture diagram',
+        paragraphs: [
+          'The flow I use for MCP design is intentionally small: assistant request, server validation, tool execution, structured result, then model reasoning.',
+        ],
+        bullets: [
+          'Assistant asks for a named tool with structured arguments.',
+          'MCP server validates input and checks permissions.',
+          'Tool adapter calls the API, filesystem, database, or CLI.',
+          'Server returns a compact result with errors and next-step context.',
+        ],
+      },
+      {
+        heading: 'Failure modes',
+        paragraphs: [
+          'MCP servers fail when tool descriptions are too vague, side effects are hidden, permissions are broader than the workflow needs, or errors come back as plain text that the model cannot reason about.',
+        ],
+      },
+      {
+        heading: 'What I built after learning this',
+        paragraphs: [
+          'I used this thinking to plan developer automation tools where the AI layer calls narrow, typed actions instead of receiving broad access to a whole machine or repository.',
+        ],
+      },
+      {
+        heading: 'References / docs read',
+        paragraphs: [
+          'The strongest references for this topic are the MCP specification, SDK examples, tool-calling docs, and real integration patterns from GitHub, filesystem, and browser automation servers.',
+        ],
+      },
     ],
   },
   {
@@ -114,6 +163,48 @@ export const writingPosts: WritingPost[] = [
         paragraphs: [
           'The useful metrics are task completion, groundedness, latency, cost, and recovery from failure. A workflow that answers quickly but cannot show where its facts came from is weak for developer tooling. A workflow that is accurate but too slow may be unusable in an editor or command palette.',
           'Good orchestration is visible in the edge cases: missing context, partial tool failures, invalid JSON, outdated docs, and requests that should be declined instead of guessed.',
+        ],
+      },
+      {
+        heading: 'Code example',
+        paragraphs: [
+          'Even a small AI feature benefits from an explicit workflow object instead of a single prompt string hidden inside a component.',
+        ],
+        code: `type WorkflowStep =
+  | { type: 'retrieve'; source: 'docs' | 'transcript' }
+  | { type: 'generate'; schema: 'flashcards' | 'summary' }
+  | { type: 'validate'; checks: Array<'json' | 'grounding'> }
+  | { type: 'review'; mode: 'user-approval' };`,
+      },
+      {
+        heading: 'Architecture diagram',
+        paragraphs: [
+          'A reliable LLM workflow is usually input, route, retrieve, generate, validate, review, and observe.',
+        ],
+        bullets: [
+          'Input parser turns the user request into a typed task.',
+          'Router chooses the workflow and context source.',
+          'Model call produces structured output.',
+          'Validation checks schema, grounding, safety, and completeness.',
+          'UI exposes review, retry, and fallback states.',
+        ],
+      },
+      {
+        heading: 'Failure modes',
+        paragraphs: [
+          'The common failures are stale context, invalid JSON, hallucinated citations, tool retries without limits, silent cost growth, and UIs that show AI output without a user-review path.',
+        ],
+      },
+      {
+        heading: 'What I built after learning this',
+        paragraphs: [
+          'I applied this to YouTube Flashcards by treating generation as one step inside a larger product loop: source input, structured output, editing, and future evals.',
+        ],
+      },
+      {
+        heading: 'References / docs read',
+        paragraphs: [
+          'Useful references include model structured-output docs, retrieval guides, prompt-eval examples, and production postmortems on latency, cost, and safety failures.',
         ],
       },
     ],
@@ -164,9 +255,60 @@ export const writingPosts: WritingPost[] = [
           'Evaluate safety around file edits, commands, credentials, and external actions.',
         ],
       },
+      {
+        heading: 'Code example',
+        paragraphs: [
+          'I prefer hiding providers behind a small adapter so the product can test Gemini and OpenAI on the same task set.',
+        ],
+        code: `interface ModelAdapter {
+  name: 'gemini' | 'openai';
+  generateStructured<T>(input: {
+    prompt: string;
+    schemaName: string;
+  }): Promise<T>;
+}`,
+      },
+      {
+        heading: 'Architecture diagram',
+        paragraphs: [
+          'The practical architecture is provider adapter, common schema, task benchmark, scoring, and product routing.',
+        ],
+        bullets: [
+          'Adapter normalizes model calls behind one app-level interface.',
+          'Schemas keep downstream UI independent from provider wording.',
+          'Benchmarks compare the same real prompts across providers.',
+          'Routing chooses the provider based on quality, latency, cost, and risk.',
+        ],
+      },
+      {
+        heading: 'Failure modes',
+        paragraphs: [
+          'Teams get stuck when provider-specific code leaks everywhere, benchmarks use toy prompts, or model comparisons ignore retries, latency, cost, structured-output errors, and safety boundaries.',
+        ],
+      },
+      {
+        heading: 'What I built after learning this',
+        paragraphs: [
+          'I used Gemini heavily for education and developer-tool experiments, but I design the product boundary so future model routing or provider swaps stay possible.',
+        ],
+      },
+      {
+        heading: 'References / docs read',
+        paragraphs: [
+          'The most useful docs to compare are official model API references, structured-output guides, tool-calling examples, pricing pages, and latency notes from real app integrations.',
+        ],
+      },
     ],
   },
 ];
+
+export const writingIdeas = [
+  'How I Built a Gemini Assistant with Source Grounding and Safety Checks',
+  'What Makes an AI App Production-Ready Beyond Prompt Engineering',
+  'MCP Server Design: Tool Contracts, Permissions, and Failure States',
+  'Building AI Features in Next.js Without Turning Everything Into a Chatbot',
+  'How I Think About Evals for Small AI Projects',
+] as const;
 
 export function getWritingPostBySlug(slug: string) {
   return writingPosts.find((post) => post.slug === slug);

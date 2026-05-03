@@ -60,6 +60,16 @@ export function ProjectCard({ project }: { project: Project }) {
             {project.tech.join(', ')}
           </span>
         </div>
+        <div className="flex flex-wrap gap-2">
+          {project.proof.slice(0, 4).map((item) => (
+            <span
+              key={item}
+              className="border-border text-muted-foreground rounded-full border px-3 py-1 text-xs"
+            >
+              {item}
+            </span>
+          ))}
+        </div>
       </div>
 
       <div className="border-border mt-6 space-y-4 border-t pt-6">

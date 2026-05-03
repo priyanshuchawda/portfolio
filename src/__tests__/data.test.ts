@@ -17,6 +17,8 @@ describe('Content data integrity', () => {
       expect(project.solution).toBeTruthy();
       expect(project.tech.length).toBeGreaterThan(0);
       expect(project.impact).toBeTruthy();
+      expect(project.proof.length).toBeGreaterThan(2);
+      expect(project.engineeringDecisions.length).toBe(6);
     });
   });
 
@@ -33,6 +35,7 @@ describe('Content data integrity', () => {
       expect(service.description.length).toBeGreaterThan(80);
       expect(service.outcomes.length).toBeGreaterThan(1);
       expect(service.keywords.length).toBeGreaterThan(1);
+      expect(service.relatedProof.length).toBeGreaterThan(0);
     });
   });
 

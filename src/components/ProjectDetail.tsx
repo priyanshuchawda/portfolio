@@ -79,12 +79,43 @@ export function ProjectDetail({ project }: { project: Project }) {
       </section>
 
       <section className="space-y-6">
+        <h2 className="text-2xl font-bold">Proof available</h2>
+        <ul className="text-muted-foreground flex flex-wrap gap-3 text-sm">
+          {project.proof.map((item) => (
+            <li
+              key={item}
+              className="border-border rounded-full border px-4 py-2"
+            >
+              {item}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="space-y-6">
         <h2 className="text-2xl font-bold">Architecture and how it works</h2>
         <ul className="text-muted-foreground list-disc space-y-2 pl-6">
           {project.caseStudy.architecture.map((item) => (
             <li key={item}>{item}</li>
           ))}
         </ul>
+      </section>
+
+      <section className="space-y-6">
+        <h2 className="text-2xl font-bold">Engineering Decisions</h2>
+        <div className="grid gap-4">
+          {project.engineeringDecisions.map((decision) => (
+            <div
+              key={decision.label}
+              className="border-border bg-muted/15 rounded-lg border p-5"
+            >
+              <h3 className="font-semibold">{decision.label}</h3>
+              <p className="text-muted-foreground mt-2 leading-relaxed">
+                {decision.detail}
+              </p>
+            </div>
+          ))}
+        </div>
       </section>
 
       <section className="space-y-6">

@@ -7,10 +7,9 @@ describe('Home Page', () => {
     render(<Home />);
     expect(screen.getByText('Priyanshu Chawda')).toBeDefined();
     expect(
-      screen.getByText(
-        /AI-focused software engineer building agentic systems/i,
-      ),
+      screen.getByText(/AI-focused software engineer building LLM workflows/i),
     ).toBeDefined();
+    expect(screen.getByText(/20\+ shipped projects/i)).toBeDefined();
   });
 
   test('renders all project cards', () => {
@@ -23,7 +22,7 @@ describe('Home Page', () => {
 
   test('renders capabilities section', () => {
     render(<Home />);
-    expect(screen.getByText('AI Engineering')).toBeDefined();
+    expect(screen.getAllByText('AI Engineering').length).toBeGreaterThan(0);
     expect(screen.getByText('Full-stack Development')).toBeDefined();
   });
 

@@ -9,7 +9,7 @@ export const pageMetadata = {
   about: {
     title: 'About Priyanshu Chawda',
     description:
-      'Learn about Priyanshu Chawda, an AI-focused software engineer from Pune building agentic systems and developer tools.',
+      'Learn about Priyanshu Chawda, an AI-focused software engineer from Pune building LLM workflows, MCP tools, developer tooling, and full-stack AI products.',
     path: '/about',
   },
   projects: {
@@ -19,9 +19,9 @@ export const pageMetadata = {
     path: '/projects',
   },
   services: {
-    title: 'AI Engineering Services',
+    title: 'AI Engineering Work | Priyanshu Chawda',
     description:
-      'AI engineering, MCP server development, LLM workflows, and full-stack AI application work by Priyanshu Chawda.',
+      'AI engineering collaboration areas including MCP server development, LLM workflows, Gemini integrations, and full-stack AI application work by Priyanshu Chawda.',
     path: '/services',
   },
   writing: {
