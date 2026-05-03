@@ -39,6 +39,16 @@ export async function generateMetadata({
     description: project.metaDescription,
     path: `/projects/${project.slug}`,
     type: 'article',
+    keywords: [
+      project.title,
+      project.subtitle,
+      ...project.tech,
+      ...(project.seoKeywords ?? []),
+      ...(project.packageInfo
+        ? [project.packageInfo.name, project.packageInfo.installCommand]
+        : []),
+      'Priyanshu Chawda project',
+    ],
   });
 }
 

@@ -1,7 +1,10 @@
 import { describe, expect, test } from 'vitest';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import manifest from '@/app/manifest';
 import robots from '@/app/robots';
 import sitemap from '@/app/sitemap';
+import { generateMetadata as generateProjectMetadata } from '@/app/projects/[slug]/page';
 import { pageMetadata } from '@/data/seo';
 import { buildMetadata } from '@/lib/metadata';
 import { sameAsLinks, siteConfig } from '@/lib/site';
@@ -9,17 +12,20 @@ import {
   baseStructuredData,
   getFaqStructuredData,
   getProjectListStructuredData,
+  getProjectStructuredData,
   getServiceCatalogStructuredData,
   personStructuredData,
   serializeJsonLd,
 } from '@/lib/structured-data';
 import { homeFaqs } from '@/data/faqs';
-import { projects } from '@/data/projects';
+import { getProjectBySlug, projects } from '@/data/projects';
 import { services } from '@/data/services';
 import { writingPosts } from '@/data/writing';
+import aiProfile from '../../public/ai-profile.json';
 
 const MIN_META_DESCRIPTION_LENGTH = 25;
 const MAX_META_DESCRIPTION_LENGTH = 160;
+const reposentinelProjectUrl = `${siteConfig.url}/projects/reposentinel-mcp`;
 
 function expectValidMetaDescription(label: string, description: string) {
   expect(description, `${label} should not be empty`).toBeTruthy();
@@ -188,6 +194,7 @@ describe('SEO indexing contract', () => {
     writingPosts.forEach((post) => {
       expect(urls).toContain(`${siteConfig.url}/writing/${post.slug}`);
     });
+    expect(urls).toContain(reposentinelProjectUrl);
   });
 
   test('sitemap uses stable content dates for freshness signals', () => {
@@ -219,5 +226,77 @@ describe('SEO indexing contract', () => {
     expect(projectListSchema.itemListElement.length).toBe(projects.length);
     expect(serviceCatalogSchema['@type']).toBe('OfferCatalog');
     expect(serviceCatalogSchema.itemListElement.length).toBe(services.length);
+  });
+
+  test('RepoSentinel MCP page metadata targets MCP and npm package discovery', async () => {
+    const metadata = await generateProjectMetadata({
+      params: Promise.resolve({ slug: 'reposentinel-mcp' }),
+    });
+
+    expect(metadata.alternates?.canonical).toBe('/projects/reposentinel-mcp');
+    expect(metadata.openGraph?.url).toBe('/projects/reposentinel-mcp');
+    expect(metadata.title).toEqual({
+      absolute: 'RepoSentinel MCP | TypeScript MCP Server',
+    });
+    expect(metadata.description).toContain('npm');
+    expect(metadata.keywords).toEqual(
+      expect.arrayContaining([
+        'RepoSentinel MCP',
+        'reposentinel-mcp',
+        'Model Context Protocol server',
+        'MCP repository audit',
+        'npm MCP server',
+      ]),
+    );
+  });
+
+  test('RepoSentinel MCP structured data includes package, source, and install facts', () => {
+    const project = getProjectBySlug('reposentinel-mcp');
+    expect(project).toBeDefined();
+
+    const schema = getProjectStructuredData(project!);
+
+    expect(schema['@type']).toBe('SoftwareSourceCode');
+    expect(schema.name).toBe('RepoSentinel MCP');
+    expect(schema.url).toBe(reposentinelProjectUrl);
+    expect(schema.sameAs).toEqual(
+      expect.arrayContaining([
+        'https://github.com/priyanshuchawda/reposentinel-mcp',
+        'https://www.npmjs.com/package/reposentinel-mcp',
+      ]),
+    );
+    expect(schema.codeRepository).toBe(
+      'https://github.com/priyanshuchawda/reposentinel-mcp',
+    );
+    expect(schema.runtimePlatform).toBe('Node.js');
+    expect(schema.softwareVersion).toBe('0.1.1');
+    expect(schema.installUrl).toBe(
+      'https://www.npmjs.com/package/reposentinel-mcp',
+    );
+    expect(schema.usageInfo).toContain('npx -y reposentinel-mcp');
+  });
+
+  test('AI-readable discovery files mention RepoSentinel MCP and npm package evidence', () => {
+    const llmsText = readFileSync(
+      join(process.cwd(), 'public/llms.txt'),
+      'utf8',
+    );
+
+    expect(llmsText).toContain(reposentinelProjectUrl);
+    expect(llmsText).toContain(
+      'https://www.npmjs.com/package/reposentinel-mcp',
+    );
+    expect(llmsText).toContain('npx -y reposentinel-mcp');
+
+    expect(aiProfile.keyPages).toContain(reposentinelProjectUrl);
+    expect(aiProfile.projects).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          name: 'RepoSentinel MCP',
+          url: reposentinelProjectUrl,
+          npm: 'https://www.npmjs.com/package/reposentinel-mcp',
+        }),
+      ]),
+    );
   });
 });

@@ -71,7 +71,7 @@ describe('Content data integrity', () => {
   test('project structured data includes required fields', () => {
     projects.forEach((project) => {
       const schema = getProjectStructuredData(project);
-      expect(schema['@type']).toBe('CreativeWork');
+      expect(['CreativeWork', 'SoftwareSourceCode']).toContain(schema['@type']);
       expect(schema.name).toBe(project.title);
       expect(schema.url).toContain(`/projects/${project.slug}`);
     });

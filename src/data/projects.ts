@@ -11,6 +11,15 @@ export interface ProjectLinks {
   npm?: string;
 }
 
+export interface ProjectPackageInfo {
+  name: string;
+  version: string;
+  installCommand: string;
+  registryUrl: string;
+  runtime: string;
+  license: string;
+}
+
 export interface ProjectCaseStudy {
   overview: string;
   architecture: string[];
@@ -32,6 +41,8 @@ export interface Project {
   featured: boolean;
   updatedAt: string;
   links: ProjectLinks;
+  seoKeywords?: string[];
+  packageInfo?: ProjectPackageInfo;
   artifacts: string[];
   engineeringDecisions: Array<{
     label: string;
@@ -53,7 +64,14 @@ export const projects: Project[] = [
       'AI coding agents need structured local project context, audit evidence, and workflow guardrails before making repository changes.',
     solution:
       'Exposes read-only MCP tools for project detection, skill routing, repository audits, documentation evidence checks, and issue or PR planning.',
-    tech: ['TypeScript', 'MCP', 'Node.js', 'npm', 'Streamable HTTP'],
+    tech: [
+      'TypeScript',
+      'Model Context Protocol',
+      'MCP',
+      'Node.js',
+      'npm',
+      'Streamable HTTP',
+    ],
     impact:
       'Packages a production-style MCP server on npm so agents can inspect local repositories, choose the right workflow, and produce evidence-backed plans without write access or remote mutation tools.',
     featured: true,
@@ -61,6 +79,29 @@ export const projects: Project[] = [
     links: {
       github: 'https://github.com/priyanshuchawda/reposentinel-mcp',
       npm: 'https://www.npmjs.com/package/reposentinel-mcp',
+    },
+    seoKeywords: [
+      'RepoSentinel MCP',
+      'reposentinel-mcp',
+      'Model Context Protocol server',
+      'MCP server',
+      'MCP repository audit',
+      'read-only MCP server',
+      'agent workflow routing',
+      'Codex MCP server',
+      'Claude MCP server',
+      'npm MCP server',
+      'repository inspection MCP',
+      'documentation evidence audit',
+      'skill routing MCP',
+    ],
+    packageInfo: {
+      name: 'reposentinel-mcp',
+      version: '0.1.1',
+      installCommand: 'npx -y reposentinel-mcp',
+      registryUrl: 'https://www.npmjs.com/package/reposentinel-mcp',
+      runtime: 'Node.js',
+      license: 'MIT',
     },
     artifacts: [
       'npm package',
@@ -105,7 +146,7 @@ export const projects: Project[] = [
     ],
     metaTitle: 'RepoSentinel MCP | TypeScript MCP Server',
     metaDescription:
-      'RepoSentinel MCP is a read-only TypeScript MCP server for repository inspection, skill routing, audits, docs evidence, and issue or PR planning.',
+      'RepoSentinel MCP is a read-only TypeScript MCP server on npm for repository inspection, skill routing, audits, docs evidence, and PR planning.',
     caseStudy: {
       overview:
         'Run reposentinel-mcp with npx to give AI agents a safe read-only inspection layer before repository changes.',

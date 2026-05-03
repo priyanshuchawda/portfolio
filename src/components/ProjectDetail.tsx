@@ -89,6 +89,48 @@ export function ProjectDetail({ project }: { project: Project }) {
         </ul>
       </section>
 
+      {project.packageInfo ? (
+        <section className="space-y-6">
+          <h2 className="text-2xl font-bold">Package and install</h2>
+          <div className="border-border bg-muted/15 space-y-4 rounded-lg border p-5">
+            <div>
+              <span className="text-foreground font-semibold">Package: </span>
+              <a
+                href={project.packageInfo.registryUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent hover:text-foreground focus-visible:ring-accent font-mono text-sm transition-colors focus-visible:ring-2 focus-visible:outline-none"
+              >
+                {project.packageInfo.name}
+              </a>
+            </div>
+            <div>
+              <span className="text-foreground font-semibold">Version: </span>
+              <span className="text-muted-foreground font-mono text-sm">
+                {project.packageInfo.version}
+              </span>
+            </div>
+            <div>
+              <span className="text-foreground font-semibold">Install: </span>
+              <code className="bg-muted text-muted-foreground rounded px-2 py-1 text-sm">
+                {project.packageInfo.installCommand}
+              </code>
+            </div>
+            <div>
+              <span className="text-foreground font-semibold">Runtime: </span>
+              <span className="text-muted-foreground">
+                {project.packageInfo.runtime}
+              </span>
+              <span className="text-muted-foreground"> · </span>
+              <span className="text-foreground font-semibold">License: </span>
+              <span className="text-muted-foreground">
+                {project.packageInfo.license}
+              </span>
+            </div>
+          </div>
+        </section>
+      ) : null}
+
       <section className="space-y-6">
         <h2 className="text-2xl font-bold">Available artifacts</h2>
         <ul className="text-muted-foreground flex flex-wrap gap-3 text-sm">

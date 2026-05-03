@@ -6,11 +6,13 @@ export function buildMetadata({
   description,
   path,
   type = 'website',
+  keywords,
 }: {
   title: string;
   description: string;
   path: string;
   type?: 'website' | 'article';
+  keywords?: readonly string[];
 }): Metadata {
   const ogImage = {
     url: '/opengraph-image',
@@ -27,6 +29,7 @@ export function buildMetadata({
   return {
     title: { absolute: title },
     description,
+    keywords: keywords ? [...keywords] : undefined,
     alternates: {
       canonical: path,
       languages: {

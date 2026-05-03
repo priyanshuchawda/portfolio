@@ -146,21 +146,44 @@ export function getProjectListStructuredData(projects: Project[]) {
 }
 
 export function getProjectStructuredData(project: Project) {
+  const sameAs = [
+    project.links.github,
+    project.links.demo,
+    project.links.npm,
+  ].filter((link): link is string => Boolean(link));
+  const packageInfo = project.packageInfo;
+
   return {
     '@context': 'https://schema.org',
-    '@type': 'CreativeWork',
+    '@type': packageInfo ? 'SoftwareSourceCode' : 'CreativeWork',
     '@id': `${siteConfig.url}/projects/${project.slug}#project`,
     name: project.title,
     description: project.summary,
     url: `${siteConfig.url}/projects/${project.slug}`,
     inLanguage: siteConfig.language,
-    keywords: project.tech.join(', '),
+    keywords: [...project.tech, ...(project.seoKeywords ?? [])].join(', '),
     author: {
+      '@id': `${siteConfig.url}/#person`,
+    },
+    creator: {
       '@id': `${siteConfig.url}/#person`,
     },
     isPartOf: {
       '@id': `${siteConfig.url}/#website`,
     },
+    mainEntityOfPage: `${siteConfig.url}/projects/${project.slug}`,
+    sameAs: sameAs.length > 0 ? sameAs : undefined,
+    codeRepository: project.links.github,
+    programmingLanguage: project.tech.includes('TypeScript')
+      ? 'TypeScript'
+      : undefined,
+    runtimePlatform: packageInfo?.runtime,
+    softwareVersion: packageInfo?.version,
+    installUrl: packageInfo?.registryUrl,
+    usageInfo: packageInfo?.installCommand,
+    license: packageInfo?.license,
+    applicationCategory: packageInfo ? 'DeveloperApplication' : undefined,
+    operatingSystem: packageInfo ? 'Cross-platform' : undefined,
     dateModified: project.updatedAt,
   } as const;
 }

@@ -25,8 +25,30 @@
     "https://priyanshuworks.tech/",
     "https://priyanshuworks.tech/about",
     "https://priyanshuworks.tech/projects",
+    "https://priyanshuworks.tech/projects/reposentinel-mcp",
     "https://priyanshuworks.tech/services",
     "https://priyanshuworks.tech/contact"
+  ],
+  "projects": [
+    {
+      "name": "RepoSentinel MCP",
+      "url": "https://priyanshuworks.tech/projects/reposentinel-mcp",
+      "github": "https://github.com/priyanshuchawda/reposentinel-mcp",
+      "npm": "https://www.npmjs.com/package/reposentinel-mcp",
+      "package": "reposentinel-mcp",
+      "version": "0.1.1",
+      "install": "npx -y reposentinel-mcp",
+      "summary": "Read-only TypeScript Model Context Protocol server for local repository inspection, skill routing, repository audits, documentation evidence checks, and issue or PR planning.",
+      "keywords": [
+        "RepoSentinel MCP",
+        "reposentinel-mcp",
+        "Model Context Protocol server",
+        "MCP repository audit",
+        "npm MCP server",
+        "agent workflow routing",
+        "documentation evidence audit"
+      ]
+    }
   ],
   "sameAs": [
     "https://github.com/priyanshuchawda",
@@ -38,5 +60,5 @@
     "linkedin": "https://www.linkedin.com/in/priyanshuchawda",
     "github": "https://github.com/priyanshuchawda"
   },
-  "lastUpdated": "2026-04-29"
+  "lastUpdated": "2026-05-04"
 }
