@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ExternalLink, Package } from 'lucide-react';
+import { ExternalLink, Package, Sparkles } from 'lucide-react';
 import type { Project } from '@/data/projects';
 import { getProjectPath } from '@/data/projects';
 import { GithubIcon } from './SocialIcons';
@@ -50,6 +50,17 @@ export function ProjectCard({ project }: { project: Project }) {
               className="text-muted-foreground hover:text-foreground focus-visible:ring-accent transition-colors focus-visible:ring-2 focus-visible:outline-none"
             >
               <Package className="h-5 w-5" />
+            </a>
+          ) : null}
+          {project.links.skills ? (
+            <a
+              href={project.links.skills}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`View ${project.title} skill on skills.sh`}
+              className="text-muted-foreground hover:text-foreground focus-visible:ring-accent transition-colors focus-visible:ring-2 focus-visible:outline-none"
+            >
+              <Sparkles className="h-5 w-5" />
             </a>
           ) : null}
         </div>

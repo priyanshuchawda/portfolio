@@ -1,6 +1,7 @@
 import { describe, expect, test } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import nextConfig from '../../next.config';
 import manifest from '@/app/manifest';
 import robots from '@/app/robots';
 import sitemap from '@/app/sitemap';
@@ -25,7 +26,7 @@ import aiProfile from '../../public/ai-profile.json';
 
 const MIN_META_DESCRIPTION_LENGTH = 25;
 const MAX_META_DESCRIPTION_LENGTH = 160;
-const reposentinelProjectUrl = `${siteConfig.url}/projects/reposentinel-mcp`;
+const codeauditProjectUrl = `${siteConfig.url}/projects/codeaudit`;
 
 function expectValidMetaDescription(label: string, description: string) {
   expect(description, `${label} should not be empty`).toBeTruthy();
@@ -194,7 +195,7 @@ describe('SEO indexing contract', () => {
     writingPosts.forEach((post) => {
       expect(urls).toContain(`${siteConfig.url}/writing/${post.slug}`);
     });
-    expect(urls).toContain(reposentinelProjectUrl);
+    expect(urls).toContain(codeauditProjectUrl);
   });
 
   test('sitemap uses stable content dates for freshness signals', () => {
@@ -228,73 +229,103 @@ describe('SEO indexing contract', () => {
     expect(serviceCatalogSchema.itemListElement.length).toBe(services.length);
   });
 
-  test('RepoSentinel MCP page metadata targets MCP and npm package discovery', async () => {
+  test('CodeAudit MCP page metadata targets code audit, MCP, npm, and skills discovery', async () => {
     const metadata = await generateProjectMetadata({
-      params: Promise.resolve({ slug: 'reposentinel-mcp' }),
+      params: Promise.resolve({ slug: 'codeaudit' }),
     });
 
-    expect(metadata.alternates?.canonical).toBe('/projects/reposentinel-mcp');
-    expect(metadata.openGraph?.url).toBe('/projects/reposentinel-mcp');
+    expect(metadata.alternates?.canonical).toBe('/projects/codeaudit');
+    expect(metadata.openGraph?.url).toBe('/projects/codeaudit');
     expect(metadata.title).toEqual({
-      absolute: 'RepoSentinel MCP | TypeScript MCP Server',
+      absolute: 'CodeAudit MCP | AI Code Audit Server',
     });
     expect(metadata.description).toContain('npm');
     expect(metadata.keywords).toEqual(
       expect.arrayContaining([
-        'RepoSentinel MCP',
-        'reposentinel-mcp',
+        'CodeAudit MCP',
+        'codeaudit',
+        '@priyanshuchawda/codeaudit',
         'Model Context Protocol server',
-        'MCP repository audit',
+        'AI code audit',
+        'improve code quality',
         'npm MCP server',
+        'skills CLI codeaudit',
       ]),
     );
   });
 
-  test('RepoSentinel MCP structured data includes package, source, and install facts', () => {
-    const project = getProjectBySlug('reposentinel-mcp');
+  test('CodeAudit MCP structured data includes package, source, and skill install facts', () => {
+    const project = getProjectBySlug('codeaudit');
     expect(project).toBeDefined();
 
     const schema = getProjectStructuredData(project!);
 
     expect(schema['@type']).toBe('SoftwareSourceCode');
-    expect(schema.name).toBe('RepoSentinel MCP');
-    expect(schema.url).toBe(reposentinelProjectUrl);
+    expect(schema.name).toBe('CodeAudit MCP');
+    expect(schema.url).toBe(codeauditProjectUrl);
     expect(schema.sameAs).toEqual(
       expect.arrayContaining([
-        'https://github.com/priyanshuchawda/reposentinel-mcp',
-        'https://www.npmjs.com/package/reposentinel-mcp',
+        'https://github.com/priyanshuchawda/codeaudit',
+        'https://www.npmjs.com/package/@priyanshuchawda/codeaudit',
+        'https://skills.sh/priyanshuchawda/codeaudit',
       ]),
     );
     expect(schema.codeRepository).toBe(
-      'https://github.com/priyanshuchawda/reposentinel-mcp',
+      'https://github.com/priyanshuchawda/codeaudit',
     );
     expect(schema.runtimePlatform).toBe('Node.js');
-    expect(schema.softwareVersion).toBe('0.1.1');
+    expect(schema.softwareVersion).toBe('0.1.3');
     expect(schema.installUrl).toBe(
-      'https://www.npmjs.com/package/reposentinel-mcp',
+      'https://www.npmjs.com/package/@priyanshuchawda/codeaudit',
     );
-    expect(schema.usageInfo).toContain('npx -y reposentinel-mcp');
+    expect(schema.usageInfo).toContain('npx -y @priyanshuchawda/codeaudit');
+    expect(schema.usageInfo).toContain(
+      'npx skills add priyanshuchawda/codeaudit --skill codeaudit',
+    );
   });
 
-  test('AI-readable discovery files mention RepoSentinel MCP and npm package evidence', () => {
+  test('AI-readable discovery files mention CodeAudit MCP, npm, skills, and code quality evidence', () => {
     const llmsText = readFileSync(
       join(process.cwd(), 'public/llms.txt'),
       'utf8',
     );
 
-    expect(llmsText).toContain(reposentinelProjectUrl);
+    expect(llmsText).toContain(codeauditProjectUrl);
     expect(llmsText).toContain(
-      'https://www.npmjs.com/package/reposentinel-mcp',
+      'https://www.npmjs.com/package/@priyanshuchawda/codeaudit',
     );
-    expect(llmsText).toContain('npx -y reposentinel-mcp');
+    expect(llmsText).toContain('npx -y @priyanshuchawda/codeaudit');
+    expect(llmsText).toContain(
+      'npx skills add priyanshuchawda/codeaudit --skill codeaudit',
+    );
+    expect(llmsText).toContain('improve code quality');
 
-    expect(aiProfile.keyPages).toContain(reposentinelProjectUrl);
+    expect(aiProfile.keyPages).toContain(codeauditProjectUrl);
     expect(aiProfile.projects).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
-          name: 'RepoSentinel MCP',
-          url: reposentinelProjectUrl,
-          npm: 'https://www.npmjs.com/package/reposentinel-mcp',
+          name: 'CodeAudit MCP',
+          url: codeauditProjectUrl,
+          npm: 'https://www.npmjs.com/package/@priyanshuchawda/codeaudit',
+          skillInstall:
+            'npx skills add priyanshuchawda/codeaudit --skill codeaudit',
+        }),
+      ]),
+    );
+  });
+
+  test('legacy RepoSentinel project URL redirects to the CodeAudit project URL', async () => {
+    const redirects =
+      typeof nextConfig.redirects === 'function'
+        ? await nextConfig.redirects()
+        : [];
+
+    expect(redirects).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          source: '/projects/reposentinel-mcp',
+          destination: '/projects/codeaudit',
+          permanent: true,
         }),
       ]),
     );

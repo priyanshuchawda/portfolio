@@ -150,8 +150,15 @@ export function getProjectStructuredData(project: Project) {
     project.links.github,
     project.links.demo,
     project.links.npm,
+    project.links.skills,
   ].filter((link): link is string => Boolean(link));
   const packageInfo = project.packageInfo;
+  const usageInfo = [
+    packageInfo?.installCommand,
+    packageInfo?.skillInstallCommand,
+  ]
+    .filter((command): command is string => Boolean(command))
+    .join(' | ');
 
   return {
     '@context': 'https://schema.org',
@@ -180,7 +187,7 @@ export function getProjectStructuredData(project: Project) {
     runtimePlatform: packageInfo?.runtime,
     softwareVersion: packageInfo?.version,
     installUrl: packageInfo?.registryUrl,
-    usageInfo: packageInfo?.installCommand,
+    usageInfo: usageInfo || undefined,
     license: packageInfo?.license,
     applicationCategory: packageInfo ? 'DeveloperApplication' : undefined,
     operatingSystem: packageInfo ? 'Cross-platform' : undefined,

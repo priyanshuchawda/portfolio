@@ -1,5 +1,5 @@
 export type ProjectSlug =
-  | 'reposentinel-mcp'
+  | 'codeaudit'
   | 'youtube-flashcards'
   | 'ghfind'
   | 'browser4all'
@@ -9,13 +9,17 @@ export interface ProjectLinks {
   github?: string;
   demo?: string;
   npm?: string;
+  skills?: string;
 }
 
 export interface ProjectPackageInfo {
   name: string;
   version: string;
   installCommand: string;
+  skillName?: string;
+  skillInstallCommand?: string;
   registryUrl: string;
+  skillsUrl?: string;
   runtime: string;
   license: string;
 }
@@ -55,15 +59,15 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    slug: 'reposentinel-mcp',
-    title: 'RepoSentinel MCP',
-    subtitle: 'Read-only TypeScript MCP server',
+    slug: 'codeaudit',
+    title: 'CodeAudit MCP',
+    subtitle: 'AI code audit MCP server',
     summary:
-      'Read-only MCP server for repository inspection and agent workflow routing.',
+      'Read-only MCP server and skill for AI code audits and repository reviews.',
     problem:
-      'AI coding agents need structured local project context, audit evidence, and workflow guardrails before making repository changes.',
+      'Developers using AI agents need a safer way to inspect projects, improve code quality, review security risks, and plan issues or PRs before changes are made.',
     solution:
-      'Exposes read-only MCP tools for project detection, skill routing, repository audits, documentation evidence checks, and issue or PR planning.',
+      'Exposes read-only MCP tools and a CodeAudit skill for project detection, skill routing, repository audits, documentation evidence checks, security review, and issue or PR planning.',
     tech: [
       'TypeScript',
       'Model Context Protocol',
@@ -73,38 +77,53 @@ export const projects: Project[] = [
       'Streamable HTTP',
     ],
     impact:
-      'Packages a production-style MCP server on npm so agents can inspect local repositories, choose the right workflow, and produce evidence-backed plans without write access or remote mutation tools.',
+      'Packages a production-style code audit MCP server on npm and skills.sh so agents can inspect repositories, improve code quality, and produce evidence-backed plans without write access or remote mutation tools.',
     featured: true,
     updatedAt: '2026-05-04',
     links: {
-      github: 'https://github.com/priyanshuchawda/reposentinel-mcp',
-      npm: 'https://www.npmjs.com/package/reposentinel-mcp',
+      github: 'https://github.com/priyanshuchawda/codeaudit',
+      npm: 'https://www.npmjs.com/package/@priyanshuchawda/codeaudit',
+      skills: 'https://skills.sh/priyanshuchawda/codeaudit',
     },
     seoKeywords: [
-      'RepoSentinel MCP',
-      'reposentinel-mcp',
+      'CodeAudit MCP',
+      'codeaudit',
+      '@priyanshuchawda/codeaudit',
       'Model Context Protocol server',
       'MCP server',
+      'AI code audit',
+      'code audit MCP',
       'MCP repository audit',
       'read-only MCP server',
+      'improve code quality',
+      'AI code review',
+      'repository review tool',
+      'software project audit',
+      'security review MCP',
       'agent workflow routing',
       'Codex MCP server',
       'Claude MCP server',
       'npm MCP server',
+      'skills CLI codeaudit',
       'repository inspection MCP',
       'documentation evidence audit',
       'skill routing MCP',
     ],
     packageInfo: {
-      name: 'reposentinel-mcp',
-      version: '0.1.1',
-      installCommand: 'npx -y reposentinel-mcp',
-      registryUrl: 'https://www.npmjs.com/package/reposentinel-mcp',
+      name: '@priyanshuchawda/codeaudit',
+      version: '0.1.3',
+      installCommand: 'npx -y @priyanshuchawda/codeaudit',
+      skillName: 'codeaudit',
+      skillInstallCommand:
+        'npx skills add priyanshuchawda/codeaudit --skill codeaudit',
+      registryUrl: 'https://www.npmjs.com/package/@priyanshuchawda/codeaudit',
+      skillsUrl: 'https://skills.sh/priyanshuchawda/codeaudit',
       runtime: 'Node.js',
       license: 'MIT',
     },
     artifacts: [
       'npm package',
+      'skills.sh skill',
       'GitHub repo',
       'MCP server',
       'HTTP transport',
@@ -116,17 +135,17 @@ export const projects: Project[] = [
       {
         label: 'Why I chose this stack',
         detail:
-          'TypeScript, Node.js, and MCP fit a typed tool server that can run locally with npx while still supporting a controlled HTTP deployment path.',
+          'TypeScript, Node.js, MCP, and skills.sh fit a typed audit tool that can run locally with npx, install as a reusable agent skill, and still support a controlled HTTP deployment path.',
       },
       {
         label: 'What I handled myself',
         detail:
-          'I built the project detection, skill routing manifest, repository audit tools, documentation evidence checks, HTTP runtime, npm packaging, and safety documentation.',
+          'I built the project detection, skill routing manifest, repository audit tools, documentation evidence checks, HTTP runtime, scoped npm package, skills install path, and safety documentation.',
       },
       {
         label: 'Hardest technical problem',
         detail:
-          'The hardest part was making the server useful to agents while keeping the tool surface read-only, bounded to the requested project root, and explicit about disallowed actions.',
+          'The hardest part was making code audits useful to agents while keeping the tool surface read-only, bounded to the requested project root, and explicit about disallowed actions.',
       },
       {
         label: 'Tradeoff I made',
@@ -136,7 +155,7 @@ export const projects: Project[] = [
       {
         label: 'How I tested it',
         detail:
-          'I validated project detection, skill routing, planning outputs, HTTP health and metadata endpoints, documentation-claim audits, installed-skill audits, and build checks.',
+          'I validated project detection, skill routing, planning outputs, HTTP health and metadata endpoints, documentation-claim audits, installed-skill audits, skills install, npx execution, and build checks.',
       },
       {
         label: 'What I would improve in production',
@@ -144,12 +163,12 @@ export const projects: Project[] = [
           'I would add OAuth-style multi-user identity, hosted deployment templates, richer framework-specific audits, and deeper report exports while keeping mutation controls explicit.',
       },
     ],
-    metaTitle: 'RepoSentinel MCP | TypeScript MCP Server',
+    metaTitle: 'CodeAudit MCP | AI Code Audit Server',
     metaDescription:
-      'RepoSentinel MCP is a read-only TypeScript MCP server on npm for repository inspection, skill routing, audits, docs evidence, and PR planning.',
+      'CodeAudit MCP is a read-only TypeScript MCP server on npm for AI code audits, repository review, code quality, docs evidence, and PR planning.',
     caseStudy: {
       overview:
-        'Run reposentinel-mcp with npx to give AI agents a safe read-only inspection layer before repository changes.',
+        'Run CodeAudit with npx or install the codeaudit skill to give AI agents a safe read-only inspection layer before repository changes.',
       architecture: [
         'Detect local project signals such as language, framework, tests, deployment, CI, and risk notes',
         'Route agent workflows with recommended tool sequences, skill activation order, quality gates, and strict instructions',
@@ -157,7 +176,8 @@ export const projects: Project[] = [
       ],
       keyFeatures: [
         'Project detection and skill-routing manifest for coding agents',
-        'Repository, code quality, Next.js security, docs-claims, tests, and installed-skill audits',
+        'Repository, code quality, Python, Next.js security, docs-claims, tests, and installed-skill audits',
+        'Public codeaudit skill install through npx skills add',
         'Issue and PR planning outputs generated from evidence-backed findings',
       ],
       challenges: [

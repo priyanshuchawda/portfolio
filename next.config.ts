@@ -29,6 +29,15 @@ const nextConfig: NextConfig = {
     root: __dirname,
   },
   poweredByHeader: false,
+  async redirects() {
+    return [
+      {
+        source: '/projects/reposentinel-mcp',
+        destination: '/projects/codeaudit',
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

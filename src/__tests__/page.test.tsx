@@ -18,7 +18,7 @@ describe('Home Page', () => {
     expect(screen.getByText('ghfind')).toBeDefined();
     expect(screen.getByText('Browser4All')).toBeDefined();
     expect(screen.getByText('Smart Crowd Navigator')).toBeDefined();
-    expect(screen.getByText('RepoSentinel MCP')).toBeDefined();
+    expect(screen.getByText('CodeAudit MCP')).toBeDefined();
   });
 
   test('renders capabilities section', () => {

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ExternalLink, Package } from 'lucide-react';
+import { ExternalLink, Package, Sparkles } from 'lucide-react';
 import { getProjectFaqs } from '@/data/faqs';
 import type { Project } from '@/data/projects';
 import { FAQSection } from './FAQSection';
@@ -61,6 +61,17 @@ export function ProjectDetail({ project }: { project: Project }) {
               npm package
             </a>
           ) : null}
+          {project.links.skills ? (
+            <a
+              href={project.links.skills}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border-border hover:bg-muted focus-visible:ring-accent inline-flex items-center gap-2 rounded-full border px-6 py-3 text-sm font-semibold transition-colors focus-visible:ring-2 focus-visible:outline-none"
+            >
+              <Sparkles className="h-4 w-4" />
+              codeaudit skill
+            </a>
+          ) : null}
         </div>
       </header>
 
@@ -116,6 +127,35 @@ export function ProjectDetail({ project }: { project: Project }) {
                 {project.packageInfo.installCommand}
               </code>
             </div>
+            {project.packageInfo.skillInstallCommand ? (
+              <div>
+                <span className="text-foreground font-semibold">
+                  Skill install:{' '}
+                </span>
+                <code className="bg-muted text-muted-foreground rounded px-2 py-1 text-sm">
+                  {project.packageInfo.skillInstallCommand}
+                </code>
+              </div>
+            ) : null}
+            {project.packageInfo.skillName ? (
+              <div>
+                <span className="text-foreground font-semibold">Skill: </span>
+                {project.packageInfo.skillsUrl ? (
+                  <a
+                    href={project.packageInfo.skillsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-accent hover:text-foreground focus-visible:ring-accent font-mono text-sm transition-colors focus-visible:ring-2 focus-visible:outline-none"
+                  >
+                    {project.packageInfo.skillName}
+                  </a>
+                ) : (
+                  <span className="text-muted-foreground font-mono text-sm">
+                    {project.packageInfo.skillName}
+                  </span>
+                )}
+              </div>
+            ) : null}
             <div>
               <span className="text-foreground font-semibold">Runtime: </span>
               <span className="text-muted-foreground">

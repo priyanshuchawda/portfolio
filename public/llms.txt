@@ -14,22 +14,25 @@ Priyanshu Chawda is an AI-focused software engineer from Pune, India. He builds 
 - https://priyanshuworks.tech/ai-profile.json
 
 ## Projects
-- https://priyanshuworks.tech/projects/reposentinel-mcp
+- https://priyanshuworks.tech/projects/codeaudit
 - https://priyanshuworks.tech/projects/youtube-flashcards
 - https://priyanshuworks.tech/projects/ghfind
 - https://priyanshuworks.tech/projects/browser4all
 - https://priyanshuworks.tech/projects/smart-crowd-navigator
 
-## RepoSentinel MCP
-- Page: https://priyanshuworks.tech/projects/reposentinel-mcp
-- GitHub: https://github.com/priyanshuchawda/reposentinel-mcp
-- npm: https://www.npmjs.com/package/reposentinel-mcp
-- Package: reposentinel-mcp
-- Version: 0.1.1
-- Install: npx -y reposentinel-mcp
-- Summary: RepoSentinel MCP is a read-only TypeScript Model Context Protocol server for local repository inspection, skill routing, repository audits, documentation evidence checks, and issue or PR planning.
+## CodeAudit MCP
+- Page: https://priyanshuworks.tech/projects/codeaudit
+- GitHub: https://github.com/priyanshuchawda/codeaudit
+- npm: https://www.npmjs.com/package/@priyanshuchawda/codeaudit
+- skills.sh: https://skills.sh/priyanshuchawda/codeaudit
+- Package: @priyanshuchawda/codeaudit
+- Skill: codeaudit
+- Version: 0.1.3
+- Install: npx -y @priyanshuchawda/codeaudit
+- Skill install: npx skills add priyanshuchawda/codeaudit --skill codeaudit
+- Summary: CodeAudit MCP is a read-only TypeScript Model Context Protocol server and codeaudit skill for local repository inspection, AI code audits, code quality review, security checks, documentation evidence checks, skill routing, and issue or PR planning.
 - Safety: read-only by default, bounded to the supplied project root, redacts common secret formats, and does not expose unrestricted shell execution, auto-push, auto-merge, auto-delete, or remote repository mutation tools.
-- Keywords: RepoSentinel MCP, reposentinel-mcp, Model Context Protocol server, MCP server, repository audit MCP, npm MCP server, Codex MCP server, Claude MCP server, skill routing, documentation evidence audit.
+- Keywords: CodeAudit MCP, codeaudit, @priyanshuchawda/codeaudit, Model Context Protocol server, MCP server, AI code audit, improve code quality, AI code review, repository audit MCP, npm MCP server, skills CLI codeaudit, Codex MCP server, Claude MCP server, skill routing, documentation evidence audit.
 
 ## Topics
 - AI engineering

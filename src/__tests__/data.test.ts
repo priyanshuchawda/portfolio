@@ -26,15 +26,21 @@ describe('Content data integrity', () => {
     expect(projects.some((project) => project.featured)).toBe(true);
   });
 
-  test('RepoSentinel MCP project is listed with repository and npm links', () => {
-    const project = projects.find((item) => item.slug === 'reposentinel-mcp');
+  test('CodeAudit MCP project is listed with repository, npm, and skill install links', () => {
+    const project = projects.find((item) => item.slug === 'codeaudit');
 
-    expect(project?.title).toBe('RepoSentinel MCP');
+    expect(project?.title).toBe('CodeAudit MCP');
     expect(project?.links.github).toBe(
-      'https://github.com/priyanshuchawda/reposentinel-mcp',
+      'https://github.com/priyanshuchawda/codeaudit',
     );
     expect(project?.links.npm).toBe(
-      'https://www.npmjs.com/package/reposentinel-mcp',
+      'https://www.npmjs.com/package/@priyanshuchawda/codeaudit',
+    );
+    expect(project?.packageInfo?.installCommand).toBe(
+      'npx -y @priyanshuchawda/codeaudit',
+    );
+    expect(project?.packageInfo?.skillInstallCommand).toBe(
+      'npx skills add priyanshuchawda/codeaudit --skill codeaudit',
     );
   });
 
