@@ -111,7 +111,7 @@ export const projects: Project[] = [
     ],
     packageInfo: {
       name: '@priyanshuchawda/codeaudit',
-      version: '0.1.3',
+      version: '0.1.5',
       installCommand: 'npx -y @priyanshuchawda/codeaudit',
       skillName: 'codeaudit',
       skillInstallCommand:

@@ -274,7 +274,7 @@ describe('SEO indexing contract', () => {
       'https://github.com/priyanshuchawda/codeaudit',
     );
     expect(schema.runtimePlatform).toBe('Node.js');
-    expect(schema.softwareVersion).toBe('0.1.3');
+    expect(schema.softwareVersion).toBe('0.1.5');
     expect(schema.installUrl).toBe(
       'https://www.npmjs.com/package/@priyanshuchawda/codeaudit',
     );
