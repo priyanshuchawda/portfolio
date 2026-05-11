@@ -1,5 +1,6 @@
 export type ProjectSlug =
   | 'codeaudit'
+  | 'workaudit-ai'
   | 'youtube-flashcards'
   | 'ghfind'
   | 'browser4all'
@@ -191,6 +192,115 @@ export const projects: Project[] = [
       futureImprovements: [
         'Add authenticated multi-user HTTP deployments',
         'Expand framework-specific audit coverage and exportable report formats',
+      ],
+    },
+  },
+  {
+    slug: 'workaudit-ai',
+    title: 'WorkAudit AI',
+    subtitle: 'Local-first desktop work evidence system',
+    summary:
+      'Builds an evidence-backed timeline from local desktop events and generates cited AI session reports.',
+    problem:
+      'Developers and teams struggle to reconstruct real work sessions reliably; manual updates lose context and many AI summaries are not traceable back to evidence.',
+    solution:
+      'I built a local-first Tauri + Python sidecar architecture that records desktop activity metadata, links evidence IDs, applies privacy redaction, and produces deterministic plus optional local-LLM reports.',
+    tech: [
+      'Tauri v2',
+      'React',
+      'TypeScript',
+      'Python 3.13',
+      'FastAPI',
+      'SQLite WAL',
+      'Ollama (Gemma 4)',
+      'Vitest / Pytest',
+    ],
+    impact:
+      'Proves a practical foundation for private, evidence-cited work audits with real Windows active-window capture, screenshot metadata controls, deterministic exports, and guarded local AI report generation.',
+    featured: true,
+    updatedAt: '2026-05-11',
+    links: {
+      github: 'https://github.com/priyanshuchawda/workaudit-ai',
+    },
+    seoKeywords: [
+      'WorkAudit AI',
+      'workaudit-ai',
+      'WorkTrace AI',
+      'local-first desktop recorder',
+      'evidence-backed session timeline',
+      'AI report with citations',
+      'Tauri FastAPI app',
+      'privacy redaction pipeline',
+    ],
+    artifacts: [
+      'GitHub repo',
+      'Tauri desktop app',
+      'FastAPI sidecar',
+      'SQLite WAL storage',
+      'Deterministic Markdown and JSON export',
+      'AI report evaluation suite',
+      'Privacy redaction controls',
+    ],
+    engineeringDecisions: [
+      {
+        label: 'Why I chose this stack',
+        detail:
+          'Tauri + React keeps the desktop UX lightweight, while a Python FastAPI sidecar isolates capture and AI runtime integrations behind typed boundaries.',
+      },
+      {
+        label: 'What I handled myself',
+        detail:
+          'I structured the local-first architecture, implemented capture/event foundations, report flows, privacy controls, and the sidecar-to-desktop command boundary.',
+      },
+      {
+        label: 'Hardest technical problem',
+        detail:
+          'Balancing useful activity evidence with privacy constraints was the hardest part, especially around redaction, private-mode suppression, and safe fallback behavior.',
+      },
+      {
+        label: 'Tradeoff I made',
+        detail:
+          'I prioritized deterministic and verifiable outputs before claiming production-grade autonomous capture, cloud sync, or aggressive always-on AI features.',
+      },
+      {
+        label: 'How I tested it',
+        detail:
+          'I used deterministic tests across shared contracts, sidecar APIs, storage/export paths, desktop states, and eval fixtures to verify evidence linkage and fallback behavior.',
+      },
+      {
+        label: 'What I would improve in production',
+        detail:
+          'I would add signed installer hardening, richer privacy-center controls, deeper runtime benchmarks, and broader live-sensor integrations with strict local-only defaults.',
+      },
+    ],
+    metaTitle: 'WorkAudit AI | Local-First Work Timeline',
+    metaDescription:
+      'WorkAudit AI is a local-first desktop system that captures work evidence and generates privacy-aware, citation-backed AI session reports.',
+    caseStudy: {
+      overview:
+        'A desktop-first architecture for turning local activity signals into evidence-backed timelines and trustworthy AI summaries.',
+      architecture: [
+        'Tauri desktop app calls typed commands exposed by a local FastAPI sidecar',
+        'Sidecar persists sessions, events, and evidence metadata in SQLite WAL storage',
+        'Report layer generates deterministic exports and optional local-LLM summaries with evidence IDs',
+      ],
+      keyFeatures: [
+        'Real Windows active-window and screenshot metadata capture foundations',
+        'Session dashboard with recorder controls, exports, and evidence review',
+        'Privacy redaction helpers with explicit private-mode suppression pathways',
+        'Deterministic and AI-assisted report outputs with citation references',
+      ],
+      challenges: [
+        'Keeping evidence useful without collecting sensitive content by default',
+        'Maintaining deterministic fallbacks when optional local model runtimes are unavailable',
+      ],
+      learnings: [
+        'Evidence IDs and deterministic exports make AI summaries more trustworthy',
+        'A strict local-first boundary simplifies privacy reasoning and deployment risk',
+      ],
+      futureImprovements: [
+        'Expand production installer hardening and runtime profiling benchmarks',
+        'Add richer privacy-center controls and deeper workflow analytics',
       ],
     },
   },

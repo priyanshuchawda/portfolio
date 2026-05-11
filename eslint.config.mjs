@@ -44,6 +44,7 @@ const eslintConfig = defineConfig([
     '.next/**',
     'out/**',
     'build/**',
+    'ignore/**',
     'next-env.d.ts',
     'gemini-cli/**',
   ]),
