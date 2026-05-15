@@ -52,6 +52,6 @@ Priyanshu Chawda is an AI-focused software engineer from Pune, India. He builds 
 - Full-Stack AI Applications: Next.js, TypeScript, and Python AI product builds.
 
 ## Contact
-- Email: priyanshuchawda20@gmail.com
+- Email: hellopriyanshu4@gmail.com
 - LinkedIn: https://www.linkedin.com/in/priyanshuchawda
 - GitHub: https://github.com/priyanshuchawda

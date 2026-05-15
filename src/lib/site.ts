@@ -10,7 +10,7 @@ export const siteConfig = {
   shortDescription:
     'AI-focused software engineer building LLM workflows, MCP tools, and production-grade web apps.',
   jobTitle: 'AI-focused Software Engineer',
-  email: 'priyanshuchawda20@gmail.com',
+  email: 'hellopriyanshu4@gmail.com',
   twitterHandle: '@priyanshuchawda',
   twitter: 'https://x.com/priyanshuchawda',
   github: 'https://github.com/priyanshuchawda',

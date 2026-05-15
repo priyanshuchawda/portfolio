@@ -24,7 +24,7 @@ export const homeFaqs: FAQItem[] = [
   {
     question: 'How can someone contact Priyanshu Chawda?',
     answer:
-      'The fastest way to contact Priyanshu Chawda is by email at priyanshuchawda20@gmail.com or through LinkedIn at linkedin.com/in/priyanshuchawda for AI engineering, MCP tooling, and full-stack project work.',
+      'The fastest way to contact Priyanshu Chawda is by email at hellopriyanshu4@gmail.com or through LinkedIn at linkedin.com/in/priyanshuchawda for AI engineering, MCP tooling, and full-stack project work.',
   },
 ];
 
