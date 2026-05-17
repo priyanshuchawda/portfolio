@@ -1,0 +1,23 @@
+version = 1
+
+exclude_patterns = [
+  ".next/**",
+  "coverage/**",
+  "node_modules/**",
+]
+
+test_patterns = [
+  "src/__tests__/**",
+  "**/*.test.ts",
+  "**/*.test.tsx",
+]
+
+[[analyzers]]
+name = "javascript"
+enabled = true
+
+  [analyzers.meta]
+  plugins = ["react"]
+  environment = ["nodejs", "browser", "vitest"]
+  module_system = "es-modules"
+  dialect = "typescript"
