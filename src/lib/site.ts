@@ -15,6 +15,7 @@ export const siteConfig = {
   twitter: 'https://x.com/priyanshuchawda',
   github: 'https://github.com/priyanshuchawda',
   linkedin: 'https://www.linkedin.com/in/priyanshuchawda',
+  profileImage: 'https://avatars.githubusercontent.com/u/86182776?v=4',
   lastUpdated: '2026-05-17',
   keywords: [
     'Priyanshu Chawda',

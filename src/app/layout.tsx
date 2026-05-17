@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     url: '/',
     title: siteConfig.title,
     description: siteConfig.description,
-    siteName: `${siteConfig.name} Portfolio`,
+    siteName: siteConfig.name,
   },
   twitter: {
     card: 'summary_large_image',
