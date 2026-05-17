@@ -43,7 +43,7 @@ export function buildMetadata({
       url: path,
       title,
       description,
-      siteName: `${siteConfig.name} Portfolio`,
+      siteName: siteConfig.name,
       images: [ogImage],
     },
     twitter: {

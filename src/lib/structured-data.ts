@@ -23,7 +23,7 @@ export const personStructuredData = {
   name: siteConfig.name,
   url: siteConfig.url,
   email: siteConfig.email,
-  image: `${siteConfig.url}/opengraph-image`,
+  image: siteConfig.profileImage,
   jobTitle: siteConfig.jobTitle,
   description: siteConfig.description,
   sameAs: sameAsLinks,

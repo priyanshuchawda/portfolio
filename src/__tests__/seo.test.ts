@@ -100,6 +100,12 @@ describe('SEO indexing contract', () => {
     });
   });
 
+  test('uses the canonical entity name in Open Graph site metadata', () => {
+    const metadata = buildMetadata(pageMetadata.about);
+
+    expect(metadata.openGraph?.siteName).toBe(siteConfig.name);
+  });
+
   test('uses one canonical origin in sitemap and robots', () => {
     const entries = sitemap();
     const robotsTxt = robots();
@@ -176,6 +182,9 @@ describe('SEO indexing contract', () => {
   test('keeps person schema fields populated', () => {
     expect(personStructuredData.name).toBe(siteConfig.name);
     expect(personStructuredData.url).toBe(siteConfig.url);
+    expect(siteConfig.profileImage).toMatch(/^https:\/\//);
+    expect(personStructuredData.image).toBe(siteConfig.profileImage);
+    expect(personStructuredData.image).not.toContain('/opengraph-image');
     expect(personStructuredData.jobTitle).toBe(siteConfig.jobTitle);
     expect(personStructuredData.knowsAbout.length).toBeGreaterThan(0);
     expect(personStructuredData.alumniOf.name).toBe(
@@ -329,6 +338,7 @@ describe('SEO indexing contract', () => {
     expect(llmsText).toContain('improve code quality');
 
     expect(aiProfile.keyPages).toContain(codeauditProjectUrl);
+    expect(aiProfile.image).toBe(siteConfig.profileImage);
     expect(aiProfile.projects).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
