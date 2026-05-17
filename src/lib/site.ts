@@ -15,7 +15,7 @@ export const siteConfig = {
   twitter: 'https://x.com/priyanshuchawda',
   github: 'https://github.com/priyanshuchawda',
   linkedin: 'https://www.linkedin.com/in/priyanshuchawda',
-  lastUpdated: '2026-04-29',
+  lastUpdated: '2026-05-17',
   keywords: [
     'Priyanshu Chawda',
     'AI-focused software engineer',

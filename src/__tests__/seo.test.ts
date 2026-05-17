@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import nextConfig from '../../next.config';
 import manifest from '@/app/manifest';
@@ -18,7 +18,7 @@ import {
   personStructuredData,
   serializeJsonLd,
 } from '@/lib/structured-data';
-import { homeFaqs } from '@/data/faqs';
+import { getProjectFaqs, homeFaqs } from '@/data/faqs';
 import { getProjectBySlug, projects } from '@/data/projects';
 import { services } from '@/data/services';
 import { writingPosts } from '@/data/writing';
@@ -155,6 +155,24 @@ describe('SEO indexing contract', () => {
     });
   });
 
+  test('does not ship a root loading shell that hides prerendered page content', () => {
+    expect(existsSync(join(process.cwd(), 'src/app/loading.tsx'))).toBe(false);
+  });
+
+  test('keeps WebSite schema site-name signals complete', () => {
+    const websiteSchema = baseStructuredData['@graph'].find(
+      (item) => item['@type'] === 'WebSite',
+    );
+
+    expect(websiteSchema).toEqual(
+      expect.objectContaining({
+        name: siteConfig.name,
+        alternateName: siteConfig.shortName,
+        url: siteConfig.url,
+      }),
+    );
+  });
+
   test('keeps person schema fields populated', () => {
     expect(personStructuredData.name).toBe(siteConfig.name);
     expect(personStructuredData.url).toBe(siteConfig.url);
@@ -227,6 +245,16 @@ describe('SEO indexing contract', () => {
     expect(projectListSchema.itemListElement.length).toBe(projects.length);
     expect(serviceCatalogSchema['@type']).toBe('OfferCatalog');
     expect(serviceCatalogSchema.itemListElement.length).toBe(services.length);
+  });
+
+  test('generates project FAQ answers without grammar or casing defects', () => {
+    projects.forEach((project) => {
+      getProjectFaqs(project).forEach((item) => {
+        expect(item.answer).not.toMatch(/\bis builds\b/i);
+        expect(item.answer).not.toMatch(/\baI\b/);
+        expect(item.answer).not.toMatch(/\ba AI\b/);
+      });
+    });
   });
 
   test('CodeAudit MCP page metadata targets code audit, MCP, npm, and skills discovery', async () => {
@@ -312,6 +340,29 @@ describe('SEO indexing contract', () => {
         }),
       ]),
     );
+  });
+
+  test('AI-readable discovery files include every current project page', () => {
+    const llmsText = readFileSync(
+      join(process.cwd(), 'public/llms.txt'),
+      'utf8',
+    );
+
+    projects.forEach((project) => {
+      const projectUrl = `${siteConfig.url}/projects/${project.slug}`;
+
+      expect(llmsText).toContain(project.title);
+      expect(llmsText).toContain(projectUrl);
+      expect(aiProfile.keyPages).toContain(projectUrl);
+      expect(aiProfile.projects).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            name: project.title,
+            url: projectUrl,
+          }),
+        ]),
+      );
+    });
   });
 
   test('legacy RepoSentinel project URL redirects to the CodeAudit project URL', async () => {

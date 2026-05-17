@@ -1,6 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, test } from 'vitest';
 import Home from '../app/page';
+import { ProjectDetail } from '@/components/ProjectDetail';
+import { getProjectBySlug } from '@/data/projects';
 
 describe('Home Page', () => {
   test('renders hero section with correct heading', () => {
@@ -68,5 +70,14 @@ describe('Home Page', () => {
   test('renders contact section with CTA', () => {
     render(<Home />);
     expect(screen.getByText('Contact Priyanshu')).toBeDefined();
+  });
+
+  test('renders project-specific freshness dates on project pages', () => {
+    const project = getProjectBySlug('workaudit-ai');
+    expect(project).toBeDefined();
+
+    render(<ProjectDetail project={project!} />);
+
+    expect(screen.getByText('May 11, 2026')).toBeDefined();
   });
 });

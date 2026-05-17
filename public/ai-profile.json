@@ -1,7 +1,7 @@
 {
   "name": "Priyanshu Chawda",
   "url": "https://priyanshuworks.tech",
-  "description": "AI-focused software engineer from Pune, India building LLM workflows, MCP tools, typed APIs, evals, developer tools, and production-grade AI web applications.",
+  "description": "AI-focused software engineer from Pune, India building LLM workflows, MCP tools, typed APIs, evals, developer tools, local-first AI systems, and production-grade AI web applications.",
   "location": "Pune, India",
   "role": "AI-focused Software Engineer",
   "topics": [
@@ -11,12 +11,14 @@
     "typed APIs",
     "AI evals",
     "AI code audits",
-    "Code quality review",
+    "code quality review",
+    "local-first AI applications",
+    "privacy-aware AI reporting",
     "Gemini AI",
     "Next.js",
     "TypeScript",
     "Python",
-    "Developer tools"
+    "developer tools"
   ],
   "services": [
     "MCP Tool Development",
@@ -28,8 +30,17 @@
     "https://priyanshuworks.tech/about",
     "https://priyanshuworks.tech/projects",
     "https://priyanshuworks.tech/projects/codeaudit",
+    "https://priyanshuworks.tech/projects/workaudit-ai",
+    "https://priyanshuworks.tech/projects/youtube-flashcards",
+    "https://priyanshuworks.tech/projects/ghfind",
+    "https://priyanshuworks.tech/projects/browser4all",
+    "https://priyanshuworks.tech/projects/smart-crowd-navigator",
     "https://priyanshuworks.tech/services",
-    "https://priyanshuworks.tech/contact"
+    "https://priyanshuworks.tech/writing",
+    "https://priyanshuworks.tech/achievements",
+    "https://priyanshuworks.tech/contact",
+    "https://priyanshuworks.tech/llms.txt",
+    "https://priyanshuworks.tech/ai-profile.json"
   ],
   "projects": [
     {
@@ -58,6 +69,71 @@
         "agent workflow routing",
         "documentation evidence audit"
       ]
+    },
+    {
+      "name": "WorkAudit AI",
+      "url": "https://priyanshuworks.tech/projects/workaudit-ai",
+      "github": "https://github.com/priyanshuchawda/workaudit-ai",
+      "summary": "Builds an evidence-backed timeline from local desktop events and generates cited AI session reports.",
+      "keywords": [
+        "WorkAudit AI",
+        "workaudit-ai",
+        "WorkTrace AI",
+        "local-first desktop recorder",
+        "evidence-backed session timeline",
+        "AI report with citations",
+        "Tauri FastAPI app",
+        "privacy redaction pipeline"
+      ]
+    },
+    {
+      "name": "YouTube Flashcards",
+      "url": "https://priyanshuworks.tech/projects/youtube-flashcards",
+      "github": "https://github.com/priyanshuchawda/youtube-flashcards",
+      "demo": "https://youtube-flashcards-alpha.vercel.app",
+      "summary": "Turns YouTube lectures into interactive flashcards for faster review.",
+      "keywords": [
+        "Gemini AI study tool",
+        "YouTube flashcards",
+        "AI flashcard generator",
+        "transcript-to-flashcards"
+      ]
+    },
+    {
+      "name": "ghfind",
+      "url": "https://priyanshuworks.tech/projects/ghfind",
+      "github": "https://github.com/priyanshuchawda/ghfind",
+      "summary": "AI-powered search for relevant GitHub issues and PRs using natural language.",
+      "keywords": [
+        "AI GitHub search",
+        "GitHub issue search",
+        "PR search",
+        "developer search"
+      ]
+    },
+    {
+      "name": "Browser4All",
+      "url": "https://priyanshuworks.tech/projects/browser4all",
+      "github": "https://github.com/priyanshuchawda/browser4all",
+      "summary": "AI secure browser concept with real-time phishing and malware analysis.",
+      "keywords": [
+        "AI secure browser",
+        "phishing analysis",
+        "malware analysis",
+        "Gemini security tool"
+      ]
+    },
+    {
+      "name": "Smart Crowd Navigator",
+      "url": "https://priyanshuworks.tech/projects/smart-crowd-navigator",
+      "github": "https://github.com/priyanshuchawda/smart-crowd-navigator",
+      "summary": "AI crowd navigation system for safer exits and better flow during events.",
+      "keywords": [
+        "AI crowd navigation",
+        "event safety",
+        "crowd flow optimization",
+        "route simulation"
+      ]
     }
   ],
   "sameAs": [
@@ -70,5 +146,5 @@
     "linkedin": "https://www.linkedin.com/in/priyanshuchawda",
     "github": "https://github.com/priyanshuchawda"
   },
-  "lastUpdated": "2026-05-04"
+  "lastUpdated": "2026-05-17"
 }

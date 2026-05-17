@@ -50,7 +50,7 @@ export function getProjectFaqs(project: Project): FAQItem[] {
   return [
     {
       question: `What is ${project.title}?`,
-      answer: `${project.title} is ${project.summary.charAt(0).toLowerCase()}${project.summary.slice(1)} It was built as a ${project.subtitle.toLowerCase()} using ${project.tech.join(', ')}.`,
+      answer: `${project.title}: ${project.summary} The project uses ${project.tech.join(', ')} and is positioned as ${project.subtitle}.`,
     },
     {
       question: `What problem does ${project.title} solve?`,
