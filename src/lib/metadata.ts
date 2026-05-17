@@ -7,23 +7,29 @@ export function buildMetadata({
   path,
   type = 'website',
   keywords,
+  imagePath,
+  imageAlt,
 }: {
   title: string;
   description: string;
   path: string;
   type?: 'website' | 'article';
   keywords?: readonly string[];
+  imagePath?: string;
+  imageAlt?: string;
 }): Metadata {
+  const ogImagePath = imagePath ?? '/opengraph-image';
+  const twitterImagePath = imagePath ?? '/twitter-image';
   const ogImage = {
-    url: '/opengraph-image',
+    url: ogImagePath,
     width: 1200,
     height: 630,
-    alt: title,
+    alt: imageAlt ?? title,
   };
 
   const twitterImage = {
-    url: '/twitter-image',
-    alt: title,
+    url: twitterImagePath,
+    alt: imageAlt ?? title,
   };
 
   return {
