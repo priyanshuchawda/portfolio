@@ -25,7 +25,7 @@ export function ProjectDetail({ project }: { project: Project }) {
           <p className="text-muted-foreground max-w-2xl text-base">
             {project.caseStudy.overview}
           </p>
-          <FreshnessNote />
+          <FreshnessNote date={project.updatedAt} />
         </div>
         <div className="flex flex-wrap gap-4">
           {project.links.github ? (

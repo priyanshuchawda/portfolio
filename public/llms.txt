@@ -1,7 +1,7 @@
 # Priyanshu Chawda
 
 ## Overview
-Priyanshu Chawda is an AI-focused software engineer from Pune, India. He builds LLM workflows, MCP tools, developer automation, and full-stack AI applications with typed APIs, evals, safety boundaries, TypeScript, Python, Gemini, and Next.js.
+Priyanshu Chawda is an AI-focused software engineer from Pune, India. He builds LLM workflows, MCP tools, developer automation, local-first AI systems, and full-stack AI applications with typed APIs, evals, safety boundaries, TypeScript, Python, Gemini, and Next.js.
 
 ## Key pages
 - https://priyanshuworks.tech/
@@ -11,16 +11,19 @@ Priyanshu Chawda is an AI-focused software engineer from Pune, India. He builds 
 - https://priyanshuworks.tech/writing
 - https://priyanshuworks.tech/achievements
 - https://priyanshuworks.tech/contact
+- https://priyanshuworks.tech/llms.txt
 - https://priyanshuworks.tech/ai-profile.json
 
 ## Projects
-- https://priyanshuworks.tech/projects/codeaudit
-- https://priyanshuworks.tech/projects/youtube-flashcards
-- https://priyanshuworks.tech/projects/ghfind
-- https://priyanshuworks.tech/projects/browser4all
-- https://priyanshuworks.tech/projects/smart-crowd-navigator
+- CodeAudit MCP: https://priyanshuworks.tech/projects/codeaudit
+- WorkAudit AI: https://priyanshuworks.tech/projects/workaudit-ai
+- YouTube Flashcards: https://priyanshuworks.tech/projects/youtube-flashcards
+- ghfind: https://priyanshuworks.tech/projects/ghfind
+- Browser4All: https://priyanshuworks.tech/projects/browser4all
+- Smart Crowd Navigator: https://priyanshuworks.tech/projects/smart-crowd-navigator
 
-## CodeAudit MCP
+## Project facts
+### CodeAudit MCP
 - Page: https://priyanshuworks.tech/projects/codeaudit
 - GitHub: https://github.com/priyanshuchawda/codeaudit
 - npm: https://www.npmjs.com/package/@priyanshuchawda/codeaudit
@@ -30,9 +33,45 @@ Priyanshu Chawda is an AI-focused software engineer from Pune, India. He builds 
 - Version: 0.1.5
 - Install: npx -y @priyanshuchawda/codeaudit
 - Skill install: npx skills add priyanshuchawda/codeaudit --skill codeaudit
-- Summary: CodeAudit MCP is a read-only TypeScript Model Context Protocol server and codeaudit skill for local repository inspection, AI code audits, code quality review, security checks, documentation evidence checks, skill routing, and issue or PR planning.
-- Safety: read-only by default, bounded to the supplied project root, redacts common secret formats, and does not expose unrestricted shell execution, auto-push, auto-merge, auto-delete, or remote repository mutation tools.
+- Summary: Read-only TypeScript Model Context Protocol server and codeaudit skill for local repository inspection, AI code audits, code quality review, security checks, documentation evidence checks, skill routing, and issue or PR planning.
+- Safety: Read-only by default, bounded to the supplied project root, redacts common secret formats, and does not expose unrestricted shell execution, auto-push, auto-merge, auto-delete, or remote repository mutation tools.
 - Keywords: CodeAudit MCP, codeaudit, @priyanshuchawda/codeaudit, Model Context Protocol server, MCP server, AI code audit, improve code quality, AI code review, repository audit MCP, npm MCP server, skills CLI codeaudit, Codex MCP server, Claude MCP server, skill routing, documentation evidence audit.
+
+### WorkAudit AI
+- Page: https://priyanshuworks.tech/projects/workaudit-ai
+- GitHub: https://github.com/priyanshuchawda/workaudit-ai
+- Summary: Builds an evidence-backed timeline from local desktop events and generates cited AI session reports.
+- Stack: Tauri v2, React, TypeScript, Python 3.13, FastAPI, SQLite WAL, Ollama (Gemma 4), Vitest / Pytest.
+- Keywords: WorkAudit AI, workaudit-ai, WorkTrace AI, local-first desktop recorder, evidence-backed session timeline, AI report with citations, Tauri FastAPI app, privacy redaction pipeline.
+
+### YouTube Flashcards
+- Page: https://priyanshuworks.tech/projects/youtube-flashcards
+- Demo: https://youtube-flashcards-alpha.vercel.app
+- GitHub: https://github.com/priyanshuchawda/youtube-flashcards
+- Summary: Turns YouTube lectures into interactive flashcards for faster review.
+- Stack: Next.js, TypeScript, Tailwind CSS, Gemini API.
+- Keywords: Gemini AI study tool, YouTube flashcards, AI flashcard generator, transcript-to-flashcards.
+
+### ghfind
+- Page: https://priyanshuworks.tech/projects/ghfind
+- GitHub: https://github.com/priyanshuchawda/ghfind
+- Summary: AI-powered search for relevant GitHub issues and PRs using natural language.
+- Stack: Python, Streamlit, GitHub CLI, Gemini API.
+- Keywords: AI GitHub search, GitHub issue search, PR search, developer search.
+
+### Browser4All
+- Page: https://priyanshuworks.tech/projects/browser4all
+- GitHub: https://github.com/priyanshuchawda/browser4all
+- Summary: AI secure browser concept with real-time phishing and malware analysis.
+- Stack: TypeScript, Gemini AI, threat analysis pipeline.
+- Keywords: AI secure browser, phishing analysis, malware analysis, Gemini security tool.
+
+### Smart Crowd Navigator
+- Page: https://priyanshuworks.tech/projects/smart-crowd-navigator
+- GitHub: https://github.com/priyanshuchawda/smart-crowd-navigator
+- Summary: AI crowd navigation system for safer exits and better flow during events.
+- Stack: TypeScript, AI analytics, simulation modeling.
+- Keywords: AI crowd navigation, event safety, crowd flow optimization, route simulation.
 
 ## Topics
 - AI engineering
@@ -45,6 +84,8 @@ Priyanshu Chawda is an AI-focused software engineer from Pune, India. He builds 
 - Developer tools
 - Full-stack development
 - Gemini AI
+- Local-first AI applications
+- Privacy-aware AI reporting
 
 ## Services
 - MCP Tool Development: Model Context Protocol tools and servers for AI agent tool access.

@@ -9,6 +9,7 @@ const websiteStructuredData = {
   '@id': `${siteConfig.url}/#website`,
   url: siteConfig.url,
   name: siteConfig.name,
+  alternateName: siteConfig.shortName,
   description: siteConfig.description,
   inLanguage: siteConfig.language,
   publisher: {
