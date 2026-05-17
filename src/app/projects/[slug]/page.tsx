@@ -39,6 +39,8 @@ export async function generateMetadata({
     description: project.metaDescription,
     path: `/projects/${project.slug}`,
     type: 'article',
+    imagePath: `/projects/${project.slug}/opengraph-image`,
+    imageAlt: project.metaTitle,
     keywords: [
       project.title,
       project.subtitle,

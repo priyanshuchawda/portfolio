@@ -5,7 +5,16 @@ import nextConfig from '../../next.config';
 import manifest from '@/app/manifest';
 import robots from '@/app/robots';
 import sitemap from '@/app/sitemap';
+import {
+  dynamicParams as projectImageDynamicParams,
+  generateStaticParams as generateProjectImageStaticParams,
+} from '@/app/projects/[slug]/opengraph-image';
 import { generateMetadata as generateProjectMetadata } from '@/app/projects/[slug]/page';
+import {
+  dynamicParams as writingImageDynamicParams,
+  generateStaticParams as generateWritingImageStaticParams,
+} from '@/app/writing/[slug]/opengraph-image';
+import { generateMetadata as generateWritingMetadata } from '@/app/writing/[slug]/page';
 import { pageMetadata } from '@/data/seo';
 import { buildMetadata } from '@/lib/metadata';
 import { sameAsLinks, siteConfig } from '@/lib/site';
@@ -27,6 +36,20 @@ import aiProfile from '../../public/ai-profile.json';
 const MIN_META_DESCRIPTION_LENGTH = 25;
 const MAX_META_DESCRIPTION_LENGTH = 160;
 const codeauditProjectUrl = `${siteConfig.url}/projects/codeaudit`;
+
+function getMetadataImageUrl(images: unknown) {
+  const firstImage = Array.isArray(images) ? images[0] : images;
+
+  if (typeof firstImage === 'string') {
+    return firstImage;
+  }
+
+  if (firstImage && typeof firstImage === 'object' && 'url' in firstImage) {
+    return String(firstImage.url);
+  }
+
+  return undefined;
+}
 
 function expectValidMetaDescription(label: string, description: string) {
   expect(description, `${label} should not be empty`).toBeTruthy();
@@ -273,6 +296,12 @@ describe('SEO indexing contract', () => {
 
     expect(metadata.alternates?.canonical).toBe('/projects/codeaudit');
     expect(metadata.openGraph?.url).toBe('/projects/codeaudit');
+    expect(getMetadataImageUrl(metadata.openGraph?.images)).toBe(
+      '/projects/codeaudit/opengraph-image',
+    );
+    expect(getMetadataImageUrl(metadata.twitter?.images)).toBe(
+      '/projects/codeaudit/opengraph-image',
+    );
     expect(metadata.title).toEqual({
       absolute: 'CodeAudit MCP | AI Code Audit Server',
     });
@@ -288,6 +317,32 @@ describe('SEO indexing contract', () => {
         'npm MCP server',
         'skills CLI codeaudit',
       ]),
+    );
+  });
+
+  test('writing page metadata uses route-specific generated images', async () => {
+    const post = writingPosts[0];
+    const metadata = await generateWritingMetadata({
+      params: Promise.resolve({ slug: post.slug }),
+    });
+    const expectedImagePath = `/writing/${post.slug}/opengraph-image`;
+
+    expect(getMetadataImageUrl(metadata.openGraph?.images)).toBe(
+      expectedImagePath,
+    );
+    expect(getMetadataImageUrl(metadata.twitter?.images)).toBe(
+      expectedImagePath,
+    );
+  });
+
+  test('generated social image routes are bounded to known slugs', () => {
+    expect(projectImageDynamicParams).toBe(false);
+    expect(writingImageDynamicParams).toBe(false);
+    expect(generateProjectImageStaticParams()).toEqual(
+      projects.map((project) => ({ slug: project.slug })),
+    );
+    expect(generateWritingImageStaticParams()).toEqual(
+      writingPosts.map((post) => ({ slug: post.slug })),
     );
   });
 

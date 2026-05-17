@@ -40,6 +40,8 @@ export async function generateMetadata({
     description: post.metaDescription,
     path: getWritingPath(post.slug),
     type: 'article',
+    imagePath: `${getWritingPath(post.slug)}/opengraph-image`,
+    imageAlt: post.metaTitle,
   });
 }
 
