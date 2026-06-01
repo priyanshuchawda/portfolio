@@ -526,4 +526,50 @@ describe('SEO indexing contract', () => {
       ]),
     );
   });
+
+  test('redirects duplicate hosts and legacy project slugs to canonical project URLs', async () => {
+    const redirects =
+      typeof nextConfig.redirects === 'function'
+        ? await nextConfig.redirects()
+        : [];
+    const sitemapUrls = sitemap().map((entry) => entry.url);
+
+    expect(redirects).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          source: '/:path*',
+          destination: `${siteConfig.url}/:path*`,
+          permanent: true,
+          has: [
+            expect.objectContaining({
+              type: 'host',
+              value: 'www.priyanshuworks.tech',
+            }),
+          ],
+        }),
+        expect.objectContaining({
+          source: '/projects/gemma_control',
+          destination: '/projects/gemma-control',
+          permanent: true,
+        }),
+        expect.objectContaining({
+          source: '/projects/screen_recorder',
+          destination: '/projects/screen-recorder',
+          permanent: true,
+        }),
+      ]),
+    );
+    expect(sitemapUrls).not.toContain(
+      `${siteConfig.url}/projects/gemma_control`,
+    );
+    expect(sitemapUrls).not.toContain(
+      `${siteConfig.url}/projects/screen_recorder`,
+    );
+    expect(sitemapUrls).not.toContain(
+      `${siteConfig.url}/projects/reposentinel-mcp`,
+    );
+    sitemapUrls.forEach((url) => {
+      expect(url).not.toContain('www.priyanshuworks.tech');
+    });
+  });
 });
