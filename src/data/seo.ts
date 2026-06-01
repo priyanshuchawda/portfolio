@@ -33,7 +33,7 @@ export const pageMetadata = {
   achievements: {
     title: 'Achievements | Priyanshu Chawda',
     description:
-      'Achievements by Priyanshu Chawda across projects, LeetCode, hackathons, open source, and AI engineering practice.',
+      'Achievements by Priyanshu Chawda across projects, LeetCode, AI hackathons, frontend challenges, Google UX research, and open source practice.',
     path: '/achievements',
   },
   contact: {

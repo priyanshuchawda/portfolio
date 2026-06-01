@@ -26,7 +26,7 @@ export default function AchievementsPage() {
         <PageHeader
           eyebrow="Achievements"
           title="Achievements"
-          description="A quick track record from shipping projects, solving problems, and building in public."
+          description="A track record across shipped projects, AI hackathons, frontend challenges, research selection, and problem-solving practice."
         />
 
         <section
@@ -39,7 +39,7 @@ export default function AchievementsPage() {
         <section className="space-y-6">
           <SectionHeading
             title="Milestones"
-            description="Highlights grounded in shipped work and measurable practice."
+            description="Highlights grounded in shipped work, competitive results, and measurable practice."
           />
           <div className="grid gap-4">
             {achievements.map((achievement) => (
