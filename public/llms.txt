@@ -1,7 +1,7 @@
 # Priyanshu Chawda
 
 ## Overview
-Priyanshu Chawda is an AI-focused software engineer from Pune, India. He builds LLM workflows, MCP tools, developer automation, local-first AI systems, and full-stack AI applications with typed APIs, evals, safety boundaries, TypeScript, Python, Gemini, and Next.js.
+Priyanshu Chawda is an AI-focused software engineer from Pune, India. He builds AI agents, MCP tools, local-first systems, native apps, typed APIs, evals, and production-grade AI web products with TypeScript, Python, Kotlin, C++, Gemini, and Next.js.
 
 ## Key pages
 - https://priyanshuworks.tech/
@@ -15,6 +15,8 @@ Priyanshu Chawda is an AI-focused software engineer from Pune, India. He builds 
 - https://priyanshuworks.tech/ai-profile.json
 
 ## Projects
+- GemmaControl: https://priyanshuworks.tech/projects/gemma-control
+- Screen Recorder: https://priyanshuworks.tech/projects/screen-recorder
 - CodeAudit MCP: https://priyanshuworks.tech/projects/codeaudit
 - WorkAudit AI: https://priyanshuworks.tech/projects/workaudit-ai
 - YouTube Flashcards: https://priyanshuworks.tech/projects/youtube-flashcards
@@ -23,6 +25,21 @@ Priyanshu Chawda is an AI-focused software engineer from Pune, India. He builds 
 - Smart Crowd Navigator: https://priyanshuworks.tech/projects/smart-crowd-navigator
 
 ## Project facts
+### GemmaControl
+- Page: https://priyanshuworks.tech/projects/gemma-control
+- GitHub: https://github.com/priyanshuchawda/gemma_control
+- Summary: Native Android AI agent that turns WhatsApp notifications into a local actionable inbox with offline FunctionGemma tool-call suggestions.
+- Stack: Kotlin, Android 16, Jetpack Compose, Room SQLite, WorkManager, LiteRT-LM, FunctionGemma 270M, AES-GCM, Android Keystore, MVVM.
+- Keywords: GemmaControl, gemma_control, WhatsApp AI agent, on-device AI, FunctionGemma 270M, LiteRT-LM, Android notification listener, private Android assistant, AES-GCM encrypted storage, Jetpack Compose AI app.
+
+### Screen Recorder
+- Page: https://priyanshuworks.tech/projects/screen-recorder
+- Demo: https://screen-recorder-windows.netlify.app
+- GitHub: https://github.com/priyanshuchawda/screen-recorder
+- Summary: Stable C++20 Windows screen recorder with WGC capture, D3D11, hardware-first H.264, WASAPI audio, camera overlay, HQ mode, and diagnostics.
+- Stack: C++20, Win32, Windows Graphics Capture, D3D11, Media Foundation, Intel Quick Sync, WASAPI, CMake, CPack, GitHub Actions.
+- Keywords: Screen Recorder, screen-recorder, native Windows recorder, C++20 screen capture, Windows Graphics Capture, D3D11 recorder, Media Foundation H.264, WASAPI audio capture, Intel Quick Sync, MP4 recorder.
+
 ### CodeAudit MCP
 - Page: https://priyanshuworks.tech/projects/codeaudit
 - GitHub: https://github.com/priyanshuchawda/codeaudit
@@ -33,15 +50,15 @@ Priyanshu Chawda is an AI-focused software engineer from Pune, India. He builds 
 - Version: 0.1.5
 - Install: npx -y @priyanshuchawda/codeaudit
 - Skill install: npx skills add priyanshuchawda/codeaudit --skill codeaudit
-- Summary: Read-only TypeScript Model Context Protocol server and codeaudit skill for local repository inspection, AI code audits, code quality review, security checks, documentation evidence checks, skill routing, and issue or PR planning.
+- Summary: Read-only MCP server and skill for AI code audits and repository reviews.
 - Safety: Read-only by default, bounded to the supplied project root, redacts common secret formats, and does not expose unrestricted shell execution, auto-push, auto-merge, auto-delete, or remote repository mutation tools.
 - Keywords: CodeAudit MCP, codeaudit, @priyanshuchawda/codeaudit, Model Context Protocol server, MCP server, AI code audit, improve code quality, AI code review, repository audit MCP, npm MCP server, skills CLI codeaudit, Codex MCP server, Claude MCP server, skill routing, documentation evidence audit.
 
 ### WorkAudit AI
 - Page: https://priyanshuworks.tech/projects/workaudit-ai
 - GitHub: https://github.com/priyanshuchawda/workaudit-ai
-- Summary: Builds an evidence-backed timeline from local desktop events and generates cited AI session reports.
-- Stack: Tauri v2, React, TypeScript, Python 3.13, FastAPI, SQLite WAL, Ollama (Gemma 4), Vitest / Pytest.
+- Summary: Privacy-first Windows work recorder for local evidence timelines and cited AI reports.
+- Stack: Tauri v2, React, TypeScript, Python 3.13, FastAPI, Rust, SQLite WAL, Local Ollama-compatible models, Vitest, Pytest.
 - Keywords: WorkAudit AI, workaudit-ai, WorkTrace AI, local-first desktop recorder, evidence-backed session timeline, AI report with citations, Tauri FastAPI app, privacy redaction pipeline.
 
 ### YouTube Flashcards

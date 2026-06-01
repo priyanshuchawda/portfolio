@@ -3,7 +3,7 @@ import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { PageHeader } from '@/components/PageHeader';
 import { ProjectCard } from '@/components/ProjectCard';
 import { StructuredData } from '@/components/StructuredData';
-import { projects } from '@/data/projects';
+import { projectsByRecentUpdate } from '@/data/projects';
 import { pageMetadata } from '@/data/seo';
 import { buildMetadata } from '@/lib/metadata';
 import {
@@ -32,7 +32,9 @@ export default function ProjectsPage() {
           { name: 'Projects', path: '/projects' },
         ])}
       />
-      <StructuredData data={getProjectListStructuredData(projects)} />
+      <StructuredData
+        data={getProjectListStructuredData(projectsByRecentUpdate)}
+      />
 
       <div className="container mx-auto max-w-5xl space-y-10 px-6 pt-20 pb-20">
         <Breadcrumbs items={breadcrumbs} />
@@ -43,7 +45,7 @@ export default function ProjectsPage() {
         />
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-          {projects.map((project) => (
+          {projectsByRecentUpdate.map((project) => (
             <ProjectCard key={project.slug} project={project} />
           ))}
         </div>

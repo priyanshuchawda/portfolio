@@ -37,6 +37,10 @@ const MIN_META_DESCRIPTION_LENGTH = 25;
 const MAX_META_DESCRIPTION_LENGTH = 160;
 const codeauditProjectUrl = `${siteConfig.url}/projects/codeaudit`;
 
+function getProjectUrl(slug: string) {
+  return `${siteConfig.url}/projects/${slug}`;
+}
+
 function getMetadataImageUrl(images: unknown) {
   const firstImage = Array.isArray(images) ? images[0] : images;
 
@@ -245,7 +249,9 @@ describe('SEO indexing contract', () => {
     writingPosts.forEach((post) => {
       expect(urls).toContain(`${siteConfig.url}/writing/${post.slug}`);
     });
-    expect(urls).toContain(codeauditProjectUrl);
+    projects.forEach((project) => {
+      expect(urls).toContain(getProjectUrl(project.slug));
+    });
   });
 
   test('sitemap uses stable content dates for freshness signals', () => {
@@ -320,6 +326,36 @@ describe('SEO indexing contract', () => {
     );
   });
 
+  test('every project page has canonical metadata, social image, and keyword coverage', async () => {
+    await Promise.all(
+      projects.map(async (project) => {
+        const metadata = await generateProjectMetadata({
+          params: Promise.resolve({ slug: project.slug }),
+        });
+        const imagePath = `/projects/${project.slug}/opengraph-image`;
+
+        expect(metadata.title).toEqual({
+          absolute: project.metaTitle,
+        });
+        expect(metadata.description).toBe(project.metaDescription);
+        expect(metadata.alternates?.canonical).toBe(
+          `/projects/${project.slug}`,
+        );
+        expect(metadata.openGraph?.url).toBe(`/projects/${project.slug}`);
+        expect(getMetadataImageUrl(metadata.openGraph?.images)).toBe(imagePath);
+        expect(getMetadataImageUrl(metadata.twitter?.images)).toBe(imagePath);
+        expect(metadata.keywords).toEqual(
+          expect.arrayContaining([
+            project.title,
+            project.subtitle,
+            ...project.tech,
+            ...(project.seoKeywords ?? []),
+          ]),
+        );
+      }),
+    );
+  });
+
   test('writing page metadata uses route-specific generated images', async () => {
     const post = writingPosts[0];
     const metadata = await generateWritingMetadata({
@@ -376,6 +412,36 @@ describe('SEO indexing contract', () => {
     );
   });
 
+  test('every project structured data exposes canonical source and freshness facts', () => {
+    projects.forEach((project) => {
+      const schema = getProjectStructuredData(project);
+      const sameAs = [
+        project.links.github,
+        project.links.demo,
+        project.links.npm,
+        project.links.skills,
+      ].filter(Boolean);
+
+      expect(schema['@type']).toBe(
+        project.links.github ? 'SoftwareSourceCode' : 'CreativeWork',
+      );
+      expect(schema.name).toBe(project.title);
+      expect(schema.description).toBe(project.summary);
+      expect(schema.url).toBe(getProjectUrl(project.slug));
+      expect(schema.dateModified).toBe(project.updatedAt);
+      expect(schema.mainEntityOfPage).toBe(getProjectUrl(project.slug));
+      expect(schema.codeRepository).toBe(project.links.github);
+
+      if (sameAs.length > 0) {
+        expect(schema.sameAs).toEqual(expect.arrayContaining(sameAs));
+      }
+
+      if (project.links.github) {
+        expect(schema.programmingLanguage).toBeTruthy();
+      }
+    });
+  });
+
   test('AI-readable discovery files mention CodeAudit MCP, npm, skills, and code quality evidence', () => {
     const llmsText = readFileSync(
       join(process.cwd(), 'public/llms.txt'),
@@ -414,20 +480,34 @@ describe('SEO indexing contract', () => {
     );
 
     projects.forEach((project) => {
-      const projectUrl = `${siteConfig.url}/projects/${project.slug}`;
+      const projectUrl = getProjectUrl(project.slug);
+      const profileProject = aiProfile.projects.find(
+        (item) => item.name === project.title,
+      );
 
       expect(llmsText).toContain(project.title);
       expect(llmsText).toContain(projectUrl);
+      expect(llmsText).toContain(project.summary);
+      expect(llmsText).toContain(project.links.github);
+      if (project.links.demo) {
+        expect(llmsText).toContain(project.links.demo);
+      }
       expect(aiProfile.keyPages).toContain(projectUrl);
-      expect(aiProfile.projects).toEqual(
-        expect.arrayContaining([
-          expect.objectContaining({
-            name: project.title,
-            url: projectUrl,
-          }),
-        ]),
+      expect(profileProject).toEqual(
+        expect.objectContaining({
+          name: project.title,
+          url: projectUrl,
+          summary: project.summary,
+          github: project.links.github,
+        }),
       );
+      if (project.links.demo) {
+        expect(profileProject).toEqual(
+          expect.objectContaining({ demo: project.links.demo }),
+        );
+      }
     });
+    expect(aiProfile.lastUpdated).toBe(siteConfig.lastUpdated);
   });
 
   test('legacy RepoSentinel project URL redirects to the CodeAudit project URL', async () => {

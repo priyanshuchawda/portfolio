@@ -2,7 +2,7 @@
   "name": "Priyanshu Chawda",
   "url": "https://priyanshuworks.tech",
   "image": "https://avatars.githubusercontent.com/u/86182776?v=4",
-  "description": "AI-focused software engineer from Pune, India building LLM workflows, MCP tools, typed APIs, evals, developer tools, local-first AI systems, and production-grade AI web applications.",
+  "description": "AI-focused software engineer from Pune, India building AI agents, MCP tools, local-first systems, native apps, typed APIs, evals, and production-grade AI web products.",
   "location": "Pune, India",
   "role": "AI-focused Software Engineer",
   "topics": [
@@ -14,6 +14,9 @@
     "AI code audits",
     "code quality review",
     "local-first AI applications",
+    "on-device AI agents",
+    "native apps",
+    "Windows desktop tools",
     "privacy-aware AI reporting",
     "Gemini AI",
     "Next.js",
@@ -30,6 +33,8 @@
     "https://priyanshuworks.tech/",
     "https://priyanshuworks.tech/about",
     "https://priyanshuworks.tech/projects",
+    "https://priyanshuworks.tech/projects/gemma-control",
+    "https://priyanshuworks.tech/projects/screen-recorder",
     "https://priyanshuworks.tech/projects/codeaudit",
     "https://priyanshuworks.tech/projects/workaudit-ai",
     "https://priyanshuworks.tech/projects/youtube-flashcards",
@@ -45,6 +50,40 @@
   ],
   "projects": [
     {
+      "name": "GemmaControl",
+      "url": "https://priyanshuworks.tech/projects/gemma-control",
+      "github": "https://github.com/priyanshuchawda/gemma_control",
+      "summary": "Native Android AI agent that turns WhatsApp notifications into a local actionable inbox with offline FunctionGemma tool-call suggestions.",
+      "keywords": [
+        "GemmaControl",
+        "gemma_control",
+        "WhatsApp AI agent",
+        "on-device AI",
+        "FunctionGemma 270M",
+        "LiteRT-LM",
+        "Android notification listener",
+        "AES-GCM encrypted storage"
+      ]
+    },
+    {
+      "name": "Screen Recorder",
+      "url": "https://priyanshuworks.tech/projects/screen-recorder",
+      "github": "https://github.com/priyanshuchawda/screen-recorder",
+      "demo": "https://screen-recorder-windows.netlify.app",
+      "summary": "Stable C++20 Windows screen recorder with WGC capture, D3D11, hardware-first H.264, WASAPI audio, camera overlay, HQ mode, and diagnostics.",
+      "keywords": [
+        "Screen Recorder",
+        "screen-recorder",
+        "native Windows recorder",
+        "C++20 screen capture",
+        "Windows Graphics Capture",
+        "D3D11 recorder",
+        "Media Foundation H.264",
+        "WASAPI audio capture",
+        "Intel Quick Sync"
+      ]
+    },
+    {
       "name": "CodeAudit MCP",
       "url": "https://priyanshuworks.tech/projects/codeaudit",
       "github": "https://github.com/priyanshuchawda/codeaudit",
@@ -55,7 +94,7 @@
       "version": "0.1.5",
       "install": "npx -y @priyanshuchawda/codeaudit",
       "skillInstall": "npx skills add priyanshuchawda/codeaudit --skill codeaudit",
-      "summary": "Read-only TypeScript Model Context Protocol server and codeaudit skill for local repository inspection, AI code audits, code quality review, security checks, documentation evidence checks, skill routing, and issue or PR planning.",
+      "summary": "Read-only MCP server and skill for AI code audits and repository reviews.",
       "keywords": [
         "CodeAudit MCP",
         "codeaudit",
@@ -75,7 +114,7 @@
       "name": "WorkAudit AI",
       "url": "https://priyanshuworks.tech/projects/workaudit-ai",
       "github": "https://github.com/priyanshuchawda/workaudit-ai",
-      "summary": "Builds an evidence-backed timeline from local desktop events and generates cited AI session reports.",
+      "summary": "Privacy-first Windows work recorder for local evidence timelines and cited AI reports.",
       "keywords": [
         "WorkAudit AI",
         "workaudit-ai",
@@ -147,5 +186,5 @@
     "linkedin": "https://www.linkedin.com/in/priyanshuchawda",
     "github": "https://github.com/priyanshuchawda"
   },
-  "lastUpdated": "2026-05-17"
+  "lastUpdated": "2026-06-02"
 }

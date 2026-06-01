@@ -6,7 +6,7 @@ export const siteConfig = {
   language: 'en-US',
   title: 'Priyanshu Chawda | AI Software Engineer',
   description:
-    'Priyanshu Chawda is an AI-focused software engineer building LLM workflows, MCP tools, typed APIs, evals, and production-grade AI web apps.',
+    'Priyanshu Chawda builds AI agents, MCP tools, local-first systems, native apps, and production-grade AI web products.',
   shortDescription:
     'AI-focused software engineer building LLM workflows, MCP tools, and production-grade web apps.',
   jobTitle: 'AI-focused Software Engineer',
@@ -16,7 +16,7 @@ export const siteConfig = {
   github: 'https://github.com/priyanshuchawda',
   linkedin: 'https://www.linkedin.com/in/priyanshuchawda',
   profileImage: 'https://avatars.githubusercontent.com/u/86182776?v=4',
-  lastUpdated: '2026-05-17',
+  lastUpdated: '2026-06-02',
   keywords: [
     'Priyanshu Chawda',
     'AI-focused software engineer',
