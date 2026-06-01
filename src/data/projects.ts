@@ -1,4 +1,6 @@
 export type ProjectSlug =
+  | 'gemma-control'
+  | 'screen-recorder'
   | 'codeaudit'
   | 'workaudit-ai'
   | 'youtube-flashcards'
@@ -59,6 +61,235 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  {
+    slug: 'gemma-control',
+    title: 'GemmaControl',
+    subtitle: 'Private on-device WhatsApp AI agent',
+    summary:
+      'Native Android AI agent that turns WhatsApp notifications into a local actionable inbox with offline FunctionGemma tool-call suggestions.',
+    problem:
+      'Busy WhatsApp conversations create scattered follow-ups, priority messages, and reminders, while cloud assistants introduce privacy risk for personal or work chats.',
+    solution:
+      'I built a Kotlin Android app that captures notifications with user permission, parses WhatsApp message context, stores sensitive data locally with AES-GCM encryption, and uses on-device FunctionGemma through LiteRT-LM to propose user-confirmed actions.',
+    tech: [
+      'Kotlin',
+      'Android 16',
+      'Jetpack Compose',
+      'Room SQLite',
+      'WorkManager',
+      'LiteRT-LM',
+      'FunctionGemma 270M',
+      'AES-GCM',
+      'Android Keystore',
+      'MVVM',
+    ],
+    impact:
+      'Demonstrates a privacy-first mobile AI agent pattern where notification ingestion, task extraction, reminders, priority flags, and reply preparation stay on device unless the user explicitly acts.',
+    featured: true,
+    updatedAt: '2026-06-01',
+    links: {
+      github: 'https://github.com/priyanshuchawda/gemma_control',
+    },
+    seoKeywords: [
+      'GemmaControl',
+      'gemma_control',
+      'WhatsApp AI agent',
+      'on-device AI',
+      'FunctionGemma 270M',
+      'LiteRT-LM',
+      'Android notification listener',
+      'private Android assistant',
+      'AES-GCM encrypted storage',
+      'Jetpack Compose AI app',
+    ],
+    artifacts: [
+      'GitHub repo',
+      'Native Android app',
+      'Technical documentation',
+      'Notification parser',
+      'Tool registry',
+      'Security and privacy notes',
+      'Static download website',
+      'Device validation evidence',
+    ],
+    engineeringDecisions: [
+      {
+        label: 'Why I chose this stack',
+        detail:
+          'Kotlin, Jetpack Compose, Room, WorkManager, LiteRT-LM, and FunctionGemma fit an Android-native assistant that can keep message processing, reminders, and model inference local on a real handset.',
+      },
+      {
+        label: 'What I handled myself',
+        detail:
+          'I built the notification ingestion flow, WhatsApp parsing model, local inbox, follow-up and reminder tools, Compose confirmation screens, encrypted storage boundary, and download-site packaging.',
+      },
+      {
+        label: 'Hardest technical problem',
+        detail:
+          'The hardest part was making notification actions useful while preventing silent automation, so every reply path requires active notification verification and a physical user confirmation.',
+      },
+      {
+        label: 'Tradeoff I made',
+        detail:
+          'I kept the assistant English-only and on-device for the first version instead of adding broader language support or cloud model fallback that would weaken the privacy story.',
+      },
+      {
+        label: 'How I tested it',
+        detail:
+          'I validated the app against Android 16 behavior, WhatsApp notification structures, duplicate event handling, reminder delivery, encryption boundaries, and Redmi 13 5G device constraints discovered through ADB.',
+      },
+      {
+        label: 'What I would improve in production',
+        detail:
+          'I would add broader device testing, stronger release signing workflows, richer local evaluation fixtures, multilingual handling, and more transparent model-download state management.',
+      },
+    ],
+    metaTitle: 'GemmaControl | Private WhatsApp AI Agent',
+    metaDescription:
+      'GemmaControl is a Kotlin Android AI agent that organizes WhatsApp notifications into a private local inbox with on-device FunctionGemma tool-call suggestions.',
+    caseStudy: {
+      overview:
+        'An Android-native productivity agent that captures allowed WhatsApp notifications, turns them into local tasks, and proposes actions without sending chat context to a hosted assistant.',
+      architecture: [
+        'Notification listener parses MessagingStyle payloads, separates group headers from message authors, and deduplicates reposted events',
+        'Room SQLite stores inbox items, follow-ups, priorities, reminders, drafts, and sensitive message text under Android Keystore-backed AES-GCM encryption',
+        'LiteRT-LM runs FunctionGemma as a proposal engine while Kotlin tool handlers enforce permission, verification, and confirmation boundaries',
+      ],
+      keyFeatures: [
+        'Local WhatsApp notification inbox with priority and cleanup controls',
+        'Follow-up creation, encrypted local reminders, and WorkManager notification delivery',
+        'User-confirmed click-to-chat and live remote-input reply paths',
+        'Scoped network access limited to explicit model binary downloads',
+      ],
+      challenges: [
+        'Parsing varied WhatsApp notification structures without over-collecting message content',
+        'Designing AI tool calls as proposals while keeping direct action behind user confirmation',
+      ],
+      learnings: [
+        'On-device assistants need strong UX boundaries as much as model capability',
+        'Android notification workflows require careful deduplication and lifecycle handling',
+      ],
+      futureImprovements: [
+        'Expand physical device validation beyond the initial Redmi 13 5G target',
+        'Add stronger local evals for notification parsing and proposed tool calls',
+      ],
+    },
+  },
+  {
+    slug: 'screen-recorder',
+    title: 'Screen Recorder',
+    subtitle: 'Native Windows capture and encoding app',
+    summary:
+      'Stable C++20 Windows screen recorder with WGC capture, D3D11, hardware-first H.264, WASAPI audio, camera overlay, HQ mode, and diagnostics.',
+    problem:
+      'Reliable Windows screen recording needs low overhead capture, synchronized audio/video output, useful diagnostics, and graceful fallbacks across different GPU and power states.',
+    solution:
+      'I built a native Win32/C++ recorder that captures the full screen through Windows Graphics Capture, encodes MP4 output with Media Foundation and Intel Quick Sync when available, records system audio through WASAPI, and writes per-session diagnostics beside each recording.',
+    tech: [
+      'C++20',
+      'Win32',
+      'Windows Graphics Capture',
+      'D3D11',
+      'Media Foundation',
+      'Intel Quick Sync',
+      'WASAPI',
+      'CMake',
+      'CPack',
+      'GitHub Actions',
+    ],
+    impact:
+      'Ships a lightweight native recording pipeline with default low-resource capture, optional 1080p HQ output, camera overlay, audio controls, orphaned partial-file recovery, and a public Netlify documentation site.',
+    featured: true,
+    updatedAt: '2026-06-01',
+    links: {
+      github: 'https://github.com/priyanshuchawda/screen-recorder',
+      demo: 'https://screen-recorder-windows.netlify.app',
+    },
+    seoKeywords: [
+      'Screen Recorder',
+      'screen-recorder',
+      'native Windows recorder',
+      'C++20 screen capture',
+      'Windows Graphics Capture',
+      'D3D11 recorder',
+      'Media Foundation H.264',
+      'WASAPI audio capture',
+      'Intel Quick Sync',
+      'MP4 recorder',
+    ],
+    artifacts: [
+      'GitHub repo',
+      'Live documentation site',
+      'Native Windows app',
+      'CMake build',
+      'CPack ZIP package',
+      'GitHub Actions CI',
+      'Per-session diagnostics',
+      'MIT license',
+    ],
+    engineeringDecisions: [
+      {
+        label: 'Why I chose this stack',
+        detail:
+          'C++20, Win32, WGC, D3D11, Media Foundation, and WASAPI provide direct access to the Windows capture and encoding path without the overhead of a cross-platform shell.',
+      },
+      {
+        label: 'What I handled myself',
+        detail:
+          'I built the capture controller, hardware-first encoder selection, audio loopback path, camera overlay preview, recording state machine, diagnostics writer, packaging flow, and website deployment.',
+      },
+      {
+        label: 'Hardest technical problem',
+        detail:
+          'The hardest part was keeping capture, audio, camera preview, encoder state, and pause/resume timing aligned while still recovering cleanly from interrupted recordings.',
+      },
+      {
+        label: 'Tradeoff I made',
+        detail:
+          'I optimized the default profile for low RAM and battery use at 848x480, with a separate HQ mode for users who explicitly want higher bitrate 1080p-capable output.',
+      },
+      {
+        label: 'How I tested it',
+        detail:
+          'I validated CMake builds, CTest coverage, CI workflow behavior, MP4 packaging, diagnostics output, hardware and software encoder paths, audio capture, and partial-file recovery.',
+      },
+      {
+        label: 'What I would improve in production',
+        detail:
+          'I would add broader GPU vendor profiling, signed installers, richer crash telemetry, more webcam fallback testing, and automatic release packaging for every tagged build.',
+      },
+    ],
+    metaTitle: 'Screen Recorder | Native Windows C++ Capture App',
+    metaDescription:
+      'Screen Recorder is a C++20 Windows app using WGC, D3D11, Media Foundation H.264, WASAPI audio, camera overlay, HQ mode, and local diagnostics.',
+    caseStudy: {
+      overview:
+        'A native Windows recorder focused on predictable local capture, hardware-first encoding, practical audio handling, and inspectable diagnostics.',
+      architecture: [
+        'Win32 controller coordinates Windows Graphics Capture frames with D3D11 resources and recording state',
+        'Media Foundation muxes hardware-first H.264 video and AAC audio into MP4, falling back when hardware encoding is unavailable',
+        'WASAPI loopback, microphone gating, camera overlay preview, and local diagnostics run as bounded subsystems around the recording session',
+      ],
+      keyFeatures: [
+        'Full-screen capture through Windows Graphics Capture',
+        'Hardware-first H.264 MP4 output with software fallback',
+        'System audio capture, microphone noise gate, mute controls, and anti-ducking option',
+        'Camera overlay, HQ mode, pause/resume, low-disk auto-stop, and orphaned partial-file recovery',
+      ],
+      challenges: [
+        'Balancing video quality with low resource use on battery-powered Windows machines',
+        'Keeping diagnostic output useful without making normal recording setup noisy',
+      ],
+      learnings: [
+        'Native capture apps need explicit recovery paths for interrupted finalization',
+        'Per-session diagnostics make hardware encoder behavior much easier to debug',
+      ],
+      futureImprovements: [
+        'Add signed installer distribution and automated release artifacts',
+        'Profile additional GPU and webcam combinations for more predictable defaults',
+      ],
+    },
+  },
   {
     slug: 'codeaudit',
     title: 'CodeAudit MCP',
@@ -200,25 +431,27 @@ export const projects: Project[] = [
     title: 'WorkAudit AI',
     subtitle: 'Local-first desktop work evidence system',
     summary:
-      'Builds an evidence-backed timeline from local desktop events and generates cited AI session reports.',
+      'Privacy-first Windows work recorder for local evidence timelines and cited AI reports.',
     problem:
-      'Developers and teams struggle to reconstruct real work sessions reliably; manual updates lose context and many AI summaries are not traceable back to evidence.',
+      'Developers, students, freelancers, and remote knowledge workers often need to reconstruct what they worked on, but manual notes lose context and many AI summaries cannot cite trustworthy session evidence.',
     solution:
-      'I built a local-first Tauri + Python sidecar architecture that records desktop activity metadata, links evidence IDs, applies privacy redaction, and produces deterministic plus optional local-LLM reports.',
+      'I built a local-first Tauri + Python sidecar app that records allowed desktop activity evidence, builds deterministic local timelines, previews and deletes sensitive artifacts, and generates reports only from cited session evidence.',
     tech: [
       'Tauri v2',
       'React',
       'TypeScript',
       'Python 3.13',
       'FastAPI',
+      'Rust',
       'SQLite WAL',
-      'Ollama (Gemma 4)',
-      'Vitest / Pytest',
+      'Local Ollama-compatible models',
+      'Vitest',
+      'Pytest',
     ],
     impact:
-      'Proves a practical foundation for private, evidence-cited work audits with real Windows active-window capture, screenshot metadata controls, deterministic exports, and guarded local AI report generation.',
+      'Proves a private-beta Windows workflow for first-run privacy onboarding, session recording controls, active-window and screenshot metadata capture, evidence search, share-safe exports, provider provenance, and local validation gates.',
     featured: true,
-    updatedAt: '2026-05-11',
+    updatedAt: '2026-06-01',
     links: {
       github: 'https://github.com/priyanshuchawda/workaudit-ai',
     },
@@ -238,69 +471,71 @@ export const projects: Project[] = [
       'FastAPI sidecar',
       'SQLite WAL storage',
       'Deterministic Markdown and JSON export',
-      'AI report evaluation suite',
+      'Evidence-linked AI report UI',
       'Privacy redaction controls',
+      'Local validation scripts',
+      'Private-beta readiness docs',
     ],
     engineeringDecisions: [
       {
         label: 'Why I chose this stack',
         detail:
-          'Tauri + React keeps the desktop UX lightweight, while a Python FastAPI sidecar isolates capture and AI runtime integrations behind typed boundaries.',
+          'Tauri, React, Rust commands, Python FastAPI, and SQLite WAL keep the app local-first while separating desktop UX, capture orchestration, storage, and model-provider integrations behind clear boundaries.',
       },
       {
         label: 'What I handled myself',
         detail:
-          'I structured the local-first architecture, implemented capture/event foundations, report flows, privacy controls, and the sidecar-to-desktop command boundary.',
+          'I built the privacy onboarding, recorder controls, active-window capture, screenshot metadata review, local timeline search, evidence-linked reports, diagnostics bundles, validation scripts, and desktop-to-sidecar command flow.',
       },
       {
         label: 'Hardest technical problem',
         detail:
-          'Balancing useful activity evidence with privacy constraints was the hardest part, especially around redaction, private-mode suppression, and safe fallback behavior.',
+          'Balancing useful evidence with privacy controls was the hardest part, especially around screenshot review, raw artifact deletion, provider provenance, and making every AI summary cite the evidence it used.',
       },
       {
         label: 'Tradeoff I made',
         detail:
-          'I prioritized deterministic and verifiable outputs before claiming production-grade autonomous capture, cloud sync, or aggressive always-on AI features.',
+          'I deferred public Windows distribution and unsigned installer publishing until Store-compatible packaging, sidecar bundling, certification, and update evidence are ready.',
       },
       {
         label: 'How I tested it',
         detail:
-          'I used deterministic tests across shared contracts, sidecar APIs, storage/export paths, desktop states, and eval fixtures to verify evidence linkage and fallback behavior.',
+          'I used deterministic tests, CI, installed-app smoke tooling, local validation scripts, manual recorder flows, and evidence benchmark docs to verify capture, export, reporting, diagnostics, and privacy behavior.',
       },
       {
         label: 'What I would improve in production',
         detail:
-          'I would add signed installer hardening, richer privacy-center controls, deeper runtime benchmarks, and broader live-sensor integrations with strict local-only defaults.',
+          'I would complete Store-ready packaging, expand long-running capture benchmarks, add richer privacy-center controls, and profile optional OCR, embedding, audio, and VLM runtimes as local-only modules.',
       },
     ],
     metaTitle: 'WorkAudit AI | Local-First Work Timeline',
     metaDescription:
-      'WorkAudit AI is a local-first desktop system that captures work evidence and generates privacy-aware, citation-backed AI session reports.',
+      'WorkAudit AI is a privacy-first Windows desktop recorder that captures local work evidence, builds timelines, and generates citation-backed AI reports.',
     caseStudy: {
       overview:
-        'A desktop-first architecture for turning local activity signals into evidence-backed timelines and trustworthy AI summaries.',
+        'A Windows private-beta app for answering what work happened, what evidence supports it, and what should continue next without sending raw desktop artifacts to hosted models by default.',
       architecture: [
-        'Tauri desktop app calls typed commands exposed by a local FastAPI sidecar',
-        'Sidecar persists sessions, events, and evidence metadata in SQLite WAL storage',
-        'Report layer generates deterministic exports and optional local-LLM summaries with evidence IDs',
+        'Tauri desktop app coordinates first-run privacy setup, recorder state, review screens, and local shell commands',
+        'Python FastAPI sidecar captures allowed events, active-window data, screenshot metadata, OCR snippets, file-watch roots, and manual terminal ingests',
+        'SQLite WAL storage links sessions, events, evidence IDs, hashes, local previews, provider provenance, deterministic exports, and cited report output',
       ],
       keyFeatures: [
-        'Real Windows active-window and screenshot metadata capture foundations',
-        'Session dashboard with recorder controls, exports, and evidence review',
-        'Privacy redaction helpers with explicit private-mode suppression pathways',
-        'Deterministic and AI-assisted report outputs with citation references',
+        'First-run privacy onboarding before recording starts',
+        'Start, pause, resume, finish, restart, and interrupted-session recovery flows',
+        'Evidence search, timeline filtering, moment review, local preview, deletion, and share-safe Markdown export',
+        'AI report UI that includes provider provenance and cites session evidence',
       ],
       challenges: [
-        'Keeping evidence useful without collecting sensitive content by default',
-        'Maintaining deterministic fallbacks when optional local model runtimes are unavailable',
+        'Keeping evidence useful while avoiding cloud surveillance, keylogging, or unrestricted raw artifact sharing',
+        'Maintaining deterministic report fallbacks when optional local model runtimes are unavailable',
       ],
       learnings: [
         'Evidence IDs and deterministic exports make AI summaries more trustworthy',
-        'A strict local-first boundary simplifies privacy reasoning and deployment risk',
+        'Private-beta desktop products need explicit distribution boundaries before public installer release',
       ],
       futureImprovements: [
-        'Expand production installer hardening and runtime profiling benchmarks',
-        'Add richer privacy-center controls and deeper workflow analytics',
+        'Complete Microsoft Store MSIX or AppX packaging and certification readiness',
+        'Run deeper multi-hour storage, reporting, and local runtime benchmarks',
       ],
     },
   },
@@ -659,7 +894,13 @@ export const projects: Project[] = [
   },
 ];
 
-export const featuredProjects = projects.filter((project) => project.featured);
+export const projectsByRecentUpdate = [...projects].sort(
+  (a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime(),
+);
+
+export const featuredProjects = projectsByRecentUpdate.filter(
+  (project) => project.featured,
+);
 
 export function getProjectBySlug(slug: string) {
   return projects.find((project) => project.slug === slug);

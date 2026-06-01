@@ -78,6 +78,6 @@ describe('Home Page', () => {
 
     render(<ProjectDetail project={project!} />);
 
-    expect(screen.getByText('May 11, 2026')).toBeDefined();
+    expect(screen.getByText('June 1, 2026')).toBeDefined();
   });
 });

@@ -15,7 +15,7 @@ export const pageMetadata = {
   projects: {
     title: 'Projects by Priyanshu Chawda',
     description:
-      'Explore AI projects by Priyanshu Chawda, including developer tools, Gemini apps, MCP workflows, and full-stack systems.',
+      'Explore AI projects by Priyanshu Chawda, including on-device agents, native tools, MCP workflows, and local-first systems.',
     path: '/projects',
   },
   services: {

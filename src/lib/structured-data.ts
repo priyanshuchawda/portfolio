@@ -154,16 +154,24 @@ export function getProjectStructuredData(project: Project) {
     project.links.skills,
   ].filter((link): link is string => Boolean(link));
   const packageInfo = project.packageInfo;
+  const schemaType = project.links.github
+    ? 'SoftwareSourceCode'
+    : 'CreativeWork';
   const usageInfo = [
     packageInfo?.installCommand,
     packageInfo?.skillInstallCommand,
   ]
     .filter((command): command is string => Boolean(command))
     .join(' | ');
+  const programmingLanguage =
+    project.tech.find((tech) =>
+      ['TypeScript', 'Python', 'Kotlin', 'Rust'].includes(tech),
+    ) ??
+    (project.tech.some((tech) => tech.startsWith('C++')) ? 'C++' : undefined);
 
   return {
     '@context': 'https://schema.org',
-    '@type': packageInfo ? 'SoftwareSourceCode' : 'CreativeWork',
+    '@type': schemaType,
     '@id': `${siteConfig.url}/projects/${project.slug}#project`,
     name: project.title,
     description: project.summary,
@@ -182,9 +190,7 @@ export function getProjectStructuredData(project: Project) {
     mainEntityOfPage: `${siteConfig.url}/projects/${project.slug}`,
     sameAs: sameAs.length > 0 ? sameAs : undefined,
     codeRepository: project.links.github,
-    programmingLanguage: project.tech.includes('TypeScript')
-      ? 'TypeScript'
-      : undefined,
+    programmingLanguage,
     runtimePlatform: packageInfo?.runtime,
     softwareVersion: packageInfo?.version,
     installUrl: packageInfo?.registryUrl,
