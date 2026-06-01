@@ -32,8 +32,29 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'www.priyanshuworks.tech',
+          },
+        ],
+        destination: 'https://priyanshuworks.tech/:path*',
+        permanent: true,
+      },
+      {
         source: '/projects/reposentinel-mcp',
         destination: '/projects/codeaudit',
+        permanent: true,
+      },
+      {
+        source: '/projects/gemma_control',
+        destination: '/projects/gemma-control',
+        permanent: true,
+      },
+      {
+        source: '/projects/screen_recorder',
+        destination: '/projects/screen-recorder',
         permanent: true,
       },
     ];
